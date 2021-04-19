@@ -1,4 +1,4 @@
-title: Stack Problems
+title: Technology lists
 description: My Personal Stack Problems
 author: IDEATEC-TECH
 github: https://ideatec-tech.github.io
@@ -40,8 +40,8 @@ urls:
 
 url: "https://ideatec-tech.github.io"
 baseurl: ""
-paginate: 20
-per_page: 20
+paginate: 10
+per_page: 10
 paginate_path: "/page/:num/"
 markdown: kramdown
 gems:
