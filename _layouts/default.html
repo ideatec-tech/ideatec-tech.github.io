@@ -26,29 +26,34 @@ layout: compress
     </div>
 
     <main class="site__content">
-      <section class="blog">
-        <div class="container">
-          <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
-
-            {% for post in site.posts %}
-              {% include card.html %}
-            {% endfor %}
-
-            <!-- {% include pagination.html %} -->
-          </div>
-        </div>
-        <div class="category" style="vertical-align: top; text-align: right;">
-          <ul style="list-style: none;">
-            category
-             <li>
-               test1
-             </li>
-             <li>
-               test2
-             </li>  
-         </ul>  
-        </div>                
-      </section>
+      <nav class="nav">
+        <section class="blog">
+          <div class="container">
+            <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
+  
+              {% for post in site.posts %}
+                {% include card.html %}
+              {% endfor %}
+  
+              <!-- {% include pagination.html %} -->
+            </div>
+          </div>                       
+        </section>
+        <aside class="aside">
+          <div class="category" style="vertical-align: top; text-align: right;">
+            <ul style="list-style: none;">
+              category
+               <li>
+                 test1
+               </li>
+               <li>
+                 test2
+               </li>  
+           </ul>  
+          </div>     
+        </aside>
+      </nav>
+      
     </main>
 
     {% include footer.html %}
