@@ -27,8 +27,8 @@ layout: compress
 
     <main class="site__content">
       <nav class="nav">
-        <section class="blog" style="display: flex;">
-          <article class="container" style="width: 90%; order: 1;">
+        <section class="blog" style="display: flex; flex-direction: row;">
+          <article class="container" style="width: 80%;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
   
               {% for post in site.posts %}
@@ -38,7 +38,7 @@ layout: compress
               <!-- {% include pagination.html %} -->
             </div>
           </article>            
-          <article class="container" style="flex: 1; order: 2;">
+          <article class="container" style="width: 20%;">
             <div class="category">
               <ul style="list-style: none;">
                 category
