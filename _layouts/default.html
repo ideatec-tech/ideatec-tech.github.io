@@ -27,7 +27,7 @@ layout: compress
 
     <main class="site__content">
       <section class="blog">
-        <span class="container">
+        <div class="container" style="display: inline-block;">
           <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
 
             {% for post in site.posts %}
@@ -36,21 +36,16 @@ layout: compress
 
             <!-- {% include pagination.html %} -->
           </div>
-          <div class="navigation">
-            <div class="category">
-              <ul style="list-style: none;">
-                category
-                <li>
-                  test1
-                </li>
-                <li>
-                  test2
-                </li>  
-              </ul>
-              
-            </div>
-          </div>
-        </span>
+          <ul style="list-style: none;">
+             category
+              <li>
+                test1
+              </li>
+              <li>
+                test2
+              </li>  
+          </ul>        
+        </div>
         
       </section>
     </main>
