@@ -6,6 +6,7 @@ featured-img: coding
 
 ## Getting started
 
+
 Ideatec technology blog get starts. I expect many people work actively in this site.
 
 ## Writing content
