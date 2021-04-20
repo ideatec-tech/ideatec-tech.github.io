@@ -27,8 +27,8 @@ layout: compress
 
     <main class="site__content">
       <section class="blog">
-        <div class="container" style="display: block;">
-          <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
+        <div class="container" style="display: inline;">
+          <div class="post-list" itemscope="" itemtype="http://schema.org/Blog" style="display: inline;">
 
             {% for post in site.posts %}
               {% include card.html %}
@@ -36,7 +36,7 @@ layout: compress
 
             <!-- {% include pagination.html %} -->
           </div>
-          <div class="navigation">
+          <div class="navigation" style="display: inline;">
             <div class="category">
               <ul style="list-style: none;">
                 category
