@@ -27,17 +27,16 @@ layout: compress
 
     <main class="site__content">
       <nav class="nav">
-        <section class="blog">
-          <div class="container" style="display: inline-block;">
-            <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
+        <section class="blog">          
+            <article class="post-list" itemscope="" itemtype="http://schema.org/Blog">
   
               {% for post in site.posts %}
                 {% include card.html %}
               {% endfor %}
   
               <!-- {% include pagination.html %} -->
-            </div>
-            <div class="nav" style="float: right;">
+            </article>
+            <article class="nav" style="float: right;">
               <div class="category">
                 <ul style="list-style: none;">
                   category
@@ -49,8 +48,7 @@ layout: compress
                    </li>  
                </ul>  
               </div>     
-            </div>
-          </div>                     
+            </article>                               
         </section>        
       </nav>
       
