@@ -47,7 +47,7 @@ layout: compress
                  {% for category in site.categories %} 
                  <li {% if category[0] == page.category %}class="active"{% endif %}>                     
                     <a href="/category/{{ category | first }}">
-                        {{ category | first}} ({{ category | last | size }}) 
+                        {{ category | first }} ({{ category | last | size }}) 
                     </a>                                      
                  </li>
                  {% endfor %}
