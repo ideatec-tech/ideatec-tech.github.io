@@ -6,7 +6,7 @@ permalink: /about/
 
 이데아텍이라는 이름하에 IT 솔루션, 컨설팅 전문가들이 모여 토탈 솔루션, 통합 플랫폼 서비스를 시작합니다. 고객 니즈라는 최우선의 가치 달성을 위해 언제나 노력하는 기업이 되겠습니다.
 
-![about us](/assets/about/about.png)
+![about us](./assets/about/about.png)
 
 “신뢰를 바탕으로 가치창출에 앞장서는 이데아텍”
 
