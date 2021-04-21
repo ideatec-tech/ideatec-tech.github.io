@@ -45,7 +45,9 @@ layout: compress
               </h2>
               <ul style="list-style: none; padding: 0px;">                                           
                  <li>
-                   <a href="{{ '/list/intro' | relative_url }}">intro</a>
+                   {% for category in site.categories %}
+                   {{ category }}
+                   {% endfor %}
                  </li>                 
               </ul>  
             </div>     

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Ideatec technology blog get starts
-tags: [category, intro]
 featured-img: coding
+categories: ['programming', 'intro']
 ---
 
 ## Getting started
