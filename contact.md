@@ -4,13 +4,25 @@ title: Contact
 permalink: /contact/
 ---
 
-Jekyll is a great tool to create static sites, but there’s no backend to send your data to.
+IDEATEC
 
-However, you can use free SaaS as a backend for forms, such as [Formspree](https://formspree.io/) to handle form submissions. Sleek has a configured form using formspree ready for you. All you have to do is change the email in `_js/scripts.js` and `.config.yml`. 
+대표이사  어윤호, 이정수            
 
-Check the form below to see it in action!
+사업자 등록번호  458-81-00362
 
-### Example Formspree contact form with validation and reCaptcha
+
+대표번호  02-6952-9160         
+
+FAX  02-9652-9161
+회사주소 서울 강남구 논현로80길 31 
+
+■ 문의 사항 - 대표이사 어윤호              
+
+                       연락처 : 010-9980-9130 
+
+                       이 메 일 : sales@ideatec.co.kr
+
+■ 간편 견적 문의
 
 Fill in the form or [email me](mailto:{{site.email}}) to discuss your next project.
 
