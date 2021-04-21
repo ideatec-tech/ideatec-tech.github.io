@@ -31,7 +31,7 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
   
-              {% for post in site.caterogies[page.category] %}
+              {% for post in site.categories[page.category] %}
                 {% include card.html %}
               {% endfor %}
   
