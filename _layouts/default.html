@@ -46,7 +46,7 @@ layout: compress
               <ul style="list-style: none; padding: 0px;">                                           
                  <li>
                    {% for category in site.categories %}
-                   {{ category }}
+                   {{ category | first}} ({{ category | last | size }})
                    {% endfor %}
                  </li>                 
               </ul>  
