@@ -43,12 +43,14 @@ layout: compress
               <h2 style="color: #0D3EA3;">
                 category
               </h2>
-              <ul style="list-style: none; padding: 0px;">                                           
+              <ul style="list-style: none; padding: 0px;">
+                 {% for category in site.categories %} 
                  <li>
-                   {% for category in site.categories %}
-                   {{ category | first}} ({{ category | last | size }})
-                   {% endfor %}
-                 </li>                 
+                    <a href="/category/{{ category | first }}">
+                      {{ category | first}} ({{ category | last | size }}) 
+                    </a>                                      
+                 </li>
+                 {% endfor %}
               </ul>  
             </div>     
           </article>                               
