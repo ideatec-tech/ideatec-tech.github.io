@@ -10,7 +10,8 @@ categories: ['test2']
 Image Test 중입니다.
 
 ## 상대경로
-![ImageTest1](./image/ImageTest.jpg)
+
+![ImageTest1](./image/ImageTest.png)
 
 ## 절대경로
 
