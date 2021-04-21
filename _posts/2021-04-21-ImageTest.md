@@ -11,7 +11,7 @@ Image Test 중입니다.
 
 ## 상대경로
 
-![ImageTest1](./image/posting/imageTest.png)
+![ImageTest1](https://user-images.githubusercontent.com/82787238/115588155-6b96a500-a309-11eb-814e-f0d20c8227ca.jpg)
 
 ## 절대경로
 
