@@ -11,7 +11,7 @@ Image Test 중입니다.
 
 ## 상대경로
 
-![ImageTest1](C:\IDEATEC\ideatec-tech\ideatec-tech.github.io\image\posting)
+![ImageTest1](./image/posting/imageTest.png)
 
 ## 절대경로
 
