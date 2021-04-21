@@ -46,7 +46,7 @@ layout: compress
               <ul style="list-style: none; padding: 0px;">
                  {% for category in site.categories %} 
                  <li>
-                    <a class="alink" href="/category/{{ category | first }}">
+                    <a href="/category/{{ category | first }}">
                       {{ category | first}} ({{ category | last | size }}) 
                     </a>                                      
                  </li>
