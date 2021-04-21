@@ -43,9 +43,9 @@ layout: compress
               <h2 style="color: #0D3EA3;">
                 category
               </h2>
-              <ul style="list-style: none; padding: 0px;">
+              <ul class="category" style="list-style: none; padding: 0px;">
                  {% for category in site.categories %} 
-                 <li>
+                 <li {% if category[0] == page.category %}class="active"{% endif %}>                     
                     <a href="/category/{{ category | first }}">
                         {{ category | first}} ({{ category | last | size }}) 
                     </a>                                      
