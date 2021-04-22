@@ -1,10 +1,9 @@
 title: IDEATEC TECH BLOG # your site title
+footerTitle: IDEATEC Inc
 author: GitHub User
 email: gkdlrma5@ideatec.co.kr # email for form submission, you also have to change it in _js/scripts.js
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  ideatec-tech.github.io
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://ideatec-tech.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 ideatec_username: ideatec # replace with your_twitter_username or comment to remove link from footer
@@ -51,7 +50,3 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-authors:
-    oscar:
-      nickname: oscar      
-      image: /assets/img/authors/oscar.jpg
