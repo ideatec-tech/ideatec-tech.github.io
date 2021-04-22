@@ -51,4 +51,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-
+defaults:
+  - scope:
+      path: ''
+      type: authors
+    values:
