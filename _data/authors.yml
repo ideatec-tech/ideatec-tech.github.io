@@ -1,4 +1,7 @@
-oscar:
-  nickname: oscar
-  name: keum kyeongho
-  image: /assets/img/authors/oscar.jpg
+authors:
+  - name: oscar
+    koname: 금경호
+    img: /assets/img/authors/oscar.jpg
+  - name: sunsu
+    koname: 권순수
+    img: 
