@@ -23,9 +23,9 @@
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
         {% raw %}
-        <img class="author-profile-image" src="{{ site.date.authors[page.author].picture }}" alt="oscar">
+        <img class="author-profile-image" src="{{ site.data.authors[page.author].picture }}" alt="oscar">
         <span class="post-card-author">
-          {{ site.date.authors[page.author].name }}
+          {{ site.data.authors[page.author].name }}
         </span>
         {% endraw %}
       </div>
