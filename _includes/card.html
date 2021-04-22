@@ -1,4 +1,4 @@
-{% assign author = site.data.authors[page.author] %}
+
   <a class="post-card" href="{{ post.url | relative_url }}" itemprop="blogPosts" itemscope="" itemtype="http://schema.org/BlogPosting">
     {% if post.featured-img %}
     <figure class="post-card__thumb">
@@ -22,12 +22,12 @@
         <span class="post-card__meta">
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
-      
-        <img class="author-profile-image" src="{{ author.picture }}" alt="oscar">
+        {% raw %}
+        <img class="author-profile-image" src="{{ site.date.authors[page.author].picture }}" alt="oscar">
         <span class="post-card-author">
-          {{ author.name }}
+          {{ site.date.authors[page.author].name }}
         </span>
-   
+        {% endraw %}
       </div>
       {% if post.summary %}
         <p>{{ post.summary | strip_html | truncatewords:20 }}</p>
