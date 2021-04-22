@@ -23,7 +23,7 @@ social:
 disqus:
   shortname: janczizikow # to enable comments replace with your_disqus_shortname
 
-favicon: assets/img/icons/favicon.png
+favicon: assets/img/icons/favicon1.png
 
 # Build settings
 markdown: kramdown
