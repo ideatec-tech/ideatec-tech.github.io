@@ -8,12 +8,12 @@ permalink: /contact/
 
 ***
 
-HOMEPAGE.  http://www.ideatec.co.kr
+HOMEPAGE.   http://www.ideatec.co.kr
 
-TEL.  02-6952-9160         
+TEL.   02-6952-9160         
 
-FAX.  02-9652-9161
+FAX.   02-9652-9161
 
-ADDRESS.  서울특별시 강남구 논현로80길 31 
+ADDRESS.   서울특별시 강남구 논현로80길 31 
 
 ***
