@@ -1,4 +1,3 @@
-<div class="post-card-content">
   <a class="post-card" href="{{ post.url | relative_url }}" itemprop="blogPosts" itemscope="" itemtype="http://schema.org/BlogPosting">
     {% if post.featured-img %}
     <figure class="post-card__thumb">
@@ -29,12 +28,10 @@
         <p>{{ post.content | strip_html | truncatewords: 20 }}</p>
       {% endif %}
     </div>
-  </a>
-  <footer>
     {% assign author = site.data.authors[page.author] %}
-    <img class="author-profile-image" src="../assets/img/authors/{{ author.picture }}" alt="oscar">
+    <img class="author-profile-image" src="{{site.url}}/assets/img/authors/{{ author.picture }}" alt="oscar">
     <span class="past-card-author">
       {{ author.name }}
     </span>
-  </footer>
-</div>
+  </a>
+
