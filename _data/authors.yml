@@ -5,5 +5,4 @@ oscar :  #nickname 화면에 보여지는 이름
   bio: Why do you make efforts commonly, dont't want to live commonly.   #회사 정보 or 표현하고 싶은것들
   picture: /assets/img/authors/oscar.jpg    #author image
   facebook:
-  twitter:
-  cover: False
+  twitter: 
