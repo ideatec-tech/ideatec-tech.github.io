@@ -21,6 +21,11 @@
         <span class="post-card__meta">
           <time>{{ post.date | date: date_format }}</time>        
         </span>
+        {% assign author = site.data.authors[page.author] %}
+        <img class="author-profile-image" src="{{site.url}}/assets/img/authors/{{ author.picture }}" alt="oscar">
+        <span class="past-card-author">
+          {{ author.name }}
+        </span>
       </div>
       {% if post.summary %}
         <p>{{ post.summary | strip_html | truncatewords:20 }}</p>
@@ -28,10 +33,6 @@
         <p>{{ post.content | strip_html | truncatewords: 20 }}</p>
       {% endif %}
     </div>
-    {% assign author = site.data.authors[page.author] %}
-    <img class="author-profile-image" src="{{site.url}}/assets/img/authors/{{ author.picture }}" alt="oscar">
-    <span class="past-card-author">
-      {{ author.name }}
-    </span>
+
   </a>
 
