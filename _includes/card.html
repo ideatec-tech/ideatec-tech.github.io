@@ -1,4 +1,7 @@
 
+  ---
+  layout: default
+  ---
   <a class="post-card" href="{{ post.url | relative_url }}" itemprop="blogPosts" itemscope="" itemtype="http://schema.org/BlogPosting">
     {% if post.featured-img %}
     <figure class="post-card__thumb">
@@ -23,7 +26,7 @@
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
         {% assign author = site.authors | where: 'name', page.author | first %}
-        <img class="author-profile-image" src="{{ author.image | default: '' }}" alt="oscar">
+        <img class="author-profile-image" src="{{ author.image }}" alt="oscar">
         <span class="post-card-author">
           {{ author.name }}
         </span>
