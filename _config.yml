@@ -52,7 +52,6 @@ plugins:
   - jekyll-seo-tag
 
 authors:
-    author: oscar
-    nickname: oscar
-    display_name: oscar
-    gravatar: /assets/img/authors/oscar.jpg
+    oscar:
+      nickname: oscar      
+      image: /assets/img/authors/oscar.jpg
