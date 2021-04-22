@@ -23,7 +23,7 @@
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
        &nbsp;&nbsp;
-       {% assign author = site.authors.{% post.author %} %}
+       {% assign author = site.authors.{{ post.author }} %}
         {% if author %}        
         <img class="author-profile-image" src="{{ author.image }}" alt="oscar">
         <span class="post-card-author">
