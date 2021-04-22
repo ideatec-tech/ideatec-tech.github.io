@@ -6,3 +6,4 @@ oscar :  #nickname 화면에 보여지는 이름
   picture: /assets/img/authors/oscar.jpg    #author image
   facebook:
   twitter: 
+  cover: FALSE
