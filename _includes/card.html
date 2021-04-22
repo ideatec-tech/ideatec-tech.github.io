@@ -23,10 +23,10 @@
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
         {% assign author = site.authors | where: 'name', page.author | first %}
-        <div class="author-profile-image" style="background-image:url({{ author.image | default: '' }});">
-          <span class="sr-only">{{ author.name }}'s profile image</span>
-        </div>
-        <p clas="post-card-author">{{ author.name }}</p>
+        <img class="author-profile-image" src="{{ author.image | default: '' }}" alt="oscar">
+        <span class="post-card-author">
+          {{ author.name }}
+        </span>
       
       </div>
       {% if post.summary %}
