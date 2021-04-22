@@ -17,6 +17,10 @@ Image Test 중입니다.
 
 ![톰캣](https://user-images.githubusercontent.com/82787238/115637374-f9df4b00-a34a-11eb-83ba-9bcaacdc7f8d.png)
 
+***
+
+![캡쳐](./image/posting/캡쳐.png)
+
 ## 절대경로
 
 ![ImageTest2](https://www.oracle.com/a/ocom/img/rh03-linux-hero-penguin-r1.png)
