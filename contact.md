@@ -8,7 +8,7 @@ permalink: /contact/
 
 ***
 
-HOMEPAGE.   http://www.ideatec.co.kr
+HOMEPAGE.   www.ideatec.co.kr
 
 TEL.   02-6952-9160         
 
