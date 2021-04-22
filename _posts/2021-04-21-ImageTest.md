@@ -19,7 +19,7 @@ Image Test 중입니다.
 
 ***
 
-![캡쳐](./image/posting/캡쳐.png)
+![캡쳐](../image/posting/캡쳐.png)
 
 ## 절대경로
 
