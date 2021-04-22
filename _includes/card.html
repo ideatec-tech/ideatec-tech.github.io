@@ -22,11 +22,11 @@
         <span class="post-card__meta">
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
-     
-        <img class="author-profile-image" src="{{ site.data.authors[page.author].picture }}" alt="oscar">
-        <span class="post-card-author">
-          {{ site.data.authors[page.author].name }}
-        </span>
+        {% assign author = site.authors | where: 'name', page.author | first %}
+        <div class="author-profile-image" style="background-image:url({{ author.image | default: '' }});">
+          <span class="sr-only">{{ author.name }}'s profile image</span>
+        </div>
+        <p clas="post-card-author">{{ author.name }}</p>
       
       </div>
       {% if post.summary %}
