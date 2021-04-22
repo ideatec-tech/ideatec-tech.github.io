@@ -22,10 +22,10 @@
         <span class="post-card__meta">
           <time>{{ post.date | date: date_format }}</time>        
         </span>        
-        {% assign author = site.authors[page.author] %}
-        <img class="author-profile-image" src="{{site.url}}/assets/img/authors/{{author.gravatar}}" alt="oscar">
+       
+        <img class="author-profile-image" src="{{ site.url }}/assets/img/{{ site.authors.gravatar }}" alt="oscar">
         <span class="post-card-author">
-          {{ author.display_name }}
+          {{ site.authors.author }}
         </span>
       
       </div>

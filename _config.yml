@@ -52,7 +52,7 @@ plugins:
   - jekyll-seo-tag
 
 authors:
-  oscar:
-    name: keum kyeong ho
+    author: oscar
+    nickname: oscar
     display_name: oscar
     gravatar: oscar.jpg
