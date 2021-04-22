@@ -31,9 +31,10 @@
     </div>
   </a>
   <footer>
-    <img class="author-profile-image" src="{{ author.picture }}" alt="oscar">
+    {% assign author = site.data.authors[page.author] %}
+    <img class="author-profile-image" src="../assets/img/authors/{{ author.picture }}" alt="oscar">
     <span class="past-card-author">
-      {% author.name %}
+      {% post.author %}
     </span>
   </footer>
 </div>
