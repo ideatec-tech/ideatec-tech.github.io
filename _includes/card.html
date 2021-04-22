@@ -20,12 +20,10 @@
         {% assign date_format = site.sleek.date_format | default: "%b %-d, %Y" %}
         <span class="post-card__meta">
           <time>{{ post.date | date: date_format }}</time>        
-        </span>
-       
-       
+        </span>             
        {% assign author = site.data.authors[page.author] %}
        {% if author %}
-        <img class="author-profile-image" src="{{ author.picture }}" alt="oscar">
+        <img class="author-profile-image" src="{{site.url}}{{ author.picture }}" alt="oscar">
         <span class="past-card-author">
           {{ author.name }}
         </span>

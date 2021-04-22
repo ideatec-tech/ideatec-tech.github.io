@@ -3,6 +3,7 @@ layout: post
 title: Getting Started with Sleek
 featured-img: sleek
 categories: ['programming', 'test1']
+author: oscar
 ---
 
 ## Getting started

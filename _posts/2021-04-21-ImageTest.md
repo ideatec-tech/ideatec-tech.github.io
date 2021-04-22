@@ -3,6 +3,7 @@ layout: post
 title: Image Test
 featured-img: test2
 categories: ['test2']
+author: oscar
 ---
 
 # Image Test
