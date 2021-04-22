@@ -51,8 +51,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-defaults:
-  - scope:
-      path: ''
-      type: authors
-    values:
+authors:
+  oscar:
+    name: keum kyeong ho
+    display_name: oscar
+    gravatar: oscar.jpg
