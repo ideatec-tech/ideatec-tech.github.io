@@ -49,6 +49,23 @@ layout: compress
       <article class="post-content" itemprop="articleBody">
 
         {{ content }}
+        
+        {% if post.author %} {% for author in site.data.authors %}
+        {% if post.author == author.name %}
+
+        <footer class="post-full-footer">
+          <section class="author-card">
+            <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+            <section class="author-card-content">
+              <h4 class="author-card-name">{{ author.name }}</h4>
+              <p>{{ author.bio }}</p>
+            </section>
+          </section>
+        </footer>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %} 
 
       </article>
       <div class="post-content controls__inner">
