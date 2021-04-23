@@ -50,14 +50,18 @@ layout: compress
 
         {{ content }}
 
+        <br><br>
+
+        {% assign author = site.data.authors | where: 'name', page.author | first %}
+
+        <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+        <span class="post-card-author">
+         {{ author.name }}
+        </span>
+
       </article>
 
-      {% assign author = site.data.authors | where: 'name', page.author | first %}
-
-      <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
-       <span class="post-card-author">
-         {{ author.name }}
-       </span>
+      
 
       <div class="post-content controls__inner">
         <div class="controls__item prev">
