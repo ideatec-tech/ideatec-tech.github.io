@@ -52,7 +52,7 @@ layout: compress
         
       </article>
 
-      <div>
+      <article>
           {% if post.author %} {% for author in site.data.authors %}
           {% if post.author == author.name %}
        
@@ -64,7 +64,7 @@ layout: compress
           {% endif %}
           {% endfor %}
           {% endif %}
-      </div>
+      </article>
 
       <div class="post-content controls__inner">
         <div class="controls__item prev">
