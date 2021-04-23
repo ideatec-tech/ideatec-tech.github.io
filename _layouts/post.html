@@ -52,19 +52,7 @@ layout: compress
         
       </article>
 
-      <article>
-          {% if post.author %} {% for author in site.data.authors %}
-          {% if post.author == author.name %}
-       
-          <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
-          <span class="post-card-author">
-            {{ author.name }}
-          </span>
-
-          {% endif %}
-          {% endfor %}
-          {% endif %}
-      </article>
+      {% include author.html %}
 
       <div class="post-content controls__inner">
         <div class="controls__item prev">
