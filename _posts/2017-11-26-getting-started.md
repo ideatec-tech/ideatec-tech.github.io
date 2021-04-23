@@ -2,7 +2,7 @@
 layout: post
 title: Getting Started with Sleek
 featured-img: sleek
-categories: ['programming', 'test1']
+categories: ['Test']
 author: oscar
 ---
 
