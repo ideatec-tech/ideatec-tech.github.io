@@ -49,12 +49,15 @@ layout: compress
       <article class="post-content" itemprop="articleBody">
 
         {{ content }}
-        
-dddddddd
 
       </article>
 
-      {% include author.html %}
+      {% assign author = site.data.authors | where: 'name', page.author | first %}
+
+      <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+       <span class="post-card-author">
+         {{ author.name }}
+       </span>
 
       <div class="post-content controls__inner">
         <div class="controls__item prev">
