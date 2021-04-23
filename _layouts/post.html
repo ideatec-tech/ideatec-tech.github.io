@@ -52,23 +52,6 @@ layout: compress
         
       </article>
 
-      {% if post.author %} {% for author in site.data.authors %}
-      {% if post.author == author.name %}
-
-      <div class="post-full-footer">
-        <div class="author-card">
-          <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
-          <div class="author-card-content">
-            <h4 class="author-card-name">{{ author.name }}</h4>
-            <p>{{ author.bio }}</p>
-          </div>
-        </div>
-      </div>
-
-      {% endif %}
-      {% endfor %}
-      {% endif %}
-
       <div class="post-content controls__inner">
         <div class="controls__item prev">
           {% if page.previous.url %}
