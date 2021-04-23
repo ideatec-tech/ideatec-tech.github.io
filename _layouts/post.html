@@ -50,21 +50,7 @@ layout: compress
 
         {{ content }}
 
-        <footer class="post-full-footer" style="margin-bottom: 10px; padding: 0;">
-
-          {% assign author = site.data.authors | where: 'name', page.author | first %}
-
-          <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
-          <span class="post-card-author">   
-              {{ author.name }}                 
-          </span>
-          <p>
-            {{ author.bio }}
-          </p>
-                  
-        </footer>
-        
-
+       
       </article>
 
       
