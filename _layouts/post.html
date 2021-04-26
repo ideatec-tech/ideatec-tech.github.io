@@ -50,15 +50,19 @@ layout: compress
 
         {{ content }}
 
-        {% assign author = site.data.authors | where: 'name', page.author | first %}
-        {{ author.img }}
-        {{ author.name }}
-        {{ author.bio }}
       </article>
 
       
 
       <div class="post-content controls__inner">
+        {% assign author = site.data.authors | where: 'name', page.author | first %}
+
+        <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+        <span class="post-card-author">
+          {{ author.name }}
+        </span>
+          {{ author.bio }}
+        <!--
         <div class="controls__item prev">
           {% if page.previous.url %}
 
@@ -88,6 +92,7 @@ layout: compress
           {% endif %}
         </div>
       </div>
+      -->
     </div>
 
     {% if site.disqus.shortname %}
