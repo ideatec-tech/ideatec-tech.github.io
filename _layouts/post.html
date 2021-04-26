@@ -60,9 +60,9 @@ layout: compress
 
         <div id="post-footer">
           <a id="post-author" href="#">
-            <div id="author-image">
-              <span>
-                <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+            <div id="author-image" style="background-image:url({{ author.img }});">
+              <span class="sr-only">
+                profile img
               </span>
             </div>
             <p id="author-name">{{ author.name }}</p>            
