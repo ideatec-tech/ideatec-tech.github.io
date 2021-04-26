@@ -55,13 +55,21 @@ layout: compress
       
 
       <div class="post-content controls__inner">
+
         {% assign author = site.data.authors | where: 'name', page.author | first %}
 
-        <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
-        <span class="post-card-author">
-          {{ author.name }}
-        </span>
-          {{ author.bio }}
+        <div id="post-footer">
+          <a id="post-author" href="#">
+            <div id="author-image">
+              <span>
+                <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
+              </span>
+            </div>
+            <p id="author-name">{{ author.name }}</p>            
+          </a>
+          <p id="post-bio">{{ author.bio }}</p>
+        </div>
+        
         <!--
         <div class="controls__item prev">
           {% if page.previous.url %}
