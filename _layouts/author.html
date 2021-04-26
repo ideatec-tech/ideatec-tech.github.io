@@ -30,7 +30,9 @@ layout: compress
         <section class="blog" style="display: flex; flex-direction: row;">
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
-                
+               
+              {{ page.author }}
+
               {% for post in site.data.authors[page.author] %}
                 {% include card.html %}
               {% endfor %}
