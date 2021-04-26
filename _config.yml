@@ -26,7 +26,7 @@ favicon: assets/img/icons/favicon1.png
 
 collections:
   authors:
-    layout: author    
+    titile: Authors
     output: true
 
 # Build settings
