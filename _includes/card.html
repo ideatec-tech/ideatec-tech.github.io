@@ -3,25 +3,14 @@
     {% if post.featured-img %}
     <figure class="post-card__thumb">
 
-      <picture>
-        <source 
-          src="{{site.url}}/assets/img/posts/{{post.featured-img}}.png",
-          data-srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.png"
-          class="lazyload blur"
-        >
-        <source 
-          src="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg",
-          data-srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg"
-          class="lazyload blur"
-        >
+ 
         <img
           src="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg",
           data-srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.png"
           class="lazyload blur"
           alt="{{post.title}}"
         >
-      </picture>
-      
+
       <noscript><img src="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg" alt="{{ post.title }}"></noscript>
     </figure>
     {% else %}
