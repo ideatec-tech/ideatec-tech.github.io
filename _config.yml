@@ -27,7 +27,7 @@ favicon: assets/img/icons/favicon1.png
 # Build settings
 markdown: kramdown
 highlighter: rouge # or pygments or null
-theme: jekyll-sleek
+# theme: jekyll-sleek
 exclude:
   - README.md
   - node_modules
