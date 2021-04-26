@@ -3,19 +3,18 @@
     {% if post.featured-img %}
     <figure class="post-card__thumb">
 
-        <picture>
-          <source srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg" type="image/jpg">
-          <source srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.png" type="image/png">
-          <img
+        <img
           src="{{site.url}}/assets/img/posts/{{post.featured-img}}.png"
           data-srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.png"
           class="lazyload blur"
           alt="{{post.title}}"
         >
-        </picture>
-        
-
-        
+        <img
+          src="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg"
+          data-srcset="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg"
+          class="lazyload blur"
+          alt="{{post.title}}"
+        >
 
       <noscript><img src="{{site.url}}/assets/img/posts/{{post.featured-img}}.jpg" alt="{{ post.title }}"></noscript>
     </figure>
