@@ -24,6 +24,11 @@ disqus:
 
 favicon: assets/img/icons/favicon1.png
 
+collections:
+  authors:
+    titile: Authors
+    output: true
+
 # Build settings
 markdown: kramdown
 highlighter: rouge # or pygments or null
