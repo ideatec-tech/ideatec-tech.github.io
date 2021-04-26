@@ -1,4 +1,4 @@
 ---
 layout: author
-title: oscar 
+title: oscar
 ---
