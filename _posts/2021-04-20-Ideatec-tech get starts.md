@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ideatec technology blog get starts
-featured-img: one
+featured-img: one.png
 categories: ['intro']
 author: oscar
 ---
