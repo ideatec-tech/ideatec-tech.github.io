@@ -18,7 +18,7 @@ layout: compress
 
     {% include header.html %}
 
-    <div class="hero lazyload" data-bg="{{site.url}}/assets/img/posts/main1.jpg">
+    <div class="hero lazyload" data-bg="{{site.url}}/assets/img/authors/main/author_main.jpg">
       <div class="hero__wrap">
         <h1 class="hero__title">IDEATEC TECH BLOG</h1>
         <p class="hero__meta">Why do you make efforts commonly, dont't want to live commonly.</p>
@@ -31,8 +31,10 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
   
-              {% for post in site.categories[page.category] %}
-                {% include card.html %}
+              {% for post in site.posts %}
+                {% if post.author == page.name %}  
+                  {% include card.html %}
+                {% endif %}
               {% endfor %}
   
               <!-- {% include pagination.html %} -->
