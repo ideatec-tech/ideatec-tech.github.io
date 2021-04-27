@@ -32,7 +32,7 @@ layout: compress
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                
               {% for post in site.authors %}
-                {% post %}
+                {{ post }}  
               {% endfor %}
 
               <!-- {% include pagination.html %} -->
