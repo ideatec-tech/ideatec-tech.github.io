@@ -34,7 +34,9 @@ layout: compress
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                
               {% for post in site.posts %}
-                {% include card.html %}
+                {% if post.author == page.author %}
+                  {% include card.html %}
+                {% endif %}
               {% endfor %}
 
               <!-- {% include pagination.html %} -->
