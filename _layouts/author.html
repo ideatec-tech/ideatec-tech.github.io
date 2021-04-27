@@ -1,6 +1,9 @@
 ---
 layout: compress
 ---
+{% for post in site.posts %}
+{% if post.author == page.author %}
+
 <html lang="{{ page.lang | default: site.lang | default: "en_US" }}">
 
   {% include head.html %}
@@ -31,8 +34,8 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                
-              {% for post in site.posts.author %}
-                {{ post }}
+              {% for post in site.posts %}
+                {% include card.html %}
               {% endfor %}
 
               <!-- {% include pagination.html %} -->
@@ -64,3 +67,6 @@ layout: compress
   </body>
 
 </html>
+
+{% endif %}
+{% endfor %}
