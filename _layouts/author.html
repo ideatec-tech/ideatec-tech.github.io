@@ -31,16 +31,10 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                
-              {% if post.author %} {% for author in site.data.authors %}
-              {% if post.author == author.name %}
-              
-              {% include card.html %}
-
-              {% endif %}
+              {% for post in site.posts[page.author] %}
+                {% include card.html %}
               {% endfor %}
-              {% endif %}
 
-  
               <!-- {% include pagination.html %} -->
             </div>
           </article>            
