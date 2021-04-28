@@ -25,8 +25,7 @@ disqus:
 favicon: assets/img/icons/favicon1.png
 
 collections:
-  authors:
-    permalink: /authors/:path/
+  authors:   
     output: true
 
 # Build settings
