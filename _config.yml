@@ -25,7 +25,8 @@ disqus:
 favicon: assets/img/icons/favicon1.png
 
 collections:
-  authors:  
+  authors:
+    permalink: /authors/:path/
     output: true
 
 # Build settings
@@ -47,24 +48,8 @@ exclude:
 include: ['_pages']
 permalink: /:title/
 
-defaults:
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-
-#compress_html:
-#  clippings: all
+compress_html:
+  clippings: all
 
 plugins:
   - jekyll-sitemap
