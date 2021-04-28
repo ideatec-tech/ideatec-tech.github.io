@@ -59,7 +59,7 @@ layout: compress
         {% assign author = site.authors | where: 'name', page.author | first %}
 
         <div id="post-footer">
-          <a id="post-author" href="{{ site.baseurl }}/authors/{{ page.author }}">
+          <a id="post-author" href="{{ site.url }}/authors/{{ page.author }}">
             <div id="author-image" style="background-image:url({{ author.img }});">
               <span class="sr-only">
                 profile img
