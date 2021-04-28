@@ -1,5 +1,4 @@
 ---
-layout: author
 name: oscar 
 koname: 금경호   
 img: /assets/img/authors/oscar.jpg
