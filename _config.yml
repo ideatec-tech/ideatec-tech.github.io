@@ -47,8 +47,24 @@ exclude:
 include: ['_pages']
 permalink: /:title/
 
-compress_html:
-  clippings: all
+defaults:
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+#compress_html:
+#  clippings: all
 
 plugins:
   - jekyll-sitemap
