@@ -43,17 +43,20 @@ layout: compress
               {% endfor %}
               {% endif %}
               -->
-
-              {{ post.author }}
-              
-
-              <!--
+                           
               {% for post in site.posts %}
-                {{ post.author }}  
+
+                {% if post.author %} {% for author in site.data.authors %}
+                {% if post.author == author.name %}
                 
+                  {{ author.name }}
+            
+                {% endif %}
+                {% endfor %}
+                {% endif %}                
 
               {% endfor %}
-              -->
+              
 
               <!-- {% include pagination.html %} -->
             </div>
