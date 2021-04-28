@@ -56,7 +56,7 @@ layout: compress
 
       <div class="post-content controls__inner">
 
-        {% assign author = site.data.authors | where: 'name', page.author | first %}
+        {% assign author = site.authors | where: 'name', page.author | first %}
 
         <div id="post-footer">
           <a id="post-author" href="{{ site.url }}/authors/{{ post.author }}">
