@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: Authors
 permalink: /authors/
 sitemap: true
