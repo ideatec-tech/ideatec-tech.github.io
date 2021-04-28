@@ -46,12 +46,12 @@ layout: compress
                            
               {% for post in site.posts %}
 
-                {% if post.author %} {% for author in site.data.authors %}
-                {% if post.author == author.name %}
+                {% if post.author %} {% for author in site.authors %}
                 
-                  {{ author.name }}
+                
+                  {{ author }}
             
-                {% endif %}
+                
                 {% endfor %}
                 {% endif %}                
 
