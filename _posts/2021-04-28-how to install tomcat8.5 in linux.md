@@ -58,6 +58,8 @@ export CLASSPATH
 # source /etc/profile
 ```
 
+
+
 ## tomcat 설치
 
 설치가능한 tomcat 버전을 확인하기 위해 다음 명령어를 입력합니다.

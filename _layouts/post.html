@@ -59,7 +59,7 @@ layout: compress
         {% if post.author %}
         {% for author in site.data.authors %}
           {% if post.author == author.name %}
-          <a href="{{ site.baseurl }}/authors/{{ post.author }}">{{author.koname}}</a>
+          <a href="{{ site.baseurl }}/data/authors/{{ post.author }}">{{author.koname}}</a>
 
           <div id="post-footer">
             <a id="post-author" href="{{ site.baseurl }}/authors/{{ post.author }}">
