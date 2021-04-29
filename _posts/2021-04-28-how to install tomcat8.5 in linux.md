@@ -105,3 +105,7 @@ yum list tomcat
 
 ![linux_8](../image/oscar/2021-04-28/8.png)
 
+
+하지만, 매번 설치한 tomcat의 bin디렉토리로 가서 ./startup.sh 하기 번거롭기 때문에 서비스 등록을 해줍니다.
+
+
