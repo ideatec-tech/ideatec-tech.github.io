@@ -35,10 +35,10 @@ layout: compress
                
               {% assign author = site.data.authors | where: 'name', page.author | first %}   
               {% if post.author == author %}
-              {% for post in site.posts %}                           
-                  {% include card.html %}
-                {% endif %}
+              {% for post in site.posts | where: 'author', page.author | first %}                           
+                  {% include card.html %}                
               {% endfor %}
+              {% endif %}
             
               <!-- {% include pagination.html %} -->
             </div>
