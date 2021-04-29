@@ -54,12 +54,13 @@ layout: compress
               {% endfor %}
               -->
               {% assign author = site.data.authors | where: 'name', page.author | first %}   
+              {% if post.author == author %}
               {% for post in site.posts %}
-                {% if post.author == author %}           
+                           
                   {% include card.html %}
-                {% endif %}
+                
               {% endfor %}
-
+              {% endif %}
               <!--
               {% for author = site.data.authors | where: 'name', page.author | first %}
 
