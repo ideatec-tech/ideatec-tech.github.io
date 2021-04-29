@@ -53,16 +53,21 @@ layout: compress
                 
               {% endfor %}
               -->
-
-              {{ post.author }}
-
-              <!--
-              {% for post in site.authors %}
+             
               
-                {{ post.name }}  
-                
-              {% endfor %}
-              -->  
+              {% for post in site.posts %}             
+              {% if post.author == page.author %}
+
+                {% if post.author %}
+                {% for author in site.data.authors %}
+                    {% if post.author == author.name %}
+                    <a href="{{ site.baseurl }}/authors/{{ post.author }}">{{author.koname}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+
+              {% endif %}
+              {% endfor %} 
             
               <!-- {% include pagination.html %} -->
             </div>

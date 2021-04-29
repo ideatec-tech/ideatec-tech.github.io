@@ -26,7 +26,8 @@ favicon: assets/img/icons/favicon1.png
 
 collections:
   authors:
-    permalink: /authors/:path/
+    title: Authors
+    #permalink: /authors/:path/
     output: true
 
 # Build settings
