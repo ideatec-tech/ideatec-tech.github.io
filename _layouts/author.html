@@ -33,40 +33,10 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                
-              <!--
-              {% if post.author %} {% for author in site.data.authors %}
-              {% if post.author == author.name %}
-              
-                {{ author.name }}
-           
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-
-              {{ post.author }}
-              -->
-              
-              <!--
-              {% for post in site.posts %}
-              
-                {{ post.author }}  
-                
-              {% endfor %}
-              -->
-          
               {% for post in site.posts %}
                 {% include card.html %}
               {% endfor %}
-      
-              <!--
-              {% for author = site.data.authors | where: 'name', page.author | first %}
 
-              {% include card.html %}
-
-              {& endfor &}
-              -->  
-
-            
               <!-- {% include pagination.html %} -->
             </div>
           </article>            
