@@ -26,8 +26,7 @@ favicon: assets/img/icons/favicon1.png
 
 collections:
   authors:
-    title: Authors
-    #permalink: /authors/:path/
+    permalink: /authors/:path/
     output: true
 
 # Build settings
@@ -56,3 +55,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
+defaults:
+  - scope:
+      path: ''
+      type: authors
+    values:
+      layout: author
