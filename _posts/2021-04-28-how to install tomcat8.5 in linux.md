@@ -58,8 +58,6 @@ export CLASSPATH
 # source /etc/profile
 ```
 
-
-
 ## tomcat 설치
 
 설치가능한 tomcat 버전을 확인하기 위해 다음 명령어를 입력합니다.
@@ -105,11 +103,59 @@ yum list tomcat
 
 ![linux_8](../image/oscar/2021-04-28/8.png)
 
-
 하지만, 매번 설치한 tomcat의 bin디렉토리로 가서 ./startup.sh 하기 번거롭기 때문에 서비스 등록을 해줍니다.
 
 ```
 # nano /etc/systemd/system/tomcat.service
 ```
 /etc/systemd/system 경로로 가서 tomcat이라는 서비스 파일을 만듭니다.
+
+nano 편집기로 다음 내용을 입력합니다.
+
+```
+[Unit]
+
+Description=tomcat8
+After=network.target syslog.target
+
+[Service]
+
+Type=forking
+User=root
+Group=root
+
+ExecStart=(톰캣설치경로)/bin/startup.sh
+ExecStop=(톰캣설치경로)/bin/shutdown.sh
+
+Umask=007
+RestartSec=10
+Restart=always
+
+[Install]
+
+WantedBy=multi-user.target
+```
+입력이 끝났으면 다음 명령어로 적용을 해줍니다.
+```
+# systemctl daemon-reload
+```
+
+실행을 시켜봅니다. (아무것도 나타나지 않으면 정상실행)
+```
+# systemctl start tomcat
+```
+
+제대로 실행 되었는지 확인을 해봅니다.
+```
+# systemctl status tomcat
+```
+
+다음과 같이 나타나면 정상.
+
+![linux_9](../image/oscar/2021-04-28/9.png)
+
+os재부팅시 할때마다 tomcat 실행시키고 싶다면 다음 명령어를 실행해줍니다.
+```
+# systemctl enable tomcat
+```
 
