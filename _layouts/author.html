@@ -53,13 +53,18 @@ layout: compress
                 
               {% endfor %}
               -->
-                   
+                 
+              {% for post in site.posts %}
+                {% include cardAuthor.html %}
+              {% endfor %}
+
+              <!--
               {% for author = site.data.authors | where: 'name', page.author | first %}
 
               {% include card.html %}
 
               {& endfor &}
-
+              -->  
 
             
               <!-- {% include pagination.html %} -->

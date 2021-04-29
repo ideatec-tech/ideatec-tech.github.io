@@ -25,5 +25,5 @@ author: oscar
 3.apr-util (https://apr.apache.org/download.cgi)
 ![apache_3](../image/oscar/2021-04-29/3.png)
 
-4.prec ()
+4.pcre (https://ftp.pcre.org/pub/pcre/
 ![apache_4](../image/oscar/2021-04-29/4.png)
