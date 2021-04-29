@@ -53,7 +53,11 @@ layout: compress
                 
               {% endfor %}
               -->
-                           
+                   
+              {% assign author = site.data.authors | where: 'name', page.author | first %}
+
+              {{ author.name }}
+
               {% for post in site.posts %}             
               {% if post.author == page.author %}
 

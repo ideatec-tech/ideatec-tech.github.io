@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to install tomcat8.5 in linux
+title: How to install apache in linux
 featured-img: apacheInLinux.jpg
 categories: ['linux', 'apache']
 author: oscar
