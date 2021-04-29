@@ -54,23 +54,13 @@ layout: compress
               {% endfor %}
               -->
                    
-              {% assign author = site.data.authors | where: 'name', page.author | first %}
+              {% for author = site.data.authors | where: 'name', page.author | first %}
 
-              {{ author.name }}
+              {% include card.html %}
 
-              {% for post in site.posts %}             
-              {% if post.author == page.author %}
+              {& endfor &}
 
-                {% if post.author %}
-                {% for author in site.data.authors %}
-                    {% if post.author == author.name %}
-                    <a href="{{ site.url }}/authors/{{ post.author }}">{{author.koname}}</a>
-                    {% endif %}
-                {% endfor %}
-                {% endif %}
 
-              {% endif %}
-              {% endfor %} 
             
               <!-- {% include pagination.html %} -->
             </div>
