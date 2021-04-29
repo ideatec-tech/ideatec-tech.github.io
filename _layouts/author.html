@@ -54,7 +54,7 @@ layout: compress
               {% endfor %}
               -->
           
-              {% for post in site.posts | where: 'author', page.author | first %}
+              {% for post in site.posts %}
                            
                   {% include card.html %}
                 
