@@ -56,30 +56,9 @@ layout: compress
 
       <div class="post-content controls__inner">
 
-        {% if post.author %}
-        {% for author in site.data.authors %}
-          {% if post.author == author.name %}
 
-          <div id="post-footer">
-            <a id="post-author" href="{{ site.url }}/data/authors/{{ post.author }}">
-              <div id="author-image" style="background-image:url({{ author.img }});">
-                <span class="sr-only">
-                  profile img
-                </span>
-              </div>
-              <p id="author-name">{{ author.name }}</p>            
-            </a>
-            <p id="post-bio">{{ author.bio }}</p>
-            <a id="post-more" href="#">
-              <span>Read more </span>
-            </a>
-          </div>
 
-          {% endif %}
-        {% endfor %}
-        {% endif %}
-
-        <!-- 기존
+      
         {% assign author = site.data.authors | where: 'name', page.author | first %}
 
         <div id="post-footer">
@@ -96,7 +75,7 @@ layout: compress
             <span>Read more </span>
           </a>
         </div>
-        -->
+  
 
         <!-- 이전글 / 다음글
         <div class="controls__item prev">

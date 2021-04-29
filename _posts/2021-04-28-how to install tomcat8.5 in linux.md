@@ -108,4 +108,8 @@ yum list tomcat
 
 하지만, 매번 설치한 tomcat의 bin디렉토리로 가서 ./startup.sh 하기 번거롭기 때문에 서비스 등록을 해줍니다.
 
+```
+# nano /etc/systemd/system/tomcat.service
+```
+/etc/systemd/system 경로로 가서 tomcat이라는 서비스 파일을 만듭니다.
 
