@@ -23,7 +23,7 @@ author: oscar
 
 톰캣 웹사이트(http://tomcat.apache.org/)에 접속하여 Tomcat Connectors 메뉴로 들어가 최신 버전 파일의 링크 주소를 복사합니다.
 
-![mod_jk1](../image/oscar/2021-04-30/1.png)
+![mod_jk1](../image/oscar/2021-04-30_mod_jk/1.png)
 
 wget 명령어를 이용하여 내려받고 압축을 풀어줍니다.
 ```
@@ -42,7 +42,7 @@ Tomcat Connector 홈/native 디렉터리로 이동. configure 명령어를 통�
 ```
 
 정상적으로 설치가 완료되면 아파치홈/modules 경로에 mod_jk.so 파일이 생성되게 됩니다.
-![mod_jk2](../image/oscar/2021-04-30/2.png)
+![mod_jk2](../image/oscar/2021-04-30_mod_jk/2.png)
 
 
 ## 2. 연동 설정
@@ -50,10 +50,10 @@ Tomcat Connector 홈/native 디렉터리로 이동. configure 명령어를 통�
 아파치 홈/conf/httpd.conf 설정 파일을 설정합니다. nano 편집기로 httpd.conf파일을 열어서 
 
 LoadModule 부분에 다음을 추가해줍니다.
-![mod_jk3](../image/oscar/2021-04-30/3.png)
+![mod_jk3](../image/oscar/2021-04-30_mod_jk/3.png)
 
 가장 하단에 다음을 추가해줍니다.
-![mod_jk4](../image/oscar/2021-04-30/4.png)
+![mod_jk4](../image/oscar/2021-04-30_mod_jk/4.png)
 
 아파치홈/conf/ 에 연동할 톰캣 리스트를 나타낼 workers.properties 파일을 만들어 줍니다.
 ```
@@ -77,7 +77,7 @@ worker.worker1.port=8009
 ```
 # nano 톰캣홈/conf/server.xml
 ```
-![mod_jk5](../image/oscar/2021-04-30/5.png)
+![mod_jk5](../image/oscar/2021-04-30_mod_jk/5.png)
 
 설정이 다 되었으면 아파치와 톰캣을 재기동 하고 결과를 확인입니다.
 ```
@@ -88,4 +88,4 @@ worker.worker1.port=8009
 ```
 
 웹브라우저에서 '본인IP'로 접속해서 톰캣사이트가 나오면 성공입니다.
-![mod_jk6](../image/oscar/2021-04-30/6.png)
+![mod_jk6](../image/oscar/2021-04-30_mod_jk/6.png)
