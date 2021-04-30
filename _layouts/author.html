@@ -37,7 +37,9 @@ layout: compress
               {{ author.name }}
 
               {% for post in site.posts %}                
-                {{ post.author }}
+                {% if post.author == {{ author.name }} %}
+                  {{ post.author }}
+                {% endif %}
               {% endfor %}
             
               <!-- {% include pagination.html %} -->
