@@ -62,7 +62,10 @@ layout: compress
                     </span>        
                    &nbsp;&nbsp;
                   
-                   {% if post.author %} {% for author in site.data.authors | where: 'name', page.author | first %}
+                   {% assign authord in site.data.authors | where: 'name', page.author | first %} 
+                   {{ authord }}
+
+                   {% if post.author %} {% for author in site.data.authors | where: 'name', {{authord}} | first %}
                    {% if post.author == author.name %}
                    
                    <img class="author-profile-image" src="{{ author.img }}" alt="oscar">
