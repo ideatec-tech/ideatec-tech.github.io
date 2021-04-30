@@ -10,9 +10,17 @@ author: oscar
 
 ## Apache HTTP Server - Source 파일을 이용한 컴파일 설치
 
-우선, GCC 패키지를 설치합니다.
+우선, apache 설치에 필요한 os 패키지를 설치합니다.
 ```
-# yum install gcc make gcc-c++ pcre-devel
+# yum install gcc-c++
+
+# yum install openssh-server openssh-clients openssh-askpass
+
+# yum install openssl openssl-devel
+
+# yum install zlib-devel
+
+# yum install expat-devel
 ```
 
 필요한 최신 버전의 설치 파일을 링크 주소 복사 후 다운로드 및 압축 해제를 합니다.
@@ -40,45 +48,82 @@ author: oscar
 # tar xvfz pcre2-10.36.tar.gz
 ```
 
-apr-1.7.0과 apr-util-1.6.1은 ./httpd-2.4.46/srclib/ 안에 따로 폴더 생성 후 넣어줍니다.
+그 다음엔 pcre 설치를 해줍니다. (차례로 입력하면 됩니다.)
+```
+# cd ./pcre2-10.36
+# ./configure --prefix=/usr/local/pcre
+# make
+# make install
+```
+
+apr 설치를 합니다. (차례로 입력하면 됩니다.)
+```
+# cd ../apr-1.7.0
+# ./configure --prefix=/usr/local/apr (에러발생)
+# cp -arp libtool libtoolT
+# ./configure --prefix=/usr/local/apr(다시 configure)
+# make
+# make install
+```
+
+apr-util 설치를 합니다. (차례로 입력하면 됩니다.)
+```
+# cd ../apr-util-1.6.1
+# ./configure --prefix=/usr/local/aprutil --with-apr=/usr/local/apr
+# make
+# make install
+```
+
+apr-1.7.0과 apr-util-1.6.1은 ./httpd-2.4.46/srclib/ 안에 디렉토리명을 바꿔서 넣어줍니다.
 ```
 # mv apr-1.7.0 ./httpd-2.4.46/srclib/apr
 # mv apr-util-1.6.1 ./httpd-2.4.46/srclib/apr-util
 ```
 
-그 다음엔 pcre 설치를 해줍니다. (차례로 입력하면 됩니다.)
+apache 설치를 해줍니다. (차례로 입력하면 됩니다.)
 ```
-# cd ./pcre2-10.36
-# ./configure
-# make
-# make install
-```
-
-pcre 설치가 끝났으면 apache 설치를 해줍니다. (차례로 입력하면 됩니다.)
-```
-# cd ./httpd-2.4.46
-# ./configure --prefix=(설치파일경로)/apache2
+# cd ../httpd-2.4.46
+# ./configure \
+--prefix=(본인이 원하는 설치경로) \
+--with-mpm=worker \
+--with-pcre=/usr/local/pcre/bin/pcre-configure \
+--with-apr=/usr/local/apr \
+--with-apr-util=/usr/local/aprutil \
+--with-ssl=/usr/bin/openssl \
+--enable-module=so \
+--enable-so \
+--enable-rewrite=shared \
+--enable-ssl=shared  \
+--enable-deflate=shared \
+--enable-cache=shared \
+--enable-disk-cache=shared \
+--enable-mem-cache=shared \
+--enable-proxy \
+--enable-unique-id \
+--enable-asis=shared \
+--enable-headers \
+--enable-logio=shared \
+--enable-expires=shared \
+--enable-status=shared \
+--enable-auth-digest \
+--enable-lib64 --libdir=/usr/lib64
 # make 
 # make install
 ```
-위 명령어를 실행 시키면 (설치파일경로)에 apache2가 아파치 홈 디렉토리가 됩니다.
-만약, configure: error: Cannot use an external APR-util with the bundled APR 오류 발생하면 ./configure --prefix=(설치파일경로)/apache2 --with-included-apr를 해보자.
+위 명령어를 실행 시키면 본인이 설정한 설치경로에 아파치 홈 디렉토리가 생성됩니다.
+
 
 설치가 다 끝났으면 아파치를 실행합니다.
 ```
-# (설치파일경로)/apache2/bin/httpd -k start
+# (설치파일경로)/bin/apachectl start
 ```
 
 제대로 실행이 됐는지 확인합니다.
 ```
 # ps -ef | grep httpd
-# netstat -anp | grep httpd
-# curl http://127.0.0.1
 ```
 제대로 실행이 됐다면 다음과 같이 나타납니다.
 ![apache_5](../image/oscar/2021-04-29/5.png)
-![apache_6](../image/oscar/2021-04-29/6.png)
-![apache_7](../image/oscar/2021-04-29/7.png)
 
 이제 80포트 방화벽을 개방해줍니다.
 ```
@@ -89,36 +134,25 @@ pcre 설치가 끝났으면 apache 설치를 해줍니다. (차례로 입력하�
 
 httpd를 서비스 등록을 시켜줍니다. (os 재부팅시 자동실행)
 ```
-# nano /usr/lib/systemd/system/httpd.service
+# nano /etc/systemd/system/httpd.service
 ```
-/usr/lib/systemd/system 경로로 가서 httpd이라는 서비스 파일을 만듭니다.
+/etc/systemd/system 경로로 가서 httpd라는 서비스 파일을 만듭니다.
 
 nano 편집기로 다음 내용을 입력합니다.
 
 ```
 [Unit]
-
 Description=The Apache HTTP Server
 
 [Service]
-
 Type=forking
-
-PIDFile=(apache2설치경로)/logs/httpd.pid
-
-ExecStart=(apache2설치경로)/bin/apachectl start
-
-ExecReload=(apache2설치경로)/bin/apachectl graceful
-
-ExecStop=(apache2설치경로)/bin/apachectl stop
-
+#EnvironmentFile=(아파치설치경로)/bin/envvars
+PIDFile=(아파치설치경로)/logs/httpd.pid
+ExecStart=(아파치설치경로)/bin/apachectl start
+ExecReload=(아파치설치경로)/bin/apachectl graceful
+ExecStop=(아파치설치경로)/bin/apachectl stop
 KillSignal=SIGCONT
-
 PrivateTmp=true
-
-[Install]
-
-WantedBy=multi-user.target
 ```
 입력이 끝났으면 다음 명령어로 적용을 해줍니다.
 ```
