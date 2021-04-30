@@ -33,10 +33,9 @@ layout: compress
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
                             
-              {% assign author = site.data.authors | where: 'name', page.author | first %}
-                       
-              {% for post in site.posts.author[{{ author.name }}] %}                  
-                  {% include card.html %}              
+              {% assign author = site.data.authors | where: 'name', page.author | first %}                       
+              {% for post in site.posts %}                  
+                {% include cardAuthor.html %}            
               {% endfor %}
             
               <!-- {% include pagination.html %} -->
