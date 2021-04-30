@@ -32,6 +32,9 @@ layout: compress
         <section class="blog" style="display: flex; flex-direction: row;">
           <article class="container" style="width: 90%; margin-right: 50px;">
             <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
+                            
+              {% assign author = site.data.authors | where: 'name', page.author | first %}
+              {{ author.name }}
 
               {% for post in site.posts %}                
                 {% if post.author == {{ author.name }} %}
