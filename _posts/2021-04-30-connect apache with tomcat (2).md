@@ -16,7 +16,7 @@ mod_proxy_ajp을 사용하여 연동하는 것은 mod_jk보다 훨씬 간단하�
 ![mod_proxy1](../image/oscar/2021-04-30_mod_proxy/1.png)
 
 그리고 하단에 다음을 추가해줍니다.
-![mod_proxy1](../image/oscar/2021-04-30_mod_proxy/1.png)
+![mod_proxy2](../image/oscar/2021-04-30_mod_proxy/2.png)
 
 
 설정이 다 되었으면 아파치를 재기동 하고 결과를 확인입니다.
