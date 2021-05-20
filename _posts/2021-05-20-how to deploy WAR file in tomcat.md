@@ -66,11 +66,7 @@ scp C:\IDEATEC\sts-4.8.1.RELEASE\workspace-api\ione-api-gtw-admin\target\ione-ap
 ![deploy9](../image/oscar/2021-05-20_deploy/9.png)
 <br>
 
-war 파일이 전송이 되면 war파일 이름으로된 디렉토리가 생성이 되어있습니다. 해당 디렉토리로 들어가서 압축을 풀어주면 됩니다.
-```
-# cd ione-apigtw-admin
-# jar xvf ione-apigtw-admin.jar ../ione-apigtw-admin
-```
+war 파일이 전송이 되고 tomcat을 기동시켜주면 war 파일 압축을 풀어줍니다. 
 ![deploy10](../image/oscar/2021-05-20_deploy/10.png)
 <br><br>
 
