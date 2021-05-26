@@ -16,7 +16,8 @@ server.xml파일에서 포트를 변경해줍니다.
 ```
 # nano 복사한톰캣홈디렉토리/conf/server.xml
 ```
-![tomcatSessionClustering2](../image/oscar/2021-05-26/2.png)<br>
+![tomcatSessionClustering2](../image/oscar/2021-05-26/2.png)
+
 ![tomcatSessionClustering3](../image/oscar/2021-05-26/3.png)
 
 혹시 ajp도 쓰고 있다면 변경해줍니다.
