@@ -98,15 +98,15 @@ war 파일이 전송이 되고 tomcat을 기동시켜주면 war 파일 압축을
 
 ## 4. Server.xml 설정
 
-&lt;Host&gt;
-1.name : host 이름 설정
-2.appBase : 웹 어플리케이션이 존재하는 경로
-3.autoDeploy (디폴트 true) : WAR 파일을 appBase 디렉토리에 위치시키면 톰캣 구동 시 WAR 파일을 자동으로 읽어서 배포함. 
-4.unpackWARs (디폴트 true) : WAR 파일의 압축을 풀어서 배치. 
+&lt;Host&gt;<br>
+1.name : host 이름 설정 <br>
+2.appBase : 웹 어플리케이션이 존재하는 경로<br>
+3.autoDeploy (디폴트 true) : WAR 파일을 appBase 디렉토리에 위치시키면 톰캣 구동 시 WAR 파일을 자동으로 읽어서 배포함. <br>
+4.unpackWARs (디폴트 true) : WAR 파일의 압축을 풀어서 배치. <br><br>
 
-&lt;Context&gt;
-1.path : 어플리케이션이 배치되는 URL 앞부분을 정함.
-2.docBase : WAR 파일이나 확장 어플리케이션 디렉토리 나타냄. 
+&lt;Context&gt;<br>
+1.path : 어플리케이션이 배치되는 URL 앞부분을 정함.<br>
+2.docBase : WAR 파일이나 확장 어플리케이션 디렉토리 나타냄. <br>
 3.reloadable : 일정 주기마다(15초) 루트경로의 class파일 변경여부 확인하고, 자동으로 재기동하여 리로드 시켜줌.
 
 
