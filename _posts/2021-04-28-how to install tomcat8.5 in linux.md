@@ -49,7 +49,6 @@ CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tools.jar
 export PATH
 export JAVA_HOME
 export CLASSPATH
-
 ```
 
 작성이 끝났으면 profile 파일 적용 위해 터미널 재접속 또는 다음 명령어를 입력합니다.
