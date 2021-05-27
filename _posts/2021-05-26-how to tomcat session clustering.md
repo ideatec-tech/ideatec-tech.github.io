@@ -122,8 +122,34 @@ firewall-cmd --permanent --zone=public --add-port=4000/tcp
 firewall-cmd --permanent --zone=public --add-port=4001/tcp
 firewall-cmd --reload
 ```
+<br>
+clustering 설정이 끝났으면 테스트를 해봅니다.<br>
+로그인 했을 때 세션값을 가지고 오고 톰캣서버 하나를 죽였을때도 같은 세션값이 유지되는지 확인해 볼 수 있습니다.<br>
+아파치와 톰캣1,2 서버를 기동시킵니다.<br>
+```
+# 아파치홈디렉토리/bin/apache start
+# 톰캣1홈디렉토리/bin/startup.sh
+# 톰캣2홈디렉토리/bin/startup.sh
+``` 
+아파치 80포트와 클러스터멤버쉽의 Receiver포트인 4000포트와 4001포트가 올라와 있는 지 확인합니다.<br>
+![tomcatSessionClustering10](../image/oscar/2021-05-26/10.png)
+<br>
 
+아파치에서 설정한 도메인으로 접속해봅니다.
+![tomcatSessionClustering11](../image/oscar/2021-05-26/11.png)
+<br>
 
+로그인 했을때, 세션값을 가져옵니다.
+![tomcatSessionClustering12](../image/oscar/2021-05-26/12.png)
+<br>
+
+세션값 끝에 jvmRoute명이 pc02이므로 톰캣2서버를 다운시킵니다.
+```
+# 톰캣2홈디렉토리/bin/shutdown.sh
+```
+<br>
+이제 새로고침을 해보면 로그아웃되지 않고 jvmRoute명이 pc1이 되고 같은 세션값이 유지되면 성공입니다.
+![tomcatSessionClustering13](../image/oscar/2021-05-26/13.png)
 
 
 
