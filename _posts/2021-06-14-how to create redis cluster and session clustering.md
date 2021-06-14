@@ -130,15 +130,15 @@ master node 3개 replica node 3개 총 6개의 node를 위에서 최초 설치 �
 ![redisCluster7](../image/oscar/2021-06-14_redisCluster/7.png)<br>
 
 주석이 풀려 있는지 포트번호가 맞는지 확인합니다.<br>
-![redisCluster8](../image/oscar/2021-06-14_redisCluster/8.png)<br>
-![redisCluster8-1](../image/oscar/2021-06-14_redisCluster/8-1.png)<br>
-![redisCluster8-2](../image/oscar/2021-06-14_redisCluster/8-2.png)<br>
+![redisCluster8](../image/oscar/2021-06-14_redisCluster/8.png)<br><br>
+![redisCluster8-1](../image/oscar/2021-06-14_redisCluster/8-1.png)<br><br>
+![redisCluster8-2](../image/oscar/2021-06-14_redisCluster/8-2.png)<br><br>
 ![redisCluster8-3](../image/oscar/2021-06-14_redisCluster/8-3.png)<br>
 
 cluster 설정 부분의 주석을 풀어주고 해당 포트번호에 맞게 바꿔줍니다.<br>
-![redisCluster9](../image/oscar/2021-06-14_redisCluster/9.png)<br>
-![redisCluster9-1](../image/oscar/2021-06-14_redisCluster/9-1.png)<br>
-![redisCluster9-2](../image/oscar/2021-06-14_redisCluster/9-2.png)<br>
+![redisCluster9](../image/oscar/2021-06-14_redisCluster/9.png)<br><br>
+![redisCluster9-1](../image/oscar/2021-06-14_redisCluster/9-1.png)<br><br>
+![redisCluster9-2](../image/oscar/2021-06-14_redisCluster/9-2.png)<br><br>
 ![redisCluster10](../image/oscar/2021-06-14_redisCluster/10.png)<br>
 
 설정 변경이 끝났으면 redis-server를 통해 node를 실행시켜 줍니다.
