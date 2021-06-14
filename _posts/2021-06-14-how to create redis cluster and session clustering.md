@@ -127,19 +127,19 @@ master node 3개 replica node 3개 총 6개의 node를 위에서 최초 설치 �
 ```
 <br>
 외부와의 통신을 위해 0.0.0.0으로 변경합니다.
-![redisCluster7](../image/oscar/2021-06-02_redisCluster/7.png)<br>
+![redisCluster7](../image/oscar/2021-06-14_redisCluster/7.png)<br>
 
 주석이 풀려 있는지 포트번호가 맞는지 확인합니다.
-![redisCluster8](../image/oscar/2021-06-02_redisCluster/8.png)<br>
-![redisCluster8-1](../image/oscar/2021-06-02_redisCluster/8-1.png)<br>
-![redisCluster8-2](../image/oscar/2021-06-02_redisCluster/8-2.png)<br>
-![redisCluster8-3](../image/oscar/2021-06-02_redisCluster/8-3.png)<br>
+![redisCluster8](../image/oscar/2021-06-14_redisCluster/8.png)<br>
+![redisCluster8-1](../image/oscar/2021-06-14_redisCluster/8-1.png)<br>
+![redisCluster8-2](../image/oscar/2021-06-14_redisCluster/8-2.png)<br>
+![redisCluster8-3](../image/oscar/2021-06-14_redisCluster/8-3.png)<br>
 
 cluster 설정 부분의 주석을 풀어주고 해당 포트번호에 맞게 바꿔줍니다.
-![redisCluster9](../image/oscar/2021-06-02_redisCluster/9.png)<br>
-![redisCluster9-1](../image/oscar/2021-06-02_redisCluster/9-1.png)<br>
-![redisCluster9-2](../image/oscar/2021-06-02_redisCluster/9-2.png)<br>
-![redisCluster10](../image/oscar/2021-06-02_redisCluster/10.png)<br>
+![redisCluster9](../image/oscar/2021-06-14_redisCluster/9.png)<br>
+![redisCluster9-1](../image/oscar/2021-06-14_redisCluster/9-1.png)<br>
+![redisCluster9-2](../image/oscar/2021-06-14_redisCluster/9-2.png)<br>
+![redisCluster10](../image/oscar/2021-06-14_redisCluster/10.png)<br>
 
 설정 변경이 끝났으면 redis-server를 통해 node를 실행시켜 줍니다.
 
@@ -154,7 +154,7 @@ redis server 포트와 cluster bus 포트가 모두 올라왔는지 확인해봅
 # netstat -nltp
 ```
 10000번대 포트까지 올라와 있는지 확인합니다.
-![redisCluster11](../image/oscar/2021-06-02_redisCluster/11.png)<br>
+![redisCluster11](../image/oscar/2021-06-14_redisCluster/11.png)<br>
 
 node를 실행시켰으면 이제 node를 cluster로 묶어줍니다. 
 ```
@@ -162,9 +162,9 @@ node를 실행시켰으면 이제 node를 cluster로 묶어줍니다.
 ```
 (cluster에 구성되는 node의 ip가 같다면 위와 같이 명령어를 입력했을때 순서대로 3개씩 master와 replica가 정해집니다. )<br>
 위 명령어를 실행하면 다음과 같이 나타나는데 yes를 입력합니다.
-![redisCluster12](../image/oscar/2021-06-02_redisCluster/12.png)<br>
+![redisCluster12](../image/oscar/2021-06-14_redisCluster/12.png)<br>
 yes를 입력하면 다음과 같이 나타나고 구성이 완료됩니다.
-![redisCluster13](../image/oscar/2021-06-02_redisCluster/13.png)<br>
+![redisCluster13](../image/oscar/2021-06-14_redisCluster/13.png)<br>
 
 참고사항으로<br>
 master node 추가 시에는 다음과 같이 명령어를 입력해줍니다.
@@ -188,7 +188,7 @@ cluster 리셋은 다음 명령어를 입력합니다.
 ```
 위 명령어를 입력하면 다음과 같이 node 정보들을 확인할 수 있습니다.<br>
 
-![redisCluster14](../image/oscar/2021-06-02_redisCluster/14.png)<br><br>
+![redisCluster14](../image/oscar/2021-06-14_redisCluster/14.png)<br><br>
 
 ## 3. session clustering 확인
 redis cluster 구성까지 했다면 간단한 어플리케이션을 통해 master server가 다운됐을 때도 서비스가 죽지 않고 session이 유지가 되는지 확인해 봅니다.<br>
@@ -290,7 +290,7 @@ redis cluster 구성까지 했다면 간단한 어플리케이션을 통해 mast
 # nano 아파치홈디렉토리/conf/httpd.conf
 ```
 
-![redisCluster15](../image/oscar/2021-06-02_redisCluster/15.png)<br>
+![redisCluster15](../image/oscar/2021-06-14_redisCluster/15.png)<br>
 
 그리고 아파치홈디렉토리/conf/extra/httpd-vhost.conf 파일을 아파치와 톰캣연동을 위해 다음을 입력합니다.
 ```
@@ -406,11 +406,11 @@ transportMode: "NIO"
 
 이제 웹브라우저에서 본인아이피:80/sample.jsp를 입력하고 접속해봅니다.<br>
 
-![redisCluster16](../image/oscar/2021-06-02_redisCluster/16.png)<br>
+![redisCluster16](../image/oscar/2021-06-14_redisCluster/16.png)<br>
 
 다음 master서버를 죽이고 웹브라우저를 새로고침해도 서비스가 유지되고 있으면 성공입니다.
 
-![redisCluster17](../image/oscar/2021-06-02_redisCluster/17.png)<br>
+![redisCluster17](../image/oscar/2021-06-14_redisCluster/17.png)<br>
 
 
 
