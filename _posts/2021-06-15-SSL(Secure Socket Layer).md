@@ -15,7 +15,7 @@ SSL(Secure Socket Layer)프로토콜은 처음에 Netscape사에서 웹서버와
 SSL은 CA(Certificate Authority / ssl 인증서를 발급하는 기관) 라고 하는 서드 파티로부터 서버와 클라이언트의 인증을 하는데 사용됩니다.<br>
 아래는 SSL 아키텍처 구조를 나타낸 그림입니다. http 프로토콜 상위에 통신시 보안을 위한 SSL 관련 프로토콜이 있는 것을 볼 수 있습니다.
 <br>
-![ssl 아키텍처](../image/oscar/2021-06-15_ssl/sslArchitecture.gif)<br><br>
+![ssl 아키텍처](../image/oscar/2021-06-15_ssl/sslArchitecture.jpg)<br><br>
 
 ### HTTP와 HTTPS
 
