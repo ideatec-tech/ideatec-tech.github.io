@@ -21,7 +21,7 @@ redis cluster를 구성하기 위해서는 먼저 redis를 설치해야 합니�
 ```
 <br>
 그럼 다음과 같이 디렉토리가 생성이 됩니다.
-![redisCluster2](../image/oscar/2021-06-02_redisCluster/2.png)
+![redisCluster2](../image/oscar/2021-06-14_redisCluster/2.png)
 <br>
 생성된 디렉토리로 들어가서 make 파일을 실행해줍니다.
 ```
@@ -64,7 +64,7 @@ Please take a look at the provided example service unit files in this directory,
 ```
 <br>
 install_server.sh를 열어서 다음과 같이 주석을 달아줍니다.
-![redisCluster3](../image/oscar/2021-06-02_redisCluster/3.png)
+![redisCluster3](../image/oscar/2021-06-14_redisCluster/3.png)
 <br>
 그리고 다시 install_server.sh 파일을 실행하면 아래와 같이 나타나게 되고, default로 할거면 ENTER키를, 아니라면 따로 설정을 해주면 됩니다.
 ```
@@ -94,15 +94,15 @@ redis-server 실행 경로 설정. 못찾을 시 다음과 같이 설정
 Please select the redis executable path [] /opt/redis/bin/redis-server
 ```
 설정이 끝나면 다음과 같이 나타나고 마지막 ENTER키를 누르게 되면 설치에 성공했다는 문구가 나타납니다.
-![redisCluster4](../image/oscar/2021-06-02_redisCluster/4.png)<br><br>
+![redisCluster4](../image/oscar/2021-06-14_redisCluster/4.png)<br><br>
 
-![redisCluster5](../image/oscar/2021-06-02_redisCluster/5.png)<br>
+![redisCluster5](../image/oscar/2021-06-14_redisCluster/5.png)<br>
 
 redis 서버가 기동되고 있는지 확인합니다.
 ```
 # systemctl status redis_6379
 ```
-![redisCluster6](../image/oscar/2021-06-02_redisCluster/6.png)<br><br>
+![redisCluster6](../image/oscar/2021-06-14_redisCluster/6.png)<br><br>
 
 ## 2. redis cluster 구성
 redis cluster를 구성하기 전 redis cluster에 대해 몇가지만 알아보자면<br>
