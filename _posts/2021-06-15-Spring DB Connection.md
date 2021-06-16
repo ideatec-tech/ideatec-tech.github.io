@@ -12,7 +12,7 @@ categories:
     "mybatis",
     "mysql",
   ]
-featured-img: spring-logo.jpg
+featured-img: springLogo.jpg
 author: alex
 ---
 
