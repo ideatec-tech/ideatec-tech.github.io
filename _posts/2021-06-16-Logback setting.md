@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 스프링 프레임워크, 스프링 부트에서 Logback 설정
+featured-img: spring-logo.jpg
 categories: ["spring", "SpringFramework", "SpringBoot", "logback"]
 author: alex
 ---
