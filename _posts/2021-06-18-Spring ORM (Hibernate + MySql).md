@@ -10,7 +10,7 @@ categories:
     "Hibernate",
     "mysql",
   ]
-featured-img: spring hibernate
+featured-img: spring-hibernate.jpg
 author: Harold
 ---
 

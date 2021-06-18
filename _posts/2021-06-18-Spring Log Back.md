@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 스프링 프레임워크 ORM
+title: 스프링 프레임워크 LogBack
 categories:
   [
     "Spring",
     "SpringFramework",
     "logBack",
   ]
-featured-img: spring logback
+featured-img: spring-logback.jpg
 author: Harold
 ---
 
