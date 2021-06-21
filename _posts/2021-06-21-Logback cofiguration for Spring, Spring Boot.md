@@ -41,6 +41,10 @@ logback이 적용된 console 입니다.
 ![logfile](../image/jay/logfile.PNG)
 logback으로 생성된 로그파일입니다.
 
+## Spring Boot에 적용하기
+[!springboot](../image/jay/springboot_logback.png)
+Spring Boot의 starter에 logback이 내장되어 있습니다.<br>
+기존에 logback이 내장되어 있어서 xml 파일 이름은 logback-spring.xml과 같이 생성해줘야 합니다.<br>
 
 
 
