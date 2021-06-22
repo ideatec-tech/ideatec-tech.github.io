@@ -9,15 +9,18 @@ author: jay
 # Spring, Spring Boot에 logback 적용하기
 
 ## logback 이란?
-logback은 Log4J(Log for JAVA)를 기반으로 개발된 Logging framework로, 빠른 속도와 적은 메모리 점유에 강점을 가지고 있습니다.<br>
-<br><br>
+logback은 Log4J(Log for JAVA)를 기반으로 개발된 Logging framework로, 빠른 속도와 적은 메모리 점유에 강점을 가지고 있습니다.
+<br>
+<br>
 
 ## Spring Framework에 적용하기
-Spring Framework에 logback을 적용하기 위해서는 일단 pom.xml에 logback을 dependency로 설정해줘야합니다.<br>
+Spring Framework에 logback을 적용하기 위해서는 일단 pom.xml에 logback을 dependency로 설정해줘야합니다.
+<br>
 ![pom_logback](../image/jay/pom_logback.PNG)
 <br>
 
-의존성을 추가해준 후에는 logback.xml 파일을 classpath에 만들어줘야합니다.<br> 
+의존성을 추가해준 후에는 logback.xml 파일을 classpath에 만들어줘야합니다.
+<br> 
 ![logback_xml](../image/jay/logback_xml.PNG)
 <br>
 
@@ -44,9 +47,11 @@ logback이 적용된 console 입니다.
 logback으로 생성된 로그파일입니다.
 
 ## Spring Boot에 적용하기
-[!springboot](../image/jay/springboot_logback.png)
-Spring Boot의 starter에 logback이 내장되어 있습니다.<br>
-기존에 logback이 내장되어 있어서 xml 파일 이름은 logback-spring.xml과 같이 생성해줘야 합니다.<br>
+![springboot](../image/jay/springboot_logback.png)
+Spring Boot의 starter에 logback이 내장되어 있습니다.
+<br>
+기존에 logback이 내장되어 있어서 xml 파일 이름은 logback-spring.xml과 같이 생성해줘야 합니다.
+<br>
 
 
 
