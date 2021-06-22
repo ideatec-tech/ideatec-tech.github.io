@@ -9,7 +9,8 @@ author: jay
 # Spring, Spring Boot에서 간단한 RestController 구현 및 DB 연결하기
 <br>
 <br>
-
+<hr style="border:1px solid gray"> 
+<br>
 ## 1. Spring에서 DB 연동하기
 <br>
 <br>
@@ -22,9 +23,11 @@ Spring Framework DB에 연동을 하기 위해서는 dataSource를 Bean으로 �
 물론 JDBC를 사용하여 아래와 같이 데이터를 가져오는 방법도 있다.
 <br>
 <br>
+```java
 Connection connection = DriverManager.getConnection(URL, USER, PW);
 <br>
 connection.prepareStatement("YOUR SQL HERE");
+```
 <br>
 <br>
 하지만 데이터를 가져올 때마다 이런 방법을 사용하는 것은 비효율적이고 관리하기도 매우 힘들다.
@@ -45,14 +48,16 @@ root-context.xml에 dataSource를 설정해줬다.
 <br>
 url, username, password에는 DB 주소와 아이디, 비밀번호를 넣어주고 driver는 MySQL DB를 사용할 것이기 때문에 MySQL driver로 설정했다.
 <br>
-이렇게 서버간의 연결을 할 수 있게 해준 다음, MyBatis를 추가해준다.
+이렇게 서버간의 연결을 할 수 있게 해준 다음, MyBatis를 사용하기 위한 설정을 해줘야 한다.
 <br>
 <br>
 <hr style="border:1px solid gray"> 
 ### MyBatis 란?
 MyBatis는 Java Object와 SQL간의 매핑 기능을 지원하는 Java persistence framework 이다.
 <br>
-Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
+Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. 
+<br>
+ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
 <br>
 <hr style="border:1px solid gray"> 
 <br>
@@ -84,7 +89,9 @@ SqlSessionTemplate은 SqlSessionFactory를 참조하여 생성했으며, 실질�
 basePackage에 Mapper Interface의 주소, annotationClass는 @Mapper 어노테이션과 매핑시켜야 하므로 org.apache.ibatis.annotations.Mapper로 설정했다.
 <br>
 <br>
-### 간단한 게시판 RestController 구현하기
+<hr style="border:1px solid gray"> 
+<br>
+#### 간단한 게시판 RestController 구현하기
 <br>
 <br>
 앞서 진행한 DB연결과 MyBatis 설정을 바탕으로 데이터를 가져오는 간단한 서비스를 구현할 것이다.
@@ -125,10 +132,10 @@ Postman으로 요청하여 DB와 정상적으로 데이터를 주고 받는지 �
 <br>
 Spring Boot에서는 Java Configuration으로 DataSource를 주입했다. (Controller, Service 등 소스코드는 모두 같다.)
 <br>
-![javaConfig](../image/jay/boot_Config.PNG)
+![javaConfig](../image/jay/boot_config.PNG)
 <br>
 <br>
-root-context.xml 과 달라보이지만 결국 DB 접속정보를 담은 DataSource, mapperLocation과 confiuratonLocation을 가진 SqlSessionFactory로 생성한 SqlSessionTemplate을 Bean으로 등록하는 과정이다.
+root-context.xml 에서 설정하던 것과 달라보이지만 결국 DB 접속정보를 담은 DataSource, mapperLocation과 confiuratonLocation을 가진 SqlSessionFactory로 생성한 SqlSessionTemplate을 Bean으로 등록하는 과정이다.
 <br>
 사진 위쪽에 @Value로 가져오는 값은 application.yml에 있는 정보이다.
 <br>
