@@ -47,12 +47,12 @@ url, username, password에는 DB 주소와 아이디, 비밀번호를 넣어주�
 이렇게 서버간의 연결을 할 수 있게 해준 다음, MyBatis를 추가해준다.
 <br>
 <br>
-------------------
+<hr style="border:2px solid gray"> </hr>
 ### MyBatis 란?
 MyBatis는 Java Object와 SQL간의 매핑 기능을 지원하는 Java persistence framework 이다.
 <br>
 Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
-------------------
+<hr style="border:2px solid gray"> </hr>
 <br>
 <br>
 MyBatis를 이용하여 DB에 접근하기 위해서는 SqlSession이 필요한데, Mybatis에서는 SqlSession을 생성하기 위해 SqlSessionFactory를 사용한다.
@@ -96,17 +96,21 @@ Postman으로 요청하여 DB와 정상적으로 데이터를 주고 받는지 �
 <br>
 <br>
 ![list](../image/jay/list.PNG)
+<br>
 [list 테스트 결과]
 <br>
 <br>
 ![insert](../image/jay/insert.PNG)
+<br>
 [insert 테스트 결과]
 <br>
 ![update](../image/jay/update.PNG)
+<br>
 [update 테스트 결과]
 <br>
 <br>
 ![delete](../image/jay/delete.PNG)
+<br>
 [delete 테스트 결과]
 <br>
 
