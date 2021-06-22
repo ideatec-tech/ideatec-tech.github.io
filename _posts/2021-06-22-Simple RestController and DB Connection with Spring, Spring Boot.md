@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple RestController and DB Connection with Spring, Spring Boot
-featured-img: lblogo.jpg
+featured-img: db.png
 categories: ["spring", "SpringFramework", "SpringBoot", "DB", "RestController"]
 author: jay
 ---
@@ -48,7 +48,7 @@ url, username, password에는 DB 주소와 아이디, 비밀번호를 넣어주�
 ### MyBatis 란?
 MyBatis는 Java Object와 SQL간의 매핑 기능을 지원하는 Java persistence framework 이다.
 <br>
-Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, <select> 태그 등, 코드와 SQL 분리하여 결합도 낮춤
+Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
 <br>
 <br>
 MyBatis를 이용하여 DB에 접근하기 위해서는 SqlSession이 필요한데, Mybatis에서는 SqlSession을 생성하기 위해 SqlSessionFactory를 사용한다.
