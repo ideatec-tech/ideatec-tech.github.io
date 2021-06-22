@@ -1,3 +1,11 @@
+---
+layout : post
+title : Spring Logback 설정
+featured-img : spring-logback.jpg
+cetegories : ['spring']
+author : soohan
+---
+
 ## Spring 에서 LogBack 사용하기
 
 * logback : logback는 log4j를 토대로 새롭게 만든 Logging 라이브러리, Slf4j를 통해 연관 라이브러리들이 다른 logging framework 를 쓰더라도 logback로 통합 할 수 있다.
