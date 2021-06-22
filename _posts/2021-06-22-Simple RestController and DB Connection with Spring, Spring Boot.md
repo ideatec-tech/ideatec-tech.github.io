@@ -52,6 +52,7 @@ url, username, password에는 DB 주소와 아이디, 비밀번호를 넣어주�
 MyBatis는 Java Object와 SQL간의 매핑 기능을 지원하는 Java persistence framework 이다.
 <br>
 Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
+<br>
 <hr style="border:2px solid gray"> </hr>
 <br>
 <br>
@@ -87,7 +88,7 @@ basePackage에 Mapper Interface의 주소, annotationClass는 @Mapper 어노테�
 앞서 진행한 DB연결과 MyBatis 설정을 바탕으로 데이터를 가져오는 간단한 서비스를 구현할 것이다.
 <br>
 <br>
-![back](../image/jay/back.PNG)
+![back](../image/jay/back.png)
 <br>
 별다른 로직은 없고 들어온 요청값으로 서비스, 쿼리를 호출하여 결과를 반환한다.
 <br>
@@ -95,21 +96,21 @@ basePackage에 Mapper Interface의 주소, annotationClass는 @Mapper 어노테�
 Postman으로 요청하여 DB와 정상적으로 데이터를 주고 받는지 테스트했다.
 <br>
 <br>
-![list](../image/jay/list.PNG)
+![list](../image/jay/list.png)
 <br>
 [list 테스트 결과]
 <br>
 <br>
-![insert](../image/jay/insert.PNG)
+![insert](../image/jay/insert.png)
 <br>
 [insert 테스트 결과]
 <br>
-![update](../image/jay/update.PNG)
+![update](../image/jay/update.png)
 <br>
 [update 테스트 결과]
 <br>
 <br>
-![delete](../image/jay/delete.PNG)
+![delete](../image/jay/delete.png)
 <br>
 [delete 테스트 결과]
 <br>
