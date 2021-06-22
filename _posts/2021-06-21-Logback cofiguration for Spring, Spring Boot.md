@@ -31,10 +31,12 @@ file, filename으로 로그파일의 위치와 파일명을 설정할 수 있고
 <br>
 
 ![log_add](../image/jay/log_add.PNG)
+<br>
 위처럼 logger를 사용하여 원하는 패키지나 클래스에 로그레벨과 출력방식을 설정할 수도 있습니다.
 <br>
 
 ![logback_console](../image/jay/logback_console.PNG)
+<br>
 logback이 적용된 console 입니다.
 <br>
 
