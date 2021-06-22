@@ -2,7 +2,7 @@
 layout: post
 title: Simple RestController and DB Connection with Spring, Spring Boot
 featured-img: db.png
-categories: ["spring", "SpringFramework", "SpringBoot", "DB", "RestController"]
+categories: ["spring", "SpringFramework", "SpringBoot", "DB", "RestController", "MyBatis"]
 author: jay
 ---
 
@@ -10,7 +10,7 @@ author: jay
 <br>
 <br>
 
-## Spring에서 DB 연동하기
+## 1. Spring에서 DB 연동하기
 <br>
 <br>
 우선 pom.xml에 DB 연결과 MyBatis 구성에 필요한 dependency들을 추가해준다.
@@ -39,6 +39,7 @@ root-context.xml에 dataSource를 설정해줬다.
 <br>
 이러한 dataSource class에는 spring의 DriverManagerDataSource, apache의 BasicDataSource, Altibase의 AltibaseConnectionPoolDataSource 등 여러가지 클래스를 사용할 수 있는데, 각각의 구성이 조금씩 달라서 선택하여 사용하면 된다. 
 <br>
+<br>
 여기서는 BasicDataSource를 이용하여 구성하였는데 config properties에는 url, username, password, maxTotal, maxIdle, minIdle, maxWaitMillis, initialSize, defaultAutoCommit ... 등이 있다. (공식 Docs에서 더 많은 정보를 확인할 수 있다. https://commons.apache.org/proper/commons-dbcp/configuration.html)
 <br>
 <br>
@@ -47,18 +48,19 @@ url, username, password에는 DB 주소와 아이디, 비밀번호를 넣어주�
 이렇게 서버간의 연결을 할 수 있게 해준 다음, MyBatis를 추가해준다.
 <br>
 <br>
-<hr style="border:2px solid gray"> </hr>
+<hr style="border:1px solid gray"> 
 ### MyBatis 란?
 MyBatis는 Java Object와 SQL간의 매핑 기능을 지원하는 Java persistence framework 이다.
 <br>
 Mybatis를 이용하면 쉽게 데이터에 액세스할 수 있으며 유지보수에도 강점이 있다. ex) ( ? ) value 들을 #{value}와 같이 매핑, select, insert 태그 등, 코드와 SQL 분리하여 결합도 낮춤
 <br>
-<hr style="border:2px solid gray"> </hr>
+<hr style="border:1px solid gray"> 
 <br>
 <br>
 MyBatis를 이용하여 DB에 접근하기 위해서는 SqlSession이 필요한데, Mybatis에서는 SqlSession을 생성하기 위해 SqlSessionFactory를 사용한다.
 <br>
-세션을 생성하면 SQL 구문의 실행이나 커밋, 롤백 등을 하기 위해 사용할 수 있으며 필요가 없어지면 닫을 수 있다.
+<br>
+세션을 생성하면 SQL 구문의 실행이나 커밋, 롤백 등을 하기 위해 사용할 수 있으며 필요가 없어지면 닫는다.
 <br>
 <br>
 ![sqlSessionFactory](../image/jay/sqlSessionFactory.PNG)
@@ -114,8 +116,34 @@ Postman으로 요청하여 DB와 정상적으로 데이터를 주고 받는지 �
 <br>
 [delete 테스트 결과]
 <br>
+<br>
+<br>
+<hr style="border:1px solid gray">
 
-## Spring Boot에서 DB 연동하기
+## 2. Spring Boot에서 DB 연동하기
+<br>
+<br>
+Spring Boot에서는 Java Configuration으로 DataSource를 주입했다. (Controller, Service 등 소스코드는 모두 같다.)
+<br>
+![javaConfig](../image/jay/boot_Config.PNG)
+<br>
+<br>
+root-context.xml 과 달라보이지만 결국 DB 접속정보를 담은 DataSource, mapperLocation과 confiuratonLocation을 가진 SqlSessionFactory로 생성한 SqlSessionTemplate을 Bean으로 등록하는 과정이다.
+<br>
+사진 위쪽에 @Value로 가져오는 값은 application.yml에 있는 정보이다.
+<br>
+<br>
+![boot_dataSource](../image/jay/boot_dataSource.PNG)
+<br>
+<br>
+![boot_result](../image/jay/list_result_boot.png)
+<br>
+Spring Boot로도 역시 같은 결과가 출력되는 것을 확인할 수 있다.
+<br>
+<br>
+
+
+
 
 
 
