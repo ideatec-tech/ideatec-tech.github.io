@@ -113,7 +113,6 @@ author: hbshin
 
 
 
-<hr style="border:1px solid gray">
 
 
 
