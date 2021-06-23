@@ -366,19 +366,19 @@ userMapper.xml
 
 [ insert ]
 
-![create](../image/hbshin/create.png)
+![create](../image/hbshin/create.PNG)
 
 [ list ]
 
-![read](../image/hbshin/read.png)
+![read](../image/hbshin/read.PNG)
 
 [ update ]
 
-![update](../image/hbshin/read.png)
+![update](../image/hbshin/read.PNG)
 
 [ delete ]
 
-![delete](../image/hbshin/read.png)
+![delete](../image/hbshin/read.PNG)
 
 
 <hr style="border:1px solid gray">
@@ -708,7 +708,7 @@ db연결시 필요한 url, username, password, driver, mybatis 설정 입니다.
 
 [ List ]
 
-![bootList](../image/hbshin/bootList.png)
+![bootList](../image/hbshin/bootList.PNG)
 
 boot 또한 결과값은 비슷합니다.
 감사합니다.
