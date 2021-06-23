@@ -90,19 +90,24 @@ author: hbshin
 - 특정 용량을 정해주고 그 용량이 넘어가면 자동으로 새로 기록합니다.
 
 
-<hr style="border:1px solid gray">
+
+
 
 
 ### Logback Console / file
 
+
 [ Console ]
 
-![logbackfile]../image/hbshin/logbackfile.PNG)
+
+![logbackfile](../image/hbshin/logbackfile.PNG)
+
 
 
 [ file ]
 
-![logCon]../image/hbshin/logCon.PNG)
+
+![logCon](../image/hbshin/logCon.PNG)
 
 
 
@@ -134,7 +139,11 @@ author: hbshin
 
 
 
+
 ![logxml](../image/hbshin/logxml.PNG)
+
+
+
 
 
 
