@@ -150,35 +150,4 @@ logging:
     '[ideatec.edu.spring.boot]': DEBUG
 ```
 
-> ### DBConfig
-
-```java
-@Configuration
-@PropertySource("classpath:/application.yml")
-public class DBConfig {
-	
-	@Bean
-	@ConfigurationProperties(prefix="spring.datasource.hikari")
-	public HikariConfig hikariConfig() {
-		return new HikariConfig();
-	}
-	
-	@Bean
-	public DataSource dataSource() {
-		return new HikariDataSource(hikariConfig());
-	}
-	
-	@Bean
-	public SqlSessionFactory sqlSessionFactory() throws Exception{
-		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-		factoryBean.setDataSource(dataSource());
-		return factoryBean.getObject();
-	}
-	
-	@Bean
-	public SqlSessionTemplate sqlSession() throws Exception{
-		return new SqlSessionTemplate(sqlSessionFactory());
-	}
-}
-```
-
+### 
