@@ -25,7 +25,6 @@ Spring Framework DB에 연동을 하기 위해서는 dataSource를 Bean으로 �
 <br>
 ```java
 Connection connection = DriverManager.getConnection(URL, USER, PW);
-<br>
 connection.prepareStatement("YOUR SQL HERE");
 ```
 <br>
@@ -76,6 +75,19 @@ MyBatis를 이용하여 DB에 접근하기 위해서는 SqlSession이 필요한�
 <br>
 <br>
 SqlSessionFactory에는 데이터베이스 Connection 인스턴스를 가져오기 위한 DataSource가 필요하고, configLocation과 mapperLocations을 등록할 수 있다.
+<br>
+<br>
+mybatis-config.xml에서는 settings, typeAliases, typeHandlers 등을 설정할 수 있다.
+<br>
+<br>
+![MyBatisConfig](../image/jay/mybatis_config.PNG)
+<br>
+여기서는 settings 에 mapUnderScoreToCamelCase, jdbcTypeForNull, callSettersOnNull를 설정해주었다.
+<br>
+mapUnderScoreToCamelCase 설정을 통해 DB의 UnderScore value들을 JAVA의 camelCase value와 매핑시킬 수 있게 된다.
+<br>
+ex) board_seq : boardSeq
+<br>
 <br>
 WAS가 실행될 때 Bean으로 주입되면서 해당 경로의 Mapper와 mybatis-config.xml을 찾기 때문에 정확하게 주소를 입력해줘야한다.
 <br>
