@@ -1,23 +1,22 @@
 ---
 layout: post
-title: Spring,Spring boot of DB Connection and RestController CRUD 
+title: Spring,Springboot of DB Connection and RestController CRUD
 featured-img: frbootlogo.png
-categories: [
-             "spring",
-             "SpringFramework",
-             "SpringBoot", 
-             "DataBase", 
-             "RestController"
-             "CRUD"
-             ]
+categories: ["spring","springboot","DB","RestController"]
 author: hbshin
 ---
 
-# spring / spring boot 를 이용해 간단한 RestController CRUD구현 
 
-## Spring Database 연동 , mybatis , RestController CRUD 구현을 위한 세팅 
+# [Spring, Spring boot] DB Connection / RestController CRUD
+
+
+
+
+## Spring - DB connection , mybatis, RestController CRUD 세팅
+
 
 ### 1. pom.xml
+
 
 ```
     <dependency>
@@ -36,9 +35,11 @@ author: hbshin
 	    <version>8.0.25</version>
 	</dependency>
 ```
-DB,mybatis 사용을 위해 필요한 dependency추가합니다.
+- DB,mybatis 사용을 위해 필요한 dependency추가합니다.
+
 
 ### 2. web.xml 세팅 (CharacterEncodingFilter 생략)
+
 
 ```
   	<context-param>
@@ -47,8 +48,9 @@ DB,mybatis 사용을 위해 필요한 dependency추가합니다.
   	</context-param>  
 ```
 
-STS에서 기본적으로 제공해주는 설정 파일 외에, 사용자가 직접 컨트롤 하는 XML파일을 지정해주는 역할을 합니다.
-context-param에서 설정되어 있는 root-context.xml은 모든 서블릿과 필터에서 사용되는 루트 스프링 컨테이너에 대한 설정입니다.
+- STS에서 기본적으로 제공해주는 설정 파일 외에, 사용자가 직접 컨트롤 하는 XML파일을 지정해주는 역할을 합니다.
+- context-param에서 설정되어 있는 root-context.xml은 모든 서블릿과 필터에서 사용되는 루트 스프링 컨테이너에 대한 설정입니다.
+
 
 ```
 <servlet>
@@ -64,15 +66,17 @@ context-param에서 설정되어 있는 root-context.xml은 모든 서블릿과 
     	<url-pattern>/</url-pattern>
   	</servlet-mapping>
 ```
-servlet은 spring에서는 DispatcherServlet이 모든 요청을 받고, URL과 mapping하는 controller에 위임합니다. servlet이란 보통 자바에서 동적 웹 프로젝트를 개발할 때, 
-사용자의 요청과 응답을 처리해주는 역할을 합니다.
+- servlet은 spring에서는 DispatcherServlet이 모든 요청을 받고, URL과 mapping하는 controller에 위임합니다.
+- servlet이란 보통 자바에서 동적 웹 프로젝트를 개발할 때, 사용자의 요청과 응답을 처리해주는 역할을 합니다.
+
 
 ```
  	<listener>
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
 ```
-스프링 설정 정보를 읽습니다.
+- 스프링 설정 정보를 읽습니다.
+
 
 
 ### 3. root-context (DB,mybatis) 세팅
@@ -91,7 +95,9 @@ servlet은 spring에서는 DispatcherServlet이 모든 요청을 받고, URL과 
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 ```
-Repository, Component, Service, Controller를 통해 bean을 검색할 경로를 지정합니다.
+
+- Repository, Component, Service, Controller를 통해 bean을 검색할 경로를 지정합니다.
+
 
 ```
 	<bean id="dataSource"
@@ -120,15 +126,17 @@ Repository, Component, Service, Controller를 통해 bean을 검색할 경로를
 	</bean>
 
 ```
-dataSource란 JDBC 명세의 일부분이면서 일반화된 연결 팩토리입니다.
-즉 DB와 관계된 connection 정보를 담고 있으며, bean으로 등록하여 인자로 넘겨줍니다.이 과정을 통해 Spring은 DataSource로 DB와의 연결을 획득합니다.
-DB와 연결을 위한 DB Server에 관한 property를 설정합니다. (url,driver,username,userpassword)
-Spring JDBC를 사용하려면 먼저, DB connection을 가져오는 DataSource를 spring IOC 컨테이너의 공유 가능한 Bean으로 등록해야 합니다.
-그렇게 생성된 Bean을 spring JDBC에 주입합니다.
-SqlSessionFactory는 db연결과 sql의 실행에 대한 모든 것을 가진 가장 중요한 객체입니다.
-이 객체가 DataSource를 참조하여 Mybatis와 Mysql 서버를 연동시켜줍니다. 
-SqlSessionTemplate은 mybatis spring 연동모듈 핵심입니다.
-SqlSession을 구현하고 코드에서 Sqlsession를 대체하는 역할을 합니다.
+- dataSource란 JDBC 명세의 일부분이면서 일반화된 연결 팩토리입니다.
+- DB와 관계된 connection 정보를 담고 있으며, bean으로 등록하여 인자로 넘겨줍니다.
+- 이 과정을 통해 Spring은 DataSource로 DB와의 연결을 획득합니다.
+- DB와 연결을 위한 DB Server에 관한 property를 설정합니다. (url,driver,username,userpassword)
+- Spring JDBC를 사용하려면 먼저, DB connection을 가져오는 DataSource를 spring IOC 컨테이너의 공유 가능한 Bean으로 등록해야 합니다.
+- 생성된 Bean을 spring JDBC에 주입합니다.
+- SqlSessionFactory는 db연결과 sql의 실행에 대한 모든 것을 가진 가장 중요한 객체입니다.
+- 이 객체가 DataSource를 참조하여 Mybatis와 Mysql 서버를 연동시켜줍니다. 
+- SqlSessionTemplate은 mybatis spring 연동모듈 핵심입니다.
+- SqlSession을 구현하고 코드에서 Sqlsession를 대체하는 역할을 합니다.
+
 
 ```
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -139,10 +147,11 @@ SqlSession을 구현하고 코드에서 Sqlsession를 대체하는 역할을 합
 	</bean>
 ```
 
-mapper를 스캔하기 위함과 annotation은 interface에서 @Mapper 매핑을 위해 설정합니다.
+
+- mapper를 스캔하기 위함과 annotation은 interface에서 @Mapper 매핑을 위해 설정합니다.
 
 
-### 4. CRUD 구현 
+### 4. RestController CRUD Source code 
 
 UserController
 
@@ -362,7 +371,7 @@ userMapper.xml
 
 ```
 
-### 5. postman을 이용한 CRUD 출력
+### 5. Postman - CRUD result
 
 [ insert ]
 
@@ -381,10 +390,19 @@ userMapper.xml
 ![delete](../image/hbshin/read.PNG)
 
 
+
 <hr style="border:1px solid gray">
 
 
+
+
 ## Spring boot 
+
+
+### Springboot - DB connection , mybatis, RestController CRUD 세팅
+
+
+
 
 ### pom.xml
 
@@ -436,10 +454,10 @@ public class SpringBootTomcatApplication {
 }
 ```
 
-boot 에서는 DB연결방법이 매우 많습니다
-저는 DataSourceConfig을 사용했습니다.
-이 방법은 아무런 설정이 없는 DataSourceProperties 객체를 반환합니다.
-반환과 동시에 Bean으로 등록되며 이 Bean은 호출시 Spring이 알아서 DataSource값을 binding 시킨 후 값을 넘겨준다.
+- boot 에서는 DB연결방법이 매우 많습니다
+- 저는 DataSourceConfig을 사용했습니다.
+- 이 방법은 아무런 설정이 없는 DataSourceProperties 객체를 반환합니다.
+- 반환과 동시에 Bean으로 등록되며 이 Bean은 호출시 Spring이 알아서 DataSource값을 binding 시킨 후 값을 넘겨준다.
 
 
 ### BoardController
@@ -701,14 +719,16 @@ mybatis.type-aliases-package:ideatec.edu.spring.boot.tomcat.mapper/BoardMapper
 mybatis.mapper-locations: mybatis/**/*.xml
 ```
 
-포트번호는 28080으로 설정하며
-db연결시 필요한 url, username, password, driver, mybatis 설정 입니다.
+- 포트번호는 28080으로 설정하며
+- db연결시 필요한 url, username, password, driver, mybatis 설정 입니다.
+
 
 ### spring boot CRUD - List
+
+
 
 [ List ]
 
 ![bootList](../image/hbshin/bootList.PNG)
 
-boot 또한 결과값은 비슷합니다.
-감사합니다.
+- boot 또한 결과값은 비슷합니다. 감사합니다.
