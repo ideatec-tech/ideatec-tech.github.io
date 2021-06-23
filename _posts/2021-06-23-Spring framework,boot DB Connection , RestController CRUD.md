@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spring,Spring boot of DB Connection and RestController CRUD 
-featured-img: frbootlogo.PNG
+featured-img: frbootlogo.png
 categories: [
              "spring",
              "SpringFramework",
