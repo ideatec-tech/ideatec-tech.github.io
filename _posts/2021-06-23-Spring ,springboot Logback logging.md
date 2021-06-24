@@ -134,15 +134,12 @@ author: hbshin
 
 
 ## logback-spring.xml
-
-
-
+<br>
+<br>
+<br>
 
 
 ![logxml](../image/hbshin/logxml.PNG)
-
-
-
 
 
 
