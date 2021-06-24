@@ -6,7 +6,7 @@ categories: ['linux','webtoB']
 author: oscar
 ---
 
-# linux(centos7) 환경에서 webtoB설치 및 데모 라이센스 등록
+# linux(centos7) 환경에서 webtoB설치 및 라이센스
 
 ## 1. WebtoB란?
 
@@ -208,6 +208,13 @@ wsboot 명령어로 WebtoB를 기동시킨다. (종료는 wsdown)<br>
 
 이제 웹브라우저에서 본인아이피:8088(설정포트)로 접속했을 때 다음과 같이 나오면 성공.
 
-![WebtoB23](../image/oscar/2021-06-18_webtob/23.png)<br>
+![WebtoB23](../image/oscar/2021-06-18_webtob/23.png)<br><br>
+
+참고<br>
+※License 안내
+   WebtoB 5 Fix#2 부터 설치 시 기본적으로 Trial 라이센스가 포함되어 있습니다.
+   Trial 라이센스는 MaxUser(서버 프로세스에 속한 노드의 최대 동시 접속자 수)가 5로 제한되어 있어 그 이상의 서비스를 이용하고자 하는 경우에는
+   WebtoB 정식 라이센스 또는 데모 라이센스를 이용하여야 합니다.
+   데모라이센스 신청을 이용하셔서 발급을 받으시기 바랍니다.    
 
 
