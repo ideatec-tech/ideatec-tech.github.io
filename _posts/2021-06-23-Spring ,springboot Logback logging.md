@@ -139,7 +139,7 @@ author: hbshin
 <br>
 
 
-![logxml](../image/hbshin/logxml.PNG)
+![logxml](../image/hbshin/logxml.png)
 
 
 
