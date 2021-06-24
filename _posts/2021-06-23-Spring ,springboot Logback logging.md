@@ -159,7 +159,8 @@ author: hbshin
 
 
 
-- 실행시 Console창 입니다. 감사합니다.
+- 
+- Spring boot 실행시 Console창 입니다. 감사합니다.
 
 
 
