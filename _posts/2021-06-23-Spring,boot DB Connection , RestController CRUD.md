@@ -383,11 +383,11 @@ userMapper.xml
 
 [ update ]
 
-![update](../image/hbshin/read.PNG)
+![update](../image/hbshin/update.PNG)
 
 [ delete ]
 
-![delete](../image/hbshin/read.PNG)
+![delete](../image/hbshin/delete.PNG)
 
 
 
