@@ -158,4 +158,29 @@ author: hbshin
 ![spLogback](../image/hbshin/spLogback.PNG)
 
 
-- Spring boot 실행시 Console창 입니다. 감사합니다.
+- Spring boot 실행시 Console창 입니다.
+
+
+<hr style="border:1px solid gray"> 
+
+
+
+## logback.xml 설정파일 명시적 변경방법
+
+- pom.xml 과 web.xml에 다음과 같이 설정하면 환경(개발,테스트,운영)에 따라 세팅값을 차등적용할 수 있도록 logback.xml파일 위치를 명시적으로 변경할 수 있습니다.
+
+
+![logbackpom](../image/hbshin/logbackpom.PNG)
+
+1. 먼저 pom.xml 설정에는 기본적으로 logback을 사용하기 위한 classic 의존성과 파일위치를 변경하기 위한 logback-extensions의존성을 설정합니다.
+
+
+![logbwebxml](../image/hbshin/logbwebxml.PNG)
+
+2. xml파일을 읽기위한 경로 설정(classpath) 및 listener 설정을 합니다.
+
+
+![logbackSRC](../image/hbshin/logbackSRC.PNG)
+
+3. resources파일안에 있던 logback.xml파일을 src -> web-inf 파일안에 log라는 폴더를 생성하여 옮겼으며, 위와같이 정상작동하였습니다.
+
