@@ -7,7 +7,7 @@ author: hbshin
 ---
 
 
-# [Spring, Spring boot] DB Connection / RestController CRUD
+# [Spring, Spring boot] DB Connection / RestController CRUD / JNDI
 
 
 
@@ -731,4 +731,45 @@ mybatis.mapper-locations: mybatis/**/*.xml
 
 ![bootList](../image/hbshin/bootList.PNG)
 
-- boot 또한 결과값은 비슷합니다. 감사합니다.
+- boot 또한 결과값은 비슷합니다.
+
+
+
+<hr style="border:1px solid gray"> 
+
+
+
+### JNDI 방식
+
+- JNDI 방식으로 Db 연동
+
+
+
+![JNDIpom](../image/hbshin/JNDIpom.PNG)
+
+- 먼저 db connection을 위한 pom.xml 설정합니다.
+
+![JNDIweb.xml](../image/hbshin/JNDIweb.xml.PNG)
+
+- DataSource를 웹 어플리케이션에서 사용하려면 web.xml에 해당 resource를 참조한다는 선언을 해야합니다.
+
+![serverxml](../image/hbshin/serverxml.PNG)
+
+- web.xml의 resource-ref 와 resource-env-ref  요소를 조회할수 있게 반환할 jndiDataSource를 작성합니다.
+
+
+![rootxml](../image/hbshin/rootxml.PNG)
+
+- 마지막으로 spring 기준 root-context.xml파일에 원래 세팅되어있던 DataSource 설정을 주석처리하고 java:/comp/env/jdbc를 통해 was에 설정된 database를 사용할 수 있게 설정합니다.
+
+
+
+
+
+
+
+
+
+
+
+
