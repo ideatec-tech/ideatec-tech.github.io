@@ -90,6 +90,58 @@ author: alex
 
 ---
 
+# 추가
+
+## 스프링에서 logback.xml 파일 경로 바꾸기
+
+위에서 실수한 부분이 있어서 수정합니다. <br>
+먼저번에 logback.xml 파일의 위치를 classpath 밑의 logback파일 밑으로 설정했는데 <br>
+이러한 경우 설정한 형식이 아닌 default 형식으로 출력하는 것 같습니다. <br>
+
+![spring-before-configuring](../image/alex/2021-06-15/tomcat-before-configuring.PNG)
+
+예시로 파일에서는 위와 같이 설정했지만
+
+![spring-before-configuring](../image/alex/2021-06-15/tomcat-notworking.PNG)
+
+실제로는 위와 같이 설정한 형식 ( [%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n ) 이 아닌 <br>
+다른 형태로 출력되는 것을 확인할 수 있습니다. <br><br>
+
+이를 해결하기 위해서는 **logback.configuration**이름의 시스템 변수로 경로를 지정해줘야 합니다. <br>
+
+![spring-vm-argument-configuring](../image/alex/2021-06-15/vm-argument-configuring.PNG)
+
+위와 같이 JVM 설정에 들어가서 설정 파일의 경로를 지정해줍니다. <br>
+
+![spring-working](../image/alex/2021-06-15/tomcat-working.PNG)
+
+JVM 설정 후 위와 같이 잘 작동 되는걸 확인할 수 있습니다. <br><br>
+
+## 부트에서 logback-spring.xml 파일 경로 바꾸기
+
+스프링 부트에서는 더 간단하게 경로를 지정할 수 있습니다. <br>
+
+![boot-file-moved](../image/alex/2021-06-15/boot-path-moved.PNG)
+
+일단 위와 같이 loback-spring.xml파일을 logback 파일 밑으로 옮겼습니다. <br>
+
+![boot-before](../image/alex/2021-06-15/boot-before-move.PNG)
+
+그러자 위와 같던 로그 형식이 <br>
+
+![boot-after](../image/alex/2021-06-15/boot-after-move.PNG)
+
+위와 같이 기본 형태로 변경 된것을 확인할 수 있습니다. <br>
+
+해결을 위해서는 application.yml 혹은 application.properties 파일에서 다음과 같이 설정 파일 경로를 지정해주면 됩니다.
+
+![boot-configure-logback-path](../image/alex/2021-06-15/boot-configure-logback-path.PNG)
+![boot-after-configuring](../image/alex/2021-06-15/boot-after-configuring-path.PNG)
+
+설정 후 재시작하면 다시 원래의 설정 형태로 돌아온 것을 확인할 수 있습니다. <br><br>
+
+---
+
 #### 참고자료
 
 &nbsp; - https://beyondj2ee.wordpress.com/2012/11/09/logback-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0-reasons-to-prefer-logback-over-log4j/ <br>
@@ -97,3 +149,4 @@ author: alex
 &nbsp; - https://romeoh.tistory.com/entry/Spring-Boot-Logback-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0 <br>
 &nbsp; - https://dololak.tistory.com/635 <br>
 &nbsp; - https://jeong-pro.tistory.com/154 <br>
+&nbsp; - https://ckddn9496.tistory.com/78 <br>
