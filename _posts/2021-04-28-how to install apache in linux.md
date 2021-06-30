@@ -24,16 +24,16 @@ author: oscar
 ```
 
 필요한 최신 버전의 설치 파일을 링크 주소 복사 후 다운로드 및 압축 해제를 합니다.<br>
-[1.apache](http://httpd.apache.org/download.cgi#apache24)
+[1.apache 다운](http://httpd.apache.org/download.cgi#apache24)
 ![apache_1](../image/oscar/2021-04-29/1.png)
 
-[2.apr](https://apr.apache.org/download.cgi)
+[2.apr 다운](https://apr.apache.org/download.cgi)
 ![apache_2](../image/oscar/2021-04-29/2.png)
 
-[3.apr-util](https://apr.apache.org/download.cgi)
+[3.apr-util 다운](https://apr.apache.org/download.cgi)
 ![apache_3](../image/oscar/2021-04-29/3.png)
 
-[4.pcre](https://ftp.pcre.org/pub/pcre/)
+[4.pcre 다운](https://ftp.pcre.org/pub/pcre/)
 ![apache_4](../image/oscar/2021-04-29/4.png)
 
 ```
