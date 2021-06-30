@@ -22,6 +22,16 @@ author: oscar
 
 # yum install expat-devel
 ```
+<br>
+
+```
+- gcc : 오픈 소스 컴파일러 컬렉션 
+- ssl : 네트워크를 통한 데이터 통신에 쓰이는 프로토콜
+- ssh : 보안이 강화된 서버 원격 접속 및 제어 도구
+- zlib : 데이터 압축 오픈 소스 라이브러리
+- expat : xml 파서 라이브러리
+```
+<br>
 
 필요한 최신 버전의 설치 파일을 링크 주소 복사 후 다운로드 및 압축 해제를 합니다.<br>
 [1.apache 다운](http://httpd.apache.org/download.cgi#apache24)
@@ -47,6 +57,7 @@ author: oscar
 # tar xvfz apr-util-1.6.1.tar.gz
 # tar xvfz pcre2-10.36.tar.gz
 ```
+<br>
 
 그 다음엔 pcre 설치를 해줍니다. (차례로 입력하면 됩니다.)
 ```
@@ -111,7 +122,13 @@ apache 설치를 해줍니다. (차례로 입력하면 됩니다.)
 # make install
 ```
 위 명령어를 실행 시키면 본인이 설정한 설치경로에 아파치 홈 디렉토리가 생성됩니다.
-
+<br>
+```
+- configure : 소스파일에 대한 환경설정(서버 환경에 맞춰 makefile 생성)
+- make : 소스 컴파일(설치 파일 생성)
+- make instatll : make 통해 만들어진 설치 파일을 설치.
+```
+<br>
 
 설치가 다 끝났으면 아파치를 실행합니다.
 ```
