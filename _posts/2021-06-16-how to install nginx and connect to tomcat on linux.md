@@ -50,7 +50,7 @@ gcc는 프로그래밍언어 컴파일하는 컴파일러이다.
 configure 설정과 함께 컴파일 설치를 진행한다.
 ```
 # cd  nginx-1.21.0
-# ./configure --prefix=/SW/web/nginx(nginx 설치할 경로)
+# ./configure --prefix=/SW/web/nginx(nginx 설치할 경로) --with-http_stub_status_module --with-http_ssl_module
 # make
 # make install
 ```

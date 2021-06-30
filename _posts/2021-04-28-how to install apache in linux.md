@@ -83,7 +83,30 @@ apr-1.7.0과 apr-util-1.6.1은 ./httpd-2.4.46/srclib/ 안에 디렉토리명을 
 apache 설치를 해줍니다. (차례로 입력하면 됩니다.)
 ```
 # cd ../httpd-2.4.46
-
+# ./configure \
+--prefix=/SW/web/httpd-2.4.46 \
+--with-mpm=worker \
+--with-pcre=/usr/local/pcre/bin/pcre-configure \
+--with-apr=/usr/local/apr \
+--with-apr-util=/usr/local/aprutil \
+--with-ssl=/usr/bin/openssl \
+--enable-module=so \
+--enable-so \
+--enable-rewrite=shared \
+--enable-ssl=shared  \
+--enable-deflate=shared \
+--enable-cache=shared \
+--enable-disk-cache=shared \
+--enable-mem-cache=shared \
+--enable-proxy \
+--enable-unique-id \
+--enable-asis=shared \
+--enable-headers \
+--enable-logio=shared \
+--enable-expires=shared \
+--enable-status=shared \
+--enable-auth-digest \
+--enable-lib64 --libdir=/usr/lib64
 # make 
 # make install
 ```
