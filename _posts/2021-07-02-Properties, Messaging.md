@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 스프링과 부트에서 프로퍼티 파일 사용
-featured-img: springLogo.jpg
+featured-img: setting.png
 categories: ["spring", "SpringFramework", "SpringBoot"]
 author: alex
 ---
