@@ -35,7 +35,7 @@ author: alex
 3. **사용** <br>
    설정한 프로퍼티 값을 가져오기 위해서는 ${키값} 의 형식으로 불러오면 됩니다.<br>
 
-   ![jndi](../image/alex/2021-07-02/jndi-replcae.PNG)
+   ![jndi](../image/alex/2021-07-02/jndi-replace.PNG)
 
    아까 설정해둔 DB Resource의 이름을 ${IDEATEC.edu.jndi.name} 로 가져와서 dataSource에 주입시켜줬습니다. <br>
 
@@ -88,37 +88,35 @@ author: alex
 
    ***
 
-   ## 스프링 부트에서 프로퍼티 파일 설정 및 사용
+## 스프링 부트에서 프로퍼티 파일 설정 및 사용
 
-   ![boot-prop-config](../image/alex/2021-07-02/boot-prop-config.PNG)
+![boot-prop-config](../image/alex/2021-07-02/boot-prop-config.PNG)
 
-   부트에서는 더욱 간단하게 설정할 수 있습니다. <br>
-   application.properties 혹은 application.yml 파일에서 spring.config.import로 프로퍼티 파일들을 import 해주면 됩니다. <br>
+부트에서는 더욱 간단하게 설정할 수 있습니다. <br>
+application.properties 혹은 application.yml 파일에서 spring.config.import로 프로퍼티 파일들을 import 해주면 됩니다. <br>
 
-   ![boot-prop-util-use](../image/alex/2021-07-02/boot-prop-util-use.PNG)
-   ![boot-prop-util-result](../image/alex/2021-07-02/boot-prop-util-result.PNG)
+![boot-prop-util-use](../image/alex/2021-07-02/boot-prop-util-use.PNG)
+![boot-prop-util-result](../image/alex/2021-07-02/boot-prop-util-result.PNG)
 
-   스프링에서와 같은 구현체를 사용해서 같은 동작을 하는 코드를 작성했습니다. <br>
-   역시 잘 작동하는 것을 확인할 수 있습니다. <br>
+스프링에서와 같은 구현체를 사용해서 같은 동작을 하는 코드를 작성했습니다. <br>
+역시 잘 작동하는 것을 확인할 수 있습니다. <br>
 
-   ***
+---
 
-   ```
-        # 추가
+```
+     # 추가
 
-        context.xml 에서 프로퍼티 파일 경로를 지정할 때, 위에서 언급한
-        <context:property-placeholder location="path"/> 방식이 아닌
-        <util:properties id="id" location="path"/> 방식의 <util:properties> 태그를 사용하는 방법도 있다.
-        이때 설정 값을 사용하기 위해서는 ${키 값} 의 형식이 아닌
-        #{빈 id['키 값']} 의 형식을 사용해야만 값을 불러 올 수 있다.
+     context.xml 에서 프로퍼티 파일 경로를 지정할 때, 위에서 언급한 <context:property-placeholder location="path"/> 방식이 아닌
+     <util:properties id="id" location="path"/> 방식의 <util:properties> 태그를 사용하는 방법도 있습니다.
+     이때 설정 값을 사용하기 위해서는 ${키 값} 의 형식이 아닌 #{빈 id['키 값']} 의 형식을 사용해야만 값을 불러 올 수 있습니다.
 
-   ```
+```
 
-   ***
+---
 
-   #### 참고자료
+#### 참고자료
 
-   &nbsp; - https://sgc109.github.io/2020/07/06/spring-properties/ <br>
-   &nbsp; - https://oingdaddy.tistory.com/67 <br>
-   &nbsp; - https://cornswrold.tistory.com/95 <br>
-   &nbsp; - https://cornswrold.tistory.com/95 <br>
+&nbsp; - https://sgc109.github.io/2020/07/06/spring-properties/ <br>
+&nbsp; - https://oingdaddy.tistory.com/67 <br>
+&nbsp; - https://cornswrold.tistory.com/95 <br>
+&nbsp; - https://cornswrold.tistory.com/95 <br>
