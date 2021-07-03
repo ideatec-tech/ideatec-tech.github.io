@@ -14,8 +14,7 @@ author: jay
 Message를 활용하면 유저에게 보여줘야하는 정보를 Locale에 따라 출력하거나 관리하기에 용이하다.
 <br>
 <br>
-
-![message]](../image/jay/20210704/xml.PNG)
+![message](../image/jay/20210704/xml.PNG)
 <br>
 우선 MessageSource를 사용하기 위해 xml 에 설정을 등록한다.
 <br>
@@ -36,8 +35,7 @@ basename을 classpath:/message/message 처럼 지정하면 classpath의 message 
 그리고 localeResolver의 defaultLocale 프로퍼티로 기본 locale을 한국으로 설정했다.
 <br>
 <br>
-
-![message]](../image/jay/20210704/util.PNG)
+![message](../image/jay/20210704/util.PNG)
 <br>
 MessageUtil에서는 위에서 설명한 것 처럼 getMessage를 사용했다.
 <br>
@@ -62,20 +60,17 @@ xml 에서는 이 클래스와 MessageSourceAccessor을 매핑시켜 bean으로 
 위의 규칙에서 OOO는 xml에서 설정한 basename의 마지막(여기서는 message)이 들어가야 한다.
 <br>
 <br>
-
-![message]](../image/jay/20210704/msg.PNG)
+![message](../image/jay/20210704/msg.PNG)
 <br>
 src/main/resource/message에 message_ko_KR.properties 파일을 만들고 메세지를 입력했다.
 <br>
 <br>
-
-![message]](../image/jay/20210704/cnt.PNG)
+![message](../image/jay/20210704/cnt.PNG)
 <br>
 그 후 Controller에서 MessageUtil.getMessage 메소드에 key를 입력하여 메세지를 가져온 후 반환했다.
 <br>
 <br>
-
-![message]](../image/jay/20210704/res.PNG)
+![message](../image/jay/20210704/res.PNG)
 <br>
 결과가 잘 출력되는것을 확인할 수 있다.
 <br>
