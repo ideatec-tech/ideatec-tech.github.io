@@ -17,7 +17,7 @@ author: hbshin
 - 읽어오기를 원하는 문구를 properties 파일에 입력합니다.
 
 
-![AppConfig](../image/hbshin/20210704/AppConfig.PNG) 
+![AppCofig](../image/hbshin/20210704/AppCofig.PNG) 
 
 - 그 다음 properties 파일을 읽기위해 configuration과 PropertySource어노테이션 사용
 
