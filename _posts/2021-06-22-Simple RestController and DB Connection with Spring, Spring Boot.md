@@ -160,6 +160,32 @@ root-context.xml 에서 설정하던 것과 달라보이지만 결국 DB 접속�
 Spring Boot로도 역시 같은 결과가 출력되는 것을 확인할 수 있다.
 <br>
 <br>
+<hr style="border:1px solid gray">
+<br>
++ + + + + + + + + + 
+<br>
+<br>
+실제로는 보안이나 모니터링 측면에서 주로 WAS에 Resource를 설정한다.
+<br>
+<br>
+![boot_result](../image/jay/20210714/jnd2.PNG)
+<br>
+따라서 위처럼 설정해준 다음,
+<br>
+<br>
+![boot_result](../image/jay/20210714/jandi.PNG)
+<br>
+jndi로 가져와서 사용한다.
+<br>
+<br>
+이렇게 하면 같은 WAS에 올라가는 어플리케이션마다 DB 접속정보를 입력할 필요도 없어진다.
+<br>
+
+
+
+
+
+
 
 
 
