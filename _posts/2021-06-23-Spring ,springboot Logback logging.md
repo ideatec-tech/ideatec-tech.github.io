@@ -100,14 +100,14 @@ author: hbshin
 [ Console ]
 
 
-![logbackfile](../image/hbshin/logbackfile.PNG)
+![logbackfile](../image/hbshin/20210623/logbackfile.PNG)
 
 
 
 [ file ]
 
 
-![logCon](../image/hbshin/logCon.PNG)
+![logCon](../image/hbshin/20210623/logCon.PNG)
 
 
 
@@ -123,7 +123,7 @@ author: hbshin
 
 
 
-![dpLog](../image/hbshin/dpLog.PNG)
+![dpLog](../image/hbshin/20210623/dpLog.PNG)
 
 - Spring boot는 기본적으로 Logback 의존성이 설정되어 있습니다.
 - Spring boot는 Console Log를 따로 설정하지 않아도 지원합니다.
@@ -139,7 +139,7 @@ author: hbshin
 <br>
 
 
-![logxml](../image/hbshin/logxml.png)
+![logxml](../image/hbshin/20210623/logxml.png)
 
 
 
@@ -155,7 +155,7 @@ author: hbshin
 
 
 
-![spLogback](../image/hbshin/spLogback.PNG)
+![spLogback](../image/hbshin/20210623/spLogback.PNG)
 
 
 - Spring boot 실행시 Console창 입니다.
@@ -170,17 +170,17 @@ author: hbshin
 - pom.xml 과 web.xml에 다음과 같이 설정하면 환경(개발,테스트,운영)에 따라 세팅값을 차등적용할 수 있도록 logback.xml파일 위치를 명시적으로 변경할 수 있습니다.
 
 
-![logbackpom](../image/hbshin/logbackpom.PNG)
+![logbackpom](../image/hbshin/20210623/logbackpom.PNG)
 
 1. 먼저 pom.xml 설정에는 기본적으로 logback을 사용하기 위한 classic 의존성과 파일위치를 변경하기 위한 logback-extensions의존성을 설정합니다.
 
 
-![logbwebxml](../image/hbshin/logbwebxml.PNG)
+![logbwebxml](../image/hbshin/20210623/logbwebxml.PNG)
 
 2. xml파일을 읽기위한 경로 설정(classpath) 및 listener 설정을 합니다.
 
 
-![logbackSRC](../image/hbshin/logbackSRC.PNG)
+![logbackSRC](../image/hbshin/20210623/logbackSRC.PNG)
 
 3. resources파일안에 있던 logback.xml파일을 src -> web-inf 파일안에 log라는 폴더를 생성하여 옮겼으며, 위와같이 정상작동하였습니다.
 

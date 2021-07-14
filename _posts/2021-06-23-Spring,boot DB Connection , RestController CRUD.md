@@ -375,19 +375,19 @@ userMapper.xml
 
 [ insert ]
 
-![create](../image/hbshin/create.PNG)
+![create](../image/hbshin/20210623/create.PNG)
 
 [ list ]
 
-![read](../image/hbshin/read.PNG)
+![read](../image/hbshin/20210623/read.PNG)
 
 [ update ]
 
-![update](../image/hbshin/update.PNG)
+![update](../image/hbshin/20210623/update.PNG)
 
 [ delete ]
 
-![delete](../image/hbshin/delete.PNG)
+![delete](../image/hbshin/20210623/delete.PNG)
 
 
 
@@ -729,7 +729,7 @@ mybatis.mapper-locations: mybatis/**/*.xml
 
 [ List ]
 
-![bootList](../image/hbshin/bootList.PNG)
+![bootList](../image/hbshin/20210623/bootList.PNG)
 
 - boot 또한 결과값은 비슷합니다.
 
@@ -745,20 +745,20 @@ mybatis.mapper-locations: mybatis/**/*.xml
 
 
 
-![JNDIpom](../image/hbshin/JNDIpom.PNG)
+![JNDIpom](../image/hbshin/20210623/JNDIpom.PNG)
 
 - 먼저 db connection을 위한 pom.xml 설정합니다.
 
-![JNDIweb.xml](../image/hbshin/JNDIweb.xml.PNG)
+![JNDIweb.xml](../image/hbshin/20210623/JNDIweb.xml.PNG)
 
 - DataSource를 웹 어플리케이션에서 사용하려면 web.xml에 해당 resource를 참조한다는 선언을 해야합니다.
 
-![serverxml](../image/hbshin/serverxml.PNG)
+![serverxml](../image/hbshin/20210623/serverxml.PNG)
 
 - web.xml의 resource-ref 와 resource-env-ref  요소를 조회할수 있게 반환할 jndiDataSource를 작성합니다.
 
 
-![rootxml](../image/hbshin/rootxml.PNG)
+![rootxml](../image/hbshin/20210623/rootxml.PNG)
 
 - 마지막으로 spring 기준 root-context.xml파일에 원래 세팅되어있던 DataSource 설정을 주석처리하고 java:/comp/env/jdbc를 통해 was에 설정된 database를 사용할 수 있게 설정합니다.
 
