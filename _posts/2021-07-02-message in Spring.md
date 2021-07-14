@@ -75,6 +75,28 @@ src/main/resource/message에 message_ko_KR.properties 파일을 만들고 메세
 결과가 잘 출력되는것을 확인할 수 있다.
 <br>
 <br>
+<hr style="border:1px solid gray">
+<br>
+Spring Boot은 기본적으로 ResourceBundleMessageSource가 자동으로 Bean 등록이 된다.
+<br>
+하지만 ReloadableResourceBundleMessageSource를 사용하기 위해 Java config로 등록해줬다.
+<br>
+![message](../image/jay/20210704/boot.PNG)
+<br>
+여기서는 basename과 encoding 등을 설정해줬다.
+<br>
+![message](../image/jay/20210704/boot2.PNG)
+<br>
+그다음 MessageSource를 Autowired로 주입한 다음 messageSource.getMessage로 메세지를 불러오면 된다.
+<br>
+이때 인자는 key값, String [] parameter(Nullable 이다), Locale 이다.
+<br>
+Locale 값을 null로 주면 기본 message.properties에서 찾거나 default Locale로 설정된 값을 출력할 것이다.
+<br>
+<br>
+![message](../image/jay/20210704/boot3.PNG)
+<br>
+값이 잘 출력된다.
 
 
 
