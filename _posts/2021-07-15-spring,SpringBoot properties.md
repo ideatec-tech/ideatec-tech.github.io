@@ -13,7 +13,7 @@ properties는 코드에 정보를 입력하지 않고 properties파일에 정보
 
 ### 2. 구현 
 
-![test](../image/soo/test01.png)
+![test01](../image/soo/test01.PNG)
 classpath 에 properties파일을 저장할 폴더를 생성하고 properties 파일 생성한다
 
 ```
@@ -33,12 +33,12 @@ public class TestConfig {
 @PropertySource annotation에 properties파일의 위치를 넣어주면 Environment객체에 프로퍼티 값이 자동으로 주입된다.
 Environment객체는 외부 설정파일들을 가져와서 프로퍼티를 추가하거나 추출하는 역할을 한다.
 
-![test03](../image/soo/test03.png)
+![test03](../image/soo/test03.PNG)
 
 Environment 객체에 주입된 properties의 정보들은 .getProperty(key)메소드를 통해서 가져 올 수 있다.
 
-![test02](../image/soo/test02.png)
+![test02](../image/soo/test02.PNG)
 
 # SpringBoot
 Spring Boot 에서는 기존 application.yml(application.property) 파일에서 spring.config.import 로 프로퍼티 파일들의 클래스 패스를 입력하면 된다.
-![boottest](../image/soo/boottest.png)
+![boottest](../image/soo/boottest.PNG)
