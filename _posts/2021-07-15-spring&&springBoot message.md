@@ -34,7 +34,7 @@ MessageSourceAccessor는 다양한 getMessage메소드를 사용할 수 있고 m
 MessageUtil은 
 프로퍼티 파일에서 설정한 메시지를 가져오는 역할을 할 것이다.
 
-![ttessttPNG](../image/soo/20210716/ttessttPNG.png)
+![ttessttPNG](../image/soo/20210716/ttessttPNG.PNG)
 
 MessageUtil클래스를 생성한다.
 ```
@@ -58,7 +58,7 @@ MessageSourceAccessor를 bean으로 주입하였고 getMessage를 사용하였�
 
 ### 4.결과 
 
-![ttestPNG](../image/soo/20210716/ttestPNG.png)
+![ttestPNG](../image/soo/20210716/ttestPNG.PNG)
 
 ![result](../image/soo/20210716/result.png)
 
