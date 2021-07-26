@@ -2,7 +2,7 @@
 layout: post
 title: jenkins 설치
 featured-img: jenkins.jpg
-categories: [ 'linux', 'jenkins']
+categories: ['linux','jenkins']
 author: oscar
 ---
 
