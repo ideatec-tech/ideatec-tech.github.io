@@ -1,12 +1,12 @@
 ---
 layout: post
-title: jenkins 자동 빌드 배포 환경 구축
+title: jenkins 설치
 featured-img: jenkins.jpg
-categories: ['jenkins']
+categories: [ 'linux', 'jenkins']
 author: oscar
 ---
 
-# jenkins로 Maven 프로젝트 자동 빌드, 배포 환경 구축하기
+# linux Centos7 환경에서 jenkins 최신 버전 설치 
 
 ## 1. jenkins란?
 
@@ -46,7 +46,71 @@ war 파일을 우클릭해 링크 주소 복사를 합니다.
 ![jenkins3](../image/oscar/2021-07-07_jenkins/3.png)
 <br>
 
-이제 설치하고자 하는 디렉토리로 이동해 wget 명령어를 이용해 설치를 진행한다.<br>
+이제 설치하고자 하는 디렉토리로 이동해 wget 명령어를 이용해 설치를 진행한다.
+<br><br>
+
+### tomcat비연동
+
+wget으로 설치를 하고 해당 디렉토리에서 확인해보면 .war 파일이 생성되어 있다.
+<br>
+
+![jenkins5-1](../image/oscar/2021-07-07_jenkins/5-1.png)
+<br><br>
+
+그리고 해당 디렉토리에 log파일을 담을 log 디렉토리를 생성해주고, 실행할 jboot.sh 스크립트 파일을 만들어준다.<br>
+jboot.sh 파일은 다음과 같다. 
+<br>
+
+```
+#!/bin/bash
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64/jre (자바 홈 패스설정)
+export HTTP_PORT=9090 (겹치지 않게 포트 설정)
+
+nohup $JAVA_HOME/bin/java -jar jenkins.war --httpPort=$HTTP_PORT --sessionTimeout=120 -XX:+AggressiveOpts >> ./logs/jenkins.log 2>&1 &
+```
+<br>
+
+jboot.sh파일에 실행권한을 부여해준다.
+```
+$ chmod u+x jboot.sh
+```
+<br>
+
+이제 웹브라우저에서 http://서버아이피:지정한포트 로 접속을 해봅니다.
+<br>
+
+![jenkins9](../image/oscar/2021-07-07_jenkins/9.png)
+<br>
+
+초기 비밀번호는 '/var/lib/jenkins/secrets/initialAdminPassword에 있다고 안내가 나온다.<br>
+cat /var/lib/jenkins/secrets/initialAdminPassword 로 열어보면 비밀번호가 나온다. 복사해서 밑에 입력해주면 로그인이 된다. 그럼 다음과 같은 화면이 나온다.
+<br>
+
+![jenkins10](../image/oscar/2021-07-07_jenkins/10.png)
+<br>
+
+'Install suggested plugins'를 클릭해 기본 플러그인들을 설치한다.
+<br>
+
+![jenkins11](../image/oscar/2021-07-07_jenkins/11.png)
+<br>
+
+설치가 완료되면 계정 설정을 해준다.
+<br>
+
+![jenkins12](../image/oscar/2021-07-07_jenkins/12.png)
+<br>
+
+계정설정을 완료하면 다음과 같은 jenkins 기본 화면이 나오면 끝이다.
+<br>
+
+![jenkins13](../image/oscar/2021-07-07_jenkins/13.png)
+<br><br>
+
+
+### tomcat연동
+
 그런데 톰캣을 통해 실행하고자 하려면 기존의 톰캣 디렉토리를 하나 복사하고 복사한 톰캣 디렉토리 안에 webapps 디렉토리에서 설치를 진행한다.
 <br>
 
@@ -99,35 +163,7 @@ wget으로 설치를 하고 해당 디렉토리에서 확인해보면 .war 파�
 이제 웹브라우저에서 http://서버아이피:지정한포트/jenkins 로 접속을 해봅니다.
 <br>
 
-![jenkins9](../image/oscar/2021-07-07_jenkins/9.png)
-<br>
-
-초기 비밀번호는 '/var/lib/jenkins/secrets/initialAdminPassword에 있다고 안내가 나온다.<br>
-cat /var/lib/jenkins/secrets/initialAdminPassword 로 열어보면 비밀번호가 나온다. 복사해서 밑에 입력해주면 로그인이 된다. 그럼 다음과 같은 화면이 나온다.
-<br>
-
-![jenkins10](../image/oscar/2021-07-07_jenkins/10.png)
-<br>
-
-'Install suggested plugins'를 클릭해 기본 플러그인들을 설치한다.
-<br>
-
-![jenkins11](../image/oscar/2021-07-07_jenkins/11.png)
-<br>
-
-설치가 완료되면 계정 설정을 해준다.
-<br>
-
-![jenkins12](../image/oscar/2021-07-07_jenkins/12.png)
-<br>
-
-계정설정을 완료하면 다음과 같은 jenkins 기본 화면이 나오면 끝이다.
-<br>
-
-![jenkins13](../image/oscar/2021-07-07_jenkins/13.png)
-<br><br>
-
-## 3. jenkins 설정
+나머지는 tomcat비연동 과정과 동일.
 
 
 

@@ -2,7 +2,7 @@
 layout: post
 title: Simple RestController and DB Connection with Spring, Spring Boot
 featured-img: db.png
-categories: ["spring", "SpringFramework", "SpringBoot", "DB", "RestController", "MyBatis"]
+categories: ["spring", "SpringFramework", "SpringBoot", "DB", "RestController", "mybatis"]
 author: jay
 ---
 
