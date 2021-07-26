@@ -173,7 +173,7 @@ master node 추가 시에는 다음과 같이 명령어를 입력해줍니다.
 ```
 replica node 추가 시에는 다음과 같이 명령어를 입력합니다.
 ```
-# redis-cli --cluster add-node 아이피:포트 --cluster-slave
+# redis-cli --cluster add-node 아이피:포트(추가할 replica) 아이피:포트(추가될 master) --cluster-slave
 ```
 cluster 리셋은 다음 명령어를 입력합니다.
 ```

@@ -1,12 +1,12 @@
 ---
 layout: post
-title: How to install jenkins
+title: jenkins 자동 빌드 배포 환경 구축
 featured-img: jenkins.jpg
 categories: ['jenkins']
 author: oscar
 ---
 
-# jenkins 최신 버전 linux(centos7) 환경 설치 방법
+# jenkins로 Maven 프로젝트 자동 빌드, 배포 환경 구축하기
 
 ## 1. jenkins란?
 
@@ -63,27 +63,7 @@ wget으로 설치를 하고 해당 디렉토리에서 확인해보면 .war 파�
 <br>
 
 ![jenkins5](../image/oscar/2021-07-07_jenkins/5.png)
-<br>
-
-톰캣을 실행하기 전에 추가로 설정해줘야 할 것이 있다.
-<br>
-우선 접속 설정을 위해 복사한톰캣디렉토리/conf 의 tomcat-users.xml 에서 다음을 입력해준다.
-<br>
-
-```
-<role rolename="manager-gui"/>
-<role rolename="manager-script"/>
-<role rolename="manager-status"/>
-<user username="admin" password="1" roles="manager-gui,manager-script,manager-status"/>
-<!--
-role / user 삽입.
-1. manager-gui : 톰캣에서 웹으로 제공하는 서비스 이용시 사용한다.
-2. manager-status : "Server Status"페이지 접속시에만 사용한다.
-3. manager-script : 스크립트를 이용한 배포시 사용하는 듯 하다.
-4. manager-jmx : jmx 사용시 사용한다.
--->
-``` 
-<br>
+<br><br>
 
 다음엔 복사한톰캣홈디렉토리/conf의 server.xml파일을 열어 포트를 변경해준다.(기존 톰캣서버 포트와 충돌)
 <br>
@@ -145,6 +125,11 @@ cat /var/lib/jenkins/secrets/initialAdminPassword 로 열어보면 비밀번호�
 <br>
 
 ![jenkins13](../image/oscar/2021-07-07_jenkins/13.png)
+<br><br>
+
+## 3. jenkins 설정
+
+
 
 
 
