@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jenkins 설치
+title: jenkins 자동 빌드 배포 환경 구축
 featured-img: jenkins2.jpg
 categories: ['linux','jenkins']
 author: oscar
