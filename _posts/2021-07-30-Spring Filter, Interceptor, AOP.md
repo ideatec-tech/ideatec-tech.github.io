@@ -17,8 +17,8 @@ author: oscar
 적용방식은 Filter: web.xml , Interceptor: servlet-context.xml
 <br>
 
-![filter1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/1.jpg)
-<br>
+![filter1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/1.png)
+<br>                      2021-07-30_spring_filter_interceptor_aop
 
 Interceptor와 Filter는 Servlet 단위에서 실행된다. AOP는 메소드 앞에 Proxy 패턴의 형태로 실행된다.
 <br>
@@ -44,7 +44,7 @@ Interceptor와 Filter는 Servlet 단위에서 실행된다. AOP는 메소드 앞
 우선, 기본 인터페이스인 Filter를 구현한 커스텀 필터 클래스를 하나 만든다.
 <br>
 
-![filter2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/2.jpg)
+![filter2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/2.png)
 <br>
 
 Filter 인터페이스의 메서드는
@@ -67,16 +67,16 @@ Filter 인터페이스의 메서드는
 다음으로 web.xml에 필터 설정을 해준다.
 <br>
 
-![filter3](../image/oscar/2021-07-30_spring_filter_interceptor_aop/3.jpg)
+![filter3](../image/oscar/2021-07-30_spring_filter_interceptor_aop/3.png)
 <br>
 
 filter-name 과 filter-class로 매핑시켜 준 후 filter-mapping 에서는 범위를 모든 요청(/*)으로 설정한다.
 <br>
 
-![filter4](../image/oscar/2021-07-30_spring_filter_interceptor_aop/4.jpg)
+![filter4](../image/oscar/2021-07-30_spring_filter_interceptor_aop/4.png)
 <br>
 
-![filter5](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5.jpg)
+![filter5](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5.png)
 <br>
 
 앱이 실행될때 init()으로 필터 인스턴스가 셍겼고, 초기 파라미터를 잘 읽어온 것을 볼 수 있다.<br>
@@ -88,10 +88,10 @@ filter-name 과 filter-class로 매핑시켜 준 후 filter-mapping 에서는 �
 Spring boot에서는 필터클래스에 @Component와 @WebFilter 어노테이션만 추가해주면 된다.
 <br>
 
-![filter5-1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5-1.jpg)
+![filter5-1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5-1.png)
 <br>
 
-![filter5-2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5-2.jpg)
+![filter5-2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/5-2.png)
 <br><br>
 
 
@@ -116,7 +116,7 @@ Spring boot에서는 필터클래스에 @Component와 @WebFilter 어노테이션
 HandlerInterceptorAdapter를 상속받아 인터셉트로 사용할 클래스를 만들어준다.
 <br>
 
-![interceptor6](../image/oscar/2021-07-30_spring_filter_interceptor_aop/6.jpg)
+![interceptor6](../image/oscar/2021-07-30_spring_filter_interceptor_aop/6.png)
 <br>
 
 1.preHandle<br>
@@ -134,13 +134,13 @@ HandlerInterceptorAdapter를 상속받아 인터셉트로 사용할 클래스를
 servelt-mvc.xml에서 인터셉터 설정을 해준다. (프로젝트 구성에 맞게 설정)
 <br>
 
-![interceptor7](../image/oscar/2021-07-30_spring_filter_interceptor_aop/7.jpg)
+![interceptor7](../image/oscar/2021-07-30_spring_filter_interceptor_aop/7.png)
 <br>
 
 이제 url 요청을 날려보면 
 <br>
 
-![interceptor8](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8.jpg)
+![interceptor8](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8.png)
 <br>
 
 해당 URL 요청을 받은 controller 실행 전/후로 preHandle()과 postHandle()이 실행된 것을 볼 수 있다.
@@ -152,7 +152,7 @@ Spring boot에서는 먼저 interface HandlerInterceptor를 상속받아서 Inte
 (* sts4 기준으로 java8을 사용하며 HandlerInterceptor를 사용한다. 기존에 상속받아서 사용하던 추상클래스HandlerInterceptorAdapter는 "Deprecated." 처리되었다.)
 <br>
 
-![interceptor8-1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-1.jpg)
+![interceptor8-1](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-1.png)
 <br>
 
 여기서 afterCompletion은 view 가 정상적으로 랜더링 된 후 마지막에 실행된다.
@@ -161,10 +161,10 @@ Spring boot에서는 먼저 interface HandlerInterceptor를 상속받아서 Inte
 SpringLegacy에서는 .xml에서 맵핑할 정보와 어떤 인터셉터를 적용할건지 처리를 하곤 했는데, 부트에서는 java를 통해 설정을 진행한다.
 <br>
 
-![interceptor8-2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-2.jpg)
+![interceptor8-2](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-2.png)
 <br>
 
-![interceptor8-3](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-3.jpg)
+![interceptor8-3](../image/oscar/2021-07-30_spring_filter_interceptor_aop/8-3.png)
 <br><br>
 
 
@@ -191,25 +191,25 @@ AOP 관련용어<br>
 일단, 간단히 user 정보 출력하는 클래스를 만든후 AOP를 적용해보자.
 <br>
 
-![AOP9](../image/oscar/2021-07-30_spring_filter_interceptor_aop/9.jpg)
+![AOP9](../image/oscar/2021-07-30_spring_filter_interceptor_aop/9.png)
 <br>
 
 Aspect 사용을 위해 pom.xml에 dependancy를 추가해준다.
 <br>
 
-![AOP10](../image/oscar/2021-07-30_spring_filter_interceptor_aop/10.jpg)
+![AOP10](../image/oscar/2021-07-30_spring_filter_interceptor_aop/10.png)
 <br>
 
 root-context.xml에 aop 설정을 해준다. (user 데이터 넣는 bean도 설정해주었다.)
 <br>
 
-![AOP11](../image/oscar/2021-07-30_spring_filter_interceptor_aop/11.jpg)
+![AOP11](../image/oscar/2021-07-30_spring_filter_interceptor_aop/11.png)
 <br>
 
 이제 공통기능을 하는 클래스를 만들어준다.(Advice 역할 클래스)
 <br>
 
-![AOP12](../image/oscar/2021-07-30_spring_filter_interceptor_aop/12.jpg)
+![AOP12](../image/oscar/2021-07-30_spring_filter_interceptor_aop/12.png)
 <br>
 
 User 클래스에 설정해 놓은 getUsersInfo()를 핵심기능으로 놓고 핵심 기능에 공통기능을 추가해 놓았다.
@@ -218,7 +218,7 @@ User 클래스에 설정해 놓은 getUsersInfo()를 핵심기능으로 놓고 �
 이제 실행을 해보면 다음과 같이 나타나는 것을 볼 수 있다.
 <br>
 
-![AOP13](../image/oscar/2021-07-30_spring_filter_interceptor_aop/13.jpg)
+![AOP13](../image/oscar/2021-07-30_spring_filter_interceptor_aop/13.png)
 <br>
 
 ### AOP 설정(boot)
@@ -226,24 +226,24 @@ User 클래스에 설정해 놓은 getUsersInfo()를 핵심기능으로 놓고 �
 aop 사용을 위해 pom.xml에 dependancy를 추가한다.
 <br>
 
-![AOP14](../image/oscar/2021-07-30_spring_filter_interceptor_aop/14.jpg)
+![AOP14](../image/oscar/2021-07-30_spring_filter_interceptor_aop/14.png)
 <br>
 
 controller에 "aop Test"를 출력하는 메서드를 하나 만들어준다. 주의할 점은 @GetMapping 어노테이션을 적용해준다.
 <br>
 
-![AOP15](../image/oscar/2021-07-30_spring_filter_interceptor_aop/15.jpg)
+![AOP15](../image/oscar/2021-07-30_spring_filter_interceptor_aop/15.png)
 <br>
 
 다음으로 AspectJ를 적용할 class를 만들어 준다. pointcut으로 Around에  GetMapping 어노테이션이 설정된 특정 클래스/메소드에만 AspectJ가 적용되도록 설정한다.
 <br>
 
-![AOP16](../image/oscar/2021-07-30_spring_filter_interceptor_aop/16.jpg)
+![AOP16](../image/oscar/2021-07-30_spring_filter_interceptor_aop/16.png)
 <br>
 
 실행하면 다음과 같이 나타나는 것을 볼 수 있다.
 <br>
 
-![AOP17](../image/oscar/2021-07-30_spring_filter_interceptor_aop/17.jpg)
+![AOP17](../image/oscar/2021-07-30_spring_filter_interceptor_aop/17.png)
 <br>
 
