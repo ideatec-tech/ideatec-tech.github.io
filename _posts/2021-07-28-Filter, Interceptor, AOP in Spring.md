@@ -45,7 +45,7 @@ javax.servlet.Filter를 상속받고, Filter 아래의 init, doFilter, destory �
 <br>
 doFilter() 메서드는 요청(Request)와 응답(Response)의 한 쌍이 체인을 통과할 때마다 컨테이너에서 호출된다. 또한, 여기서 실제 처리 로직을 구현한다.
 <br>
-destroy() 메소드는 필터가 웹 컨테이너에서 삭제될 때 호출된다. 서버를 종료할 때 같이 종료된다.
+destroy() 메소드는 서버를 종료할 때 같이 소멸된다.
 <br>
 <br>
 ![Filter, Interceptor, AOP](../image/jay/20210728/webXml.PNG)
@@ -90,6 +90,89 @@ mvc:interceptors 태그안에 bean으로 interceptor를 등록해 줄 수 있다
 <br>
 AOP는 기존의 OOP와 목적은 공통 코드를 가져다 쓰는것에서는 같지만 AOP에서는 IoC(제어 역행)이 적용된다는 점은 다르다.
 <br>
-이는 공통 기능의 코드를 개발자가 직접 넣어주는 것이 아니라 컨테이너나 관련 라이브러리가 지정된 메소드나
+이는 공통 기능의 코드를 개발자가 직접 넣어주는 것이 아니라 컨테이너나 관련 라이브러리가 지정된 메소드에서 공통 관심사를 삽입하는 것이다.
+<br>
+<br>
+이렇게 사용하기 위해서는 공통 관심사가 언제 어디에 필요한지 설정해줘야 한다.
+<br>
+<br>
+Aop에서 사용되는 용어들은 아래와 같다.
+<hr style="border:1px solid gray">
+    
+    Joint Point : 모듈을 삽입하여 동작하는 특정 위치(Method 등)
+    
+    Point Cut : 다양한 Joint Point 중에 어떤 것을 사용할지 선택
+    
+    Advice : Joint Point에 삽입되어 동작할 수 있는 코드
+    
+    Weaving : Advice가 핵심 로직에 적용되는 것
+    
+    Aspect : Point Cut + Advice
+    
+<hr style="border:1px solid gray">
+<br>
+<br>
+일단 TestAop 라는 클래스에 Advice들을 만들어 줬다.
+<br>
+![Filter, Interceptor, AOP](../image/jay/20210728/aop.PNG)
+<br>
+위의 메소드는 각각 아래의 상황에서 실행된다.
+<br>
+<hr style="border:1px solid gray">
 
+    before : 메서드 호출 전에 동작하는 Advice
 
+    after-returning : 예외 없이 호출된 메서드의 동작이 완료되면 동작하는 Advice
+
+    after-throwing : 호출된 메서드 동작 중 예외가 발생했을 때 동작하는 Advice
+
+    after : 예외 발생 여부에 관계없이 호출된 메서드의 동작이 완료되면 동작하는 Advice
+
+    around : 메서드 호출 전과 후에 동작하는 Advice
+
+<hr style="border:1px solid gray">
+<br>
+<br>
+<br>
+![Filter, Interceptor, AOP](../image/jay/20210728/context2.PNG)
+<br>
+위에서 만든 클래스를 servlet-context.xml에 bean으로 등록하고 aop:config 태그에 설치한 aop:aspectj 태그에 참조로 설정했다.
+<br>
+aop:pointcut의 expression에는 execution(* test()) 라고 설정했는데 executin 자리에 올 수 있는 것은 아래와 같다.
+<br>
+<hr style="border:1px solid gray">
+
+    execution - Advice를 적용할 메소드를 명시
+
+    within - 특정 타입에 속하는 메서드를 명시
+
+    bean - 스프링 빈을 이용하여 명시
+
+<hr style="border:1px solid gray">
+<br>
+<br>
+execution은 { execution([수식어] 리턴타입 [클래스이름].이름(파라미터) } 과 같이 표현될 수 있는데, 
+위의 execution(* test()) 는 메소드명이 test()인 메소드가 호출될때 실행되는 것이다.
+<br>
+<br>
+그다음 이름이 test()인 메소드를 호출했다.
+<br>
+<br>
+![Filter, Interceptor, AOP](../image/jay/20210728/console.PNG)
+<br>
+그후 실행했을때 호출한 메소드인 test()가 실행되기 전후에 before() -> around() -> 실제 호출한 메소드 -> afterReturning() -> around() -> after() 순으로 실행되는 것을 확인할 수 있다.
+<br>
+<br>
+afterThrowing()은 Exception이 발생한 후에 동작을 해줄수 있다.
+<br>
+<br>
+![Filter, Interceptor, AOP](../image/jay/20210728/err.PNG)
+<br>
+일단 exception을 발생시킨 다음, 다시 호출 해보았다.
+<br>
+<br>
+![Filter, Interceptor, AOP](../image/jay/20210728/errconsole.PNG)
+<br>
+Exception이 발생했을 때 afterThrowing()이 실행되며 advice인 에러 출력을 하는것을 확인할 수 있다.
+<br>
+<br>
