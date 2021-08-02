@@ -98,17 +98,17 @@ AOP는 기존의 OOP와 목적은 공통 코드를 가져다 쓰는것에서는 
 <br>
 Aop에서 사용되는 용어들은 아래와 같다.
 <hr style="border:1px solid gray">
-    <br>
+    
     Joint Point : 모듈을 삽입하여 동작하는 특정 위치(Method 등)
-    <br>
+    
     Point Cut : 다양한 Joint Point 중에 어떤 것을 사용할지 선택
-    <br>
+    
     Advice : Joint Point에 삽입되어 동작할 수 있는 코드
-    <br>
+    
     Weaving : Advice가 핵심 로직에 적용되는 것
-    <br>
+    
     Aspect : Point Cut + Advice
-    <br>
+    
 <hr style="border:1px solid gray">
 <br>
 <br>
@@ -119,17 +119,17 @@ Aop에서 사용되는 용어들은 아래와 같다.
 위의 메소드는 각각 아래의 상황에서 실행된다.
 <br>
 <hr style="border:1px solid gray">
-<br>
+
     before : 메서드 호출 전에 동작하는 Advice
-<br>
+
     after-returning : 예외 없이 호출된 메서드의 동작이 완료되면 동작하는 Advice
-<br>
+
     after-throwing : 호출된 메서드 동작 중 예외가 발생했을 때 동작하는 Advice
-<br>
+
     after : 예외 발생 여부에 관계없이 호출된 메서드의 동작이 완료되면 동작하는 Advice
-<br>
+
     around : 메서드 호출 전과 후에 동작하는 Advice
-<br>
+
 <hr style="border:1px solid gray">
 <br>
 <br>
@@ -141,13 +141,13 @@ Aop에서 사용되는 용어들은 아래와 같다.
 aop:pointcut의 expression에는 execution(* test()) 라고 설정했는데 executin 자리에 올 수 있는 것은 아래와 같다.
 <br>
 <hr style="border:1px solid gray">
-<br>
+
     execution - Advice를 적용할 메소드를 명시
-<br>
+
     within - 특정 타입에 속하는 메서드를 명시
-<br>
+
     bean - 스프링 빈을 이용하여 명시
-<br>
+
 <hr style="border:1px solid gray">
 <br>
 <br>
