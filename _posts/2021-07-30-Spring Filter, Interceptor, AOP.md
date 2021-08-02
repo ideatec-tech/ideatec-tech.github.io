@@ -245,5 +245,38 @@ controller에 "aop Test"를 출력하는 메서드를 하나 만들어준다. �
 <br>
 
 ![AOP17](../image/oscar/2021-07-30_spring_filter_interceptor_aop/17.png)
+<br><br>
+
+
+## @Value map, list 설정
+
+속성값으로 
+```
+listOfValue=A,B,C
+valueOfMay={key1: '1', key2: '2', key3: '3'}
+```
 <br>
+
+list
+```
+list
+@Value("${listOfValues}")
+private String[] valuesArray;
+
+@Value("#{'${listOfValues}'.split(',')}")
+private List<String> valuesList;
+```
+<br>
+
+map
+```
+@Value("#{${valuesMap}}")
+private Map<String, Integer> valuesMap;
+
+@Value("#{${unknownMap : {key1: '1', key2: '2'}}}")
+private Map<String, Integer> unknownMap;
+
+@Value("#{${valuesMap}['unknownKey'] ?: 5}")
+private Integer unknownMapKeyWithDefaultValue;
+```
 
