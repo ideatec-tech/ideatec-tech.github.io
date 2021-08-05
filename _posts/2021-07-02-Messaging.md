@@ -95,6 +95,28 @@ author: alex
 
 ---
 
+## 추가
+
+1. **메시지 프로퍼티 파일 위치 수정**
+
+![prop-move-path](../image/alex/2021-07-02/prop-move-path.PNG)
+
+프로퍼티 파일들위 위치를 파일 path하위로 옮겼습니다. <br>
+
+![msg-path-change](../image/alex/2021-07-02/msg-path-change.PNG)
+![msg-change-result](../image/alex/2021-07-02/msg-change-result.PNG)
+
+파일 path의 위치를 jvm argument에 file.path 값으로 저장한 후 적용했고 이상없이 실행되는것을 확인 하실 수 있습니다.<br>
+
+![boot-msg-change-path](../image/alex/2021-07-02/boot-msg-change-path.PNG)
+![boot-msg-change-result](../image/alex/2021-07-02/boot-msg-change-result.PNG)
+
+부트에서도 같은 방식으로 MessageConfig에서 System.getProperty()를 이용해서 path를 적용해줬습니다. 마찬가지로 정상 작동하는 것을 확인하실 수 있습니다. <br>
+
+---
+
+---
+
 #### 참고자료
 
 &nbsp; - https://offbyone.tistory.com/408 <br>
