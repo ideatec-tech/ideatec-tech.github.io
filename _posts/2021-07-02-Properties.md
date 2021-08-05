@@ -112,6 +112,77 @@ application.properties 혹은 application.yml 파일에서 spring.config.import�
 
 ```
 
+## 추가
+
+1. **Property 파일 위치 옮기기**
+
+프로퍼티 파일의 위치를 classpath 하위가 아닌 다른 곳으로 옮기는 방법에 대해 알아보겠습니다. <br>
+
+![prop-move-path](../image/alex/2021-07-02/prop-move-path.PNG)
+
+위와 같이 프로퍼티 파일들을 classpath하위가 아닌 폴더 하위로 옮겼습니다. <br>
+이 경우, 이와 맞게 적용된 path들을 파일 path로 바꿔주면 됩니다. <br>
+
+![prop-change-config1](../image/alex/2021-07-02/prop-change-config1.PNG)
+![prop-change-config2](../image/alex/2021-07-02/prop-change-config2.PNG)
+
+file path의 경로를 jvm argument에 file.path라는 값으로 저장한 후, 프로퍼티 파일의 위치를 파일 path에 맞게 변경했습니다. <br>
+
+![prop-change-result](../image/alex/2021-07-02/prop-change-result.PNG)
+
+변경 후, 위와 같은 코드를 실행했을 때 같은 값이 출력되는 것을 확인하실 수 있습니다. <br><br>
+
+**부트에서 파일 위치 옮기기**
+
+![boot-change-path](../image/alex/2021-07-02/boot-change-path.PNG)
+![boot-change-result](../image/alex/2021-07-02/boot-change-result.PNG)
+
+부트에서도 같은 방식으로 변경했고 이상 없이 작동하는 것을 확인할 수 있습니다. <br><br>
+
+2. **@Value 어노테이션 default값 설정하기**
+
+@Value 어노테이션 사용 시, default값을 주기 위해선 ${프로퍼티 키 값:디폴트 값} 형식으로 키 값 다음에 ":디폴트 값" 으로 넣어주면 키 값으로 찾지 못할 경우 디폴트 값을 주입해줍니다. <br>
+
+![value-default](../image/alex/2021-07-02/value-default.PNG)
+
+TestDto의 name변수에 IDEATEC.edu.name으로 값을 주입했고 값이 없을 경우 IDEATEC-default란 값을 기본값으로 넣어주었습니다. <br>
+
+![value-default-code](../image/alex/2021-07-02/value-default-code.PNG)
+
+그 후 testDto를 주입받고 getName()으로 아까 설정한 값이 잘 나오나 테스트 해보는 코드 입니다. <br>
+
+![value-default-prop](../image/alex/2021-07-02/value-default-prop.PNG)
+![value-default-with-prop](../image/alex/2021-07-02/value-default-with-prop.PNG)
+
+설정이 있을 경우 설정된 값이 출력되고, <br>
+
+![value-default-remove-prop](../image/alex/2021-07-02/value-default-remove-prop.PNG)
+![value-default-result](../image/alex/2021-07-02/value-default-result.PNG)
+
+설정된 값이 없는 경우 기본값인 IDEATEC-default가 출력되는 것을 확인할 수 있습니다. <br><br>
+
+3. **프로퍼티 파일을 이용해 List와 Map 값 주입**
+
+![value-list-map-dto](../image/alex/2021-07-02/value-list-map-dto.PNG)
+
+@Value 어노테이션을 이용해서 List와 Map 값을 주입하기 위한 설정입니다. <br>
+months의 타입을 List<String>으로 선언하고 @Value어노테이션을 사용했습니다. 특별히 다른 형태를 띄진 않습니다. <br>
+하지만 Map의 경우 #{}안에 프로퍼티 값을 넣는 다른 형태를 취했습니다. <br>
+
+![value-list-map-prop](../image/alex/2021-07-02/value-list-map-prop.PNG)
+
+프로퍼티 파일의 모습입니다. List의 경우 ","를 구분자로 여러 값을 나열했고, Map의 경우, 중괄호 안에 {키값:'밸류'} 형식으로 들어가 있습니다.<br>
+
+![value-list-controller](../image/alex/2021-07-02/value-list-controller.PNG)
+![value-list-result](../image/alex/2021-07-02/value-list-result.PNG)
+
+List의 실행 코드와 결과 값 입니다.<br>
+
+![value-map-controller](../image/alex/2021-07-02/value-map-controller.PNG)
+![value-map-result](../image/alex/2021-07-02/value-map-result.PNG)
+
+Map의 실행 코드와 결과 값 입니다.<br>
+
 ---
 
 #### 참고자료
