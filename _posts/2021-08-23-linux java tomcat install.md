@@ -121,11 +121,11 @@ windows server2008부터 기본적으로 제공되는 가상화솔루션으로 �
 - IP를 설정하기 위해서 /etc/sysconfig/network-scripts 경로로 접속 후 자신의 이더넷 이름확인
 (ex : ifcfg-eth0 , ifcfg-ens33 등등)
 
-![vi](../image/hbshin/20210823/vi.PNG)
+![vi](../image/hbshin/20210823/vi.png)
 
 - 확인이되면 위와같이 vi로 접속하고 몇가지를 변경합니다.
 
-![viafter](../image/hbshin/20210823/viafter.PNG)
+![viafter](../image/hbshin/20210823/viafter.png)
 
 - 변경사항은 다음과 같습니다.
 
@@ -139,14 +139,14 @@ DNS1=8.8.8.8 (DNS서버 IP를 등록합니다. 저는 구글 DNS를 적용했습
 ```
 
 
-![완료](../image/hbshin/20210823/완료.PNG)
+![완료](../image/hbshin/20210823/완료.png)
 
 - 변경이 끝나면 저장된 네트워크를 재시작하고 등록했던 google ping을 보내 응답을 확인하여 설정이 잘되었는지 체크합니다.
 
 
 ## centOS7 - java 1.8 version install
 
-![java목록](../image/hbshin/20210823/java목록.PNG)
+![java목록](../image/hbshin/20210823/java목록.png)
 
 ```
 yum list java*jdk-devel 
@@ -179,7 +179,7 @@ yum list tomcat
 - 먼저 설치가능한 tomcat을 확인합니다.
 - 확인해보면 목록에 패키지가 없는데 yum으로는 tomcat7 버전까지만 지원한다고 합니다.
 
-![tomcatlink](../image/hbshin/20210823/tomcatlink.PNG)
+![tomcatlink](../image/hbshin/20210823/tomcatlink.png)
 
 
 - 직접 http://tomcat.apache.org 로 접속해서 원하는 버전의 .tar파일 링크주소를 복사해서 가져옵니다.
