@@ -1,19 +1,25 @@
 ---
 layout: post
-title: linux JAVA,ApacheTomcat install
+title: linux hyper-v , centOS7 - JAVA,ApacheTomcat install
 featured-img: tomcatcentOS.PNG
 categories: ['linux']
 author: hbshin
 ---
 
-## linux java-1.8, tomcat8.5 install / hyper-v , centOS7
+# hyper-v , centOS7 setting / linux java-1.8, tomcat8.5 install
+<br>
 
-### hyper-v란?
+## hyper-v란?
+<br>
+
 ```
 windows server2008부터 기본적으로 제공되는 가상화솔루션으로 가상화기술을 사용하여,
-가상화된 컴퓨팅환경을 만들고 관리할 수 있는 인프라를 제공한다.
+가상화된 컴퓨팅환경을 만들고 관리할 수 있는 인프라를 제공합니다.
 ```
-### hyper-v 세팅 
+
+## hyper-v 세팅 
+<br>
+
 
 ![windowonoff](../image/hbshin/20210823/windowonoff.PNG)
 
@@ -67,36 +73,146 @@ windows server2008부터 기본적으로 제공되는 가상화솔루션으로 �
 
 - 가상환경에 centOS7 설치완료
 
+## hyper-v 에서 centOS7 설정
+
+- 네트워크 설정
+
+![네트워크어댑터](../image/hbshin/20210823/네트워크어댑터.png)
+
+
+- hyper-v 메인화면에서 오른쪽에 연결되어있는 가상컴퓨터에 설정을 클릭하고 그림과 같이 네트워크 
+어댑터를 클릭하고 설정합니다. (LAN ID)는 처음 설정한 값인 3으로 등록
+
+
+![보안](../image/hbshin/20210823/보안.png)
+
+
+- 추가로 보안에서 보안 부팅 사용을 체크 해제합니다. 사용자가 리눅스 환경을 가상화 서버로 구성할 경우 리눅스는 처음부터 "보안 부팅" (Secure Boot) 을 지원하지 않으므로 이를 제거하여야 합니다.
+리눅스 OS 전부 "보안 부팅" 을 지원하지 않습니다. 체크 해제하지 않을 시 에러가 발생합니다.
+
+
+![공유](../image/hbshin/20210823/공유.png)
+
+- 먼저 window가 hyper-v에서 만들었던 가상컴퓨터와 네트워크를 공유하도록 설정해줘야 사용이 가능합니다.
+- 위와 같이 네트워크 연결창에서 자신이 사용하는 이더넷이나 WI-FI네트워크를 오른쪽 마우스클릭 -> 속성 -> 공유에서 아래와 같이 설정합니다.
+
+![공유2](../image/hbshin/20210823/공유2.png)
+
+
+- 인터넷 연결 공유에서 아래와 같이 체크를 하고 "홈 네트워킹 연결"에서 생성한 가상컴퓨터 네트워크를 선택한뒤 확인
 
 
 
+![속성](../image/hbshin/20210823/속성.png)
+
+- 다음으로 가상컴퓨터에 네트워크설정을 위해 ip주소와 서브넷 마스크 확인 
+- IP 주소끝에 1이 가상 스위치의 게이트웨이 주소입니다.
+이 게이트웨이에 연결되는 가상 머신들의 IP주소는 마지막 1대신 사용자가 임의로 정해줍니다.(2~255)
+
+## centOS7 네트워크 ip 설정
+
+- 이제 hyper-v에서 생성한 가상컴퓨터를 실행하고 생성 시 설정했던 username과 pw로 접속합니다.
+
+![경로](../image/hbshin/20210823/경로.png)
+
+
+![network](../image/hbshin/20210823/network.PNG)
+
+- IP를 설정하기 위해서 /etc/sysconfig/network-scripts 경로로 접속 후 자신의 이더넷 이름확인
+(ex : ifcfg-eth0 , ifcfg-ens33 등등)
+
+![vi](../image/hbshin/20210823/vi.PNG)
+
+- 확인이되면 위와같이 vi로 접속하고 몇가지를 변경합니다.
+
+![viafter](../image/hbshin/20210823/viafter.PNG)
+
+- 변경사항은 다음과 같습니다.
+
+```
+BOOTPROTO=static (DHCP를 통해 IP를 받아오지 않고 직접 설정합니다.)
+ONBOOT=yes (부팅 시 등록된 IP설정을 적용합니다.)
+IPADDR=192.168.137.72 (전 포스팅에서 말씀드린 GATEWAY 주소입니다. 끝자리를 72로 설정했습니다.)
+NETMASK=255.255.255.0 (네트워크 주소를 찾을 수 있도록 넷마스크를 설정합니다.)
+GATEWAY=192.168.137.1 
+DNS1=8.8.8.8 (DNS서버 IP를 등록합니다. 저는 구글 DNS를 적용했습니다.)
+```
+
+
+![완료](../image/hbshin/20210823/완료.PNG)
+
+- 변경이 끝나면 저장된 네트워크를 재시작하고 등록했던 google ping을 보내 응답을 확인하여 설정이 잘되었는지 체크합니다.
+
+
+## centOS7 - java 1.8 version install
+
+![java목록](../image/hbshin/20210823/java목록.PNG)
+
+```
+yum list java*jdk-devel 
+```
+
+- 먼저 위의 명령어를 통해서 설치가능한 jdk를 확인합니다.
+
+
+![java다운](../image/hbshin/20210823/java다운.PNG)
 
 
 
+- java-1.8.0-openjdk-devel.x86_64를 설치합니다.
 
 
+![javaversion](../image/hbshin/20210823/javaversion.PNG)
+
+- 설치가 완료되면 java -version 을 명령하여 확인합니다. 위와 같이 뜨면 정상적으로 설치가 된 것입니다.
+
+- 추가로 환경변수설정이 있는데 yum으로 설치시 자동으로 환경변수가 설정되어서 추가로 하지 않아도 됩니다.
+
+## centOS7 - tomcat 8.5 version install
+
+```
+yum list tomcat 
+```
+
+![tomcatlist](../image/hbshin/20210823/tomcatlist.PNG)
+
+- 먼저 설치가능한 tomcat을 확인합니다.
+- 확인해보면 목록에 패키지가 없는데 yum으로는 tomcat7 버전까지만 지원한다고 합니다.
+
+![tomcatlink](../image/hbshin/20210823/tomcatlink.PNG)
 
 
+- 직접 http://tomcat.apache.org 로 접속해서 원하는 버전의 .tar파일 링크주소를 복사해서 가져옵니다.
 
 
+```
+[root@localhost /]# wget https://mirror.navercorp.com/apache/tomcat/tomcat-8/v8.5.70/bin/apache-tomcat-8.5.70.tar.gz
 
+```
 
+- 위와 같이 입력하여 tomcat 설치를 합니다.
 
+```
+[root@localhost /] # tar zxvf apache-tomcat-8.5.70.tar.gz
+```
 
+- 설치후 .tar 파일 압축해제 
 
+```
+# firewall-cmd --permanent --zone=public --add-port=8080/tcp
+# firewall-cmd --reload
+# firewall-cmd --list-ports
+```
 
+- 마지막으로 3가지를 입력해서 외부 브라우저를 통해 접속이 가능하도록 방화벽 포트 개방
 
+![tomcatstart](../image/hbshin/20210823/tomcatstart.PNG)
 
+- tomcat에 bin파일에 접속해서 ll 을 통해 start목록을 확인하고 ./startup.sh 를 입력해서 tomcat실행
 
+![결과창](../image/hbshin/20210823/결과창.PNG)
 
-
-
-
-
-
-
-
-
+- http://ip주소:8080을 통해 접속이 완료되면 정상적으로 설치 완료입니다.
 
 
 
