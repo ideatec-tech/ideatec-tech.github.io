@@ -146,7 +146,7 @@ DNS1=8.8.8.8 (DNS서버 IP를 등록합니다. 저는 구글 DNS를 적용했습
 
 ## centOS7 - java 1.8 version install
 
-![java목록](../image/hbshin/20210823/java목록.png)
+![java목록](../image/hbshin/20210823/java목록.PNG)
 
 ```
 yum list java*jdk-devel 
