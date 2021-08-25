@@ -44,7 +44,12 @@ author: hbshin
 
 <br>
 
+```
+# /usr/local/lib/apache-tomcat-8.5.70/conf/server.xml 
+```
+
 - tomcat 설정파일 server.xml파일 안에 주석처리 되어있는 AJP포트 설정을 주석해제
+
 
 <br>
 
@@ -56,20 +61,25 @@ author: hbshin
 - 주석을 지우고 tomcat을 재기동하면 8009포트를 netstat상에서 확인가능.
 
 ```
-vi 나 nano를 통해 apache(httpd) /conf/httpd.conf 설정 파일을 수정합니다.
+vi 나 nano를 통해 apache(httpd) /conf/httpd.conf 설정 파일에 LoadModule jk_modules/mod_jk.so 추가
 ```
-
 
 <br>
 
 ![loadmodule](../image/hbshin/20210825/loadmodule.PNG)
 
 
-- apache와 연동할 tomcat 을 설정하는 파일 생성
+### apache와 연동할 tomcat 을 설정하는 파일 생성
+
+<br>
+
 
 ```
 vi 나 nano를 통해 httpd/conf/workers.properties 접속 후 내용추가
 ```
+
+
+<br>
 
 ![workers](../image/hbshin/20210825/workers.PNG)
 
