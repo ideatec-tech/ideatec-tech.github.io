@@ -1,7 +1,7 @@
 ---
 layout: post
 title: centOS7을 통해 Apache , tomcat 연동하는 2가지 방법
-featured-img: 메인이미지.png
+featured-img: 메인이미지.PNG
 categories: ['linux']
 author: hbshin
 ---
