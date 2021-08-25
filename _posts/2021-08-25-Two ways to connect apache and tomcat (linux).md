@@ -96,12 +96,16 @@ vi 나 nano를 통해 httpd/conf/workers.properties 접속 후 내용추가
 apache(httpd) /conf/httpd.conf
 ```
 
+![모드주석](../image/hbshin/20210825/모드주석.PNG)
+
+
+
 - 저는 httpd.conf 파일에서 Mod_jk는 주석처리하고 
 
-```
-#LoadModule proxy_module modules/mod_proxy.so
-#LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
-```
+
+![프록시설정](../image/hbshin/20210825/프록시설정.PNG)
+
+
 - proxy방식을 이용하기 위해서 이 두가지를 주석을 풀었습니다.
 - 그 다음 하단부에 IP로 들어온 요청에 대해서 AJP를 통해 tomcat으로 보내도록 아래와 같이 설정했습니다.
 
