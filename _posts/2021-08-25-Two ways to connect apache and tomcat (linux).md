@@ -12,6 +12,11 @@ author: hbshin
 - apache , tomcat 연동을 하기 위한 모듈 
 - AJP 프로토콜을 이용해 요청 중 톰캣이 처리할 요청을 AJP포트를 통해 tomcat에 전달하고 응답받는 역할을 수행 
 
+### AJP 란?
+
+- JP는 웹서버(Apache) 뒤에 있는 어플리케이션 서버로부터 웹서버로 들어오늘 요청을 위임할 수 있는 바이너리 프로토콜이다.
+
+
 ### 설치
 
 기본적으로 apache , tomcat 필요
@@ -80,3 +85,29 @@ vi 나 nano를 통해 httpd/conf/workers.properties 접속 후 내용추가
 
 
 ![result](../image/hbshin/20210825/result.PNG)
+
+
+
+## Mod_Proxy_ajp 방식
+
+- 이전 mod_jk 방식과 비슷한 방법으로 설정합니다.
+
+```
+apache(httpd) /conf/httpd.conf
+```
+
+- 저는 httpd.conf 파일에서 Mod_jk는 주석처리하고 
+
+```
+#LoadModule proxy_module modules/mod_proxy.so
+#LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+```
+- proxy방식을 이용하기 위해서 이 두가지를 주석을 풀었습니다.
+- 그 다음 하단부에 IP로 들어온 요청에 대해서 AJP를 통해 tomcat으로 보내도록 아래와 같이 설정했습니다.
+
+![프록시V](../image/hbshin/20210825/프록시V.PNG)
+
+- 이제 결과를 확인했을때 아래와 같이뜨면 성공입니다.
+
+![result](../image/hbshin/20210825/result.PNG)
+
