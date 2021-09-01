@@ -37,21 +37,21 @@ author: hbshin
 # firewall-cmd --reload
 - 그 후 tomcat을 실행하면 자동으로 .war파일의 압축이 풀립니다.
 ```
-![j1](../image/hbshin/20210901/j1.PNG)
+![j1](../image/hbshin/20210901/j1.png)
 ```
 - 이제 tomcat을 재기동하고 본인의ip:9090(지정한포트번호)로 접속하면 위와 같은 화면이 뜹니다.
 - 초기비밀번호가 있는데 이미지에서 가르쳐주는 /var/lib...으로 vi 나 nano를 통해 접속합니다.
 - 접속 후 비밀번호를 copy and paste 합니다.
 ```
-![j2](../image/hbshin/20210901/j2.PNG)
+![j2](../image/hbshin/20210901/j2.png)
 ```
 - install suggested plugins 합니다.
 ```
-![j3](../image/hbshin/20210901/j3.PNG)
+![j3](../image/hbshin/20210901/j3.png)
 ```
 - 계정을 생성합니다.
 ```
-![j4](../image/hbshin/20210901/j4.PNG)
+![j4](../image/hbshin/20210901/j4.png)
 ```
 - 위와 같이뜨면 설치는 마무리입니다.
 ```
@@ -86,11 +86,11 @@ author: hbshin
 ### 빌드배포를 수행하는 job 설정
 <br>
 
-![q1](../image/hbshin/20210901/q1.PNG)
+![q1](../image/hbshin/20210901/q1.png)
 ```
 - 새로운 ltem 클릭
 ```
-![q2](../image/hbshin/20210901/q2.PNG)
+![q2](../image/hbshin/20210901/q2.png)
 ```
 - name 설정 후 Freestyle project 클릭
 ```
@@ -99,11 +99,11 @@ author: hbshin
 - 소스 코드 관리탭 클릭후 관리에서 None 말고 Git 클릭
 - 본인의 git Repository URL 작성 
 ```
-![w2](../image/hbshin/20210901/w2.PNG)
+![w2](../image/hbshin/20210901/w2.png)
 ```
 - Credentials 에서 Add 클릭 -> jenkins 선택 
 ```
-![w3](../image/hbshin/20210901/w3.PNG)
+![w3](../image/hbshin/20210901/w3.png)
 ```
 - 본인 git계정 Username , password 작성 후 Add
 ```
