@@ -23,6 +23,7 @@ author: hbshin
 ```
 ![winscp](../image/hbshin/20210901/winscp.PNG)
 ```
+※ winSCP는 다운받아서 간단하게 개인 ip와 username ,pw 등록후 사용가능합니다.
 - 생성된 war 파일을 winSCP를 통해서 .war파일을 linux tomcat 디렉토리에 webapps 디렉토리안에 넣어줍니다.
 ```
 ![webapps](../image/hbshin/20210901/webapps.PNG)
@@ -39,6 +40,7 @@ author: hbshin
 <Host>          
 ```
 ```
-- 모든 설정을 마무리했으면 tomcat 재기동 후 본인 ip:8080/로 요청을 하면 본인이 war파일로 넣었던 프로젝트의 메인화면이 웹 브라우저에 송출됩니다.
+- 모든 설정을 마무리했으면 tomcat 재기동
+- 본인 ip:8080/로 요청을 하면 본인이 war파일로 넣었던 프로젝트의 메인화면이 웹 브라우저에 송출됩니다.
 ```
 
