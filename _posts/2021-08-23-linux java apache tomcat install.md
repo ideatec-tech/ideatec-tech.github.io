@@ -6,7 +6,8 @@ categories: ['linux']
 author: hbshin
 ---
 
-# hyper-v , centOS7 setting / java-1.8, tomcat8.5, apache install
+# hyper-v , centOS7 세팅 / java, tomcat, apache install
+(java version 1.8 , tomcat version 8.5)
 
 ## hyper-v란?
 <br>
@@ -107,10 +108,12 @@ windows server2008부터 기본적으로 제공되는 가상화솔루션으로 �
 - 이제 hyper-v에서 생성한 가상컴퓨터를 실행하고 생성 시 설정했던 username과 pw로 접속합니다.
 ```
 ![경로](../image/hbshin/20210823/경로.png)
-
+```
+- IP를 설정하기 위해서 /etc/sysconfig/network-scripts 경로로 접속
+```
 ![network](../image/hbshin/20210823/network.PNG)
 ```
-- IP를 설정하기 위해서 /etc/sysconfig/network-scripts 경로로 접속 후 자신의 이더넷 이름확인
+- 자신의 이더넷 이름확인
 (ex : ifcfg-eth0 , ifcfg-ens33 등등)
 ```
 ![vi](../image/hbshin/20210823/vi.png)
@@ -135,7 +138,6 @@ DNS1=8.8.8.8 (DNS서버 IP를 등록합니다. 저는 구글 DNS를 적용했습
 ```
 
 ## java 1.8 version install
-<br>
 
 ![java목록](../image/hbshin/20210823/java목록.PNG)
 
@@ -174,7 +176,6 @@ export CLASSPATH
 ```
 
 ## tomcat 8.5 version install
-<br>
 
 ```
 yum list tomcat 
@@ -218,8 +219,7 @@ yum list tomcat
 - http://ip주소:8080을 통해 접속이 완료되면 정상적으로 설치 완료입니다.
 ```
 
-## Apache install
-<br>
+## Aaache install
 
 ```
 # yum install gcc-c++
@@ -260,7 +260,6 @@ pcre - https://ftp.pcre.org/pub/pcre/
 ```
 
 ### 설정
-<br>
 
 ```
 ※ 1~5번까지 차례대로 하나씩 입력
@@ -325,8 +324,6 @@ pcre - https://ftp.pcre.org/pub/pcre/
 ```
 
 ### 실행
-<br>
-
 ```
 # firewall-cmd --permanent --zone=public --add-port=80/tcp
 # firewall-cmd --reload
