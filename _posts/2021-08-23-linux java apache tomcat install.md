@@ -291,7 +291,7 @@ pcre - https://ftp.pcre.org/pub/pcre/
 5. apache 
 # cd ../httpd-2.4.48
 # ./configure \
---prefix=/SW/web/httpd-2.4.46 \
+--prefix=/SW/web/httpd-2.4.48 \
 --with-mpm=worker \
 --with-pcre=/usr/local/pcre/bin/pcre-configure \
 --with-apr=/usr/local/apr \
