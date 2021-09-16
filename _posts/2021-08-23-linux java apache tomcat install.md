@@ -265,7 +265,7 @@ pcre - https://ftp.pcre.org/pub/pcre/
 ※ 1~5번까지 차례대로 하나씩 입력
 
 1. pcre
-# cd ./pcre2-10.36
+# cd ./pcre2-10.37
 # ./configure --prefix=/usr/local/pcre
 # make
 # make install
@@ -285,11 +285,11 @@ pcre - https://ftp.pcre.org/pub/pcre/
 # make install
 
 4. apr-1.7.0과 apr-util-1.6.1은 ./httpd-2.4.46/srclib/ 안에 디렉토리명을 바꿔서 넣어줍니다.
-# mv apr-1.7.0 ./httpd-2.4.46/srclib/apr
-# mv apr-util-1.6.1 ./httpd-2.4.46/srclib/apr-util
+# mv apr-1.7.0 ./httpd-2.4.48/srclib/apr
+# mv apr-util-1.6.1 ./httpd-2.4.48/srclib/apr-util
 
 5. apache 
-# cd ../httpd-2.4.46
+# cd ../httpd-2.4.48
 # ./configure \
 --prefix=/SW/web/httpd-2.4.46 \
 --with-mpm=worker \

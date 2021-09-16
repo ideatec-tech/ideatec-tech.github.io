@@ -35,7 +35,7 @@ author: Dan
 
 ```
 # cd ./tomcat-connectors-버전-src/native/
-# ./configure --whth-apps=/bin/apxs
+# ./configure --whth-apxs=/bin/apxs
 # make
 # make install
 ```
