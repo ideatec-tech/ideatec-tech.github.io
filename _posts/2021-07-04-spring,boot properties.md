@@ -3,7 +3,7 @@ layout: post
 title: Spring, Spring Boot properties
 featured-img: springLogo.jpg
 categories: ["SpringFramework", "SpringBoot", "properties"]
-author: hbshin
+author: Dan
 ---
 
 ## Spring properties 파일 읽어오기

@@ -3,7 +3,7 @@ layout: post
 title: CentOS7을 통해 Apache , tomcat 연동하는 2가지 방법
 featured-img: main.png
 categories: ['linux']
-author: hbshin
+author: Dan
 ---
 
 

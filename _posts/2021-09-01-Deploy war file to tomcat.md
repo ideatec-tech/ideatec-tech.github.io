@@ -3,7 +3,7 @@ layout: post
 title: Deploy war file to tomcat
 featured-img: tomcatwar.jpg
 categories: ['linux']
-author: hbshin
+author: Dan
 ---
 
 ## War File Tomcat 배포하기

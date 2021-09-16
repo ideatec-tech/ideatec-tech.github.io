@@ -3,7 +3,7 @@ layout: post
 title: linux hyper-v , centOS7 - JAVA,Apache,Tomcat install
 featured-img: tomcatcentOS.PNG
 categories: ['linux']
-author: hbshin
+author: Dan
 ---
 
 # hyper-v , centOS7 세팅 / java, tomcat, apache install

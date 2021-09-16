@@ -3,7 +3,7 @@ layout: post
 title: Deploy war file to tomcat through SSH after jenkins auto-build when git push
 featured-img: jenkinsSSH.png
 categories: ['linux']
-author: Den
+author: Dan
 ---
 
 # 1. Git push할때마다 webhook을 통해 jenkins 자동빌드 

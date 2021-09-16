@@ -3,7 +3,7 @@ layout: post
 title: Spring, Spring Boot message
 featured-img: message11.PNG
 categories: ["SpringFramework", "SpringBoot", "message"]
-author: hbshin
+author: Dan
 ---
 
 

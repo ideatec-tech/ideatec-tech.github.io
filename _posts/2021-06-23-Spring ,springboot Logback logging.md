@@ -3,7 +3,7 @@ layout: post
 title: Spring, Springboot Logback logging
 featured-img: Logbackimg.jpg
 categories: ["Spring", "Logback", "logging"]
-author: hbshin
+author: Dan
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title: jenkins 설치 및 tomcat 자동 빌드환경 구축
 featured-img: jenkinstomcat.JPG
 categories: ['linux']
-author: hbshin
+author: Dan
 ---
 
 ## linux (centos7) - jenkins 설치 

@@ -3,7 +3,7 @@ layout: post
 title: Spring,Springboot of DB Connection and RestController CRUD
 featured-img: frbootlogo.png
 categories: ["spring","springboot","DB","RestController"]
-author: hbshin
+author: Dan
 ---
 
 
