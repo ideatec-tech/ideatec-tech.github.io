@@ -13,11 +13,10 @@ author: Dan
 ![architecture](../image/hbshin/20211026/architecture.png)
 
 ```
-아키텍처 구조는 그림과 같습니다. 
-User가 Browser에 요청하면 Browser에서 WAS1(front)로 
-request를 보내고 WAS2(API)에서 받습니다. 
-이후 WAS2에서 생성된 API값을 WAS1에 Response 하고 
-WAS1에서는 Browser로 Response 한 뒤 
+- 아키텍처 구조는 그림과 같습니다. 
+User가 Browser에 요청하면 Browser에서 WAS1(front)로 request를 보내고 
+WAS2(API)에서 받습니다. 이후 WAS2에서 생성된 API값을 
+WAS1에 Response 하고 WAS1에서는 Browser로 Response 한 뒤 
 최종적으로 User까지 Response 합니다.
 ```
 
@@ -139,8 +138,8 @@ public class DemoVo implements Serializable{
 ```
 ```
 - 앞서 Browser에서 URL을 통해 한 요청을 testList()가 받고
- Vo를 생성, Controller에서 Vo를 통해
-  넘겨줄 parameter값을 demoVO에 set 합니다. 
+Vo를 생성, Controller에서 Vo를 통해 넘겨줄 parameter값을 
+demoVO에 set 합니다. 
 
 - 이제 API WAS에 있는 API값을 return 받기 위해서 
 RestTemplate을 생성합니다.
@@ -148,16 +147,15 @@ RestTemplate을 생성합니다.
 ※ RestTemplate :RestTemplate은 Spring 3.0 부터 지원하는 템플릿으로
 Spring에서 HTTP 통신을 RESTful 형식에 맞게 손쉬운 사용을 제공해주는 템플릿입니다.
 Rest API 서비스를 요청후 응답 받을 수 있도록 설계되었으며,
-HTTP 프로토콜의 메소드(ex. GET, POST, DELETE, PUT)들에 
-적합한 여러 메소드들을 제공합니다.
+HTTP 프로토콜의 메소드(ex. GET, POST, DELETE, PUT)들에 적합한 여러 메소드들을 제공합니다.
 Java에서 사용되는 다른 템플릿(ex. JdbcTemplate)들 처럼 
 단순 메소드 호출 만으로 복잡한 작업을 쉽게 처리할 수 있는 것이 특징이다.
 
 - 먼저 예외처리를 위해 try catch로 묶습니다.
 
 - 생성된 RestTemplate 의 
-postForObject(URL, parameter , return 받을 class type)를 
-통해 API WAS에 요청하고 return 받습니다.
+postForObject(URL, parameter , return 받을 class type)를 통해 
+API WAS에 요청하고 return 받습니다.
 
 ※ postForObject : HTTP POST 요청 후 결과는 객체로 반환 
 
@@ -203,10 +201,9 @@ public class DanController {
 }
 ```
 ```
-- RestTemplate PostForObject를 통한 요청을 
-demoList()에서 받고 WAS1(front)처럼 WAS2(API)에서도 VO를 생성하고 
-demoVO에 API 값을 set 하고 demoVo로 
-다시 요청받은곳으로 return 합니다. 
+- RestTemplate PostForObject를 통한 요청을 demoList()에서 받고 
+WAS1(front)처럼 WAS2(API)에서도 VO를 생성하고, 
+demoVO에 API 값을 set 하고 demoVo로 다시 요청받은곳으로 return 합니다. 
 ```
 ```
 $(document).ready(function() {
@@ -233,8 +230,8 @@ $(document).ready(function() {
 ```
 ```
 - return 받은 json data를 setData에 담고 
-jQuery Method 인 .text()를 통해 
-선택한 요소안의 내용을 가져와서 각각 data에 맞게 뿌려줍니다.
+jQuery Method 인 .text()를 통해 선택한 요소안의 내용을 가져와서 
+각각 data에 맞게 뿌려줍니다.
 ```
 
 ![danpang2](../image/hbshin/20211026/danpang2.png)
@@ -264,33 +261,36 @@ RestTemplate의 메소드 종류는 알아본 결과 12가지가 있었습니다
 저는 POST 요청을 통해 객체로 반환 받아야 했기 때문에
 PostForObject를 사용했습니다.
 
--PostForObject 의 사용방법을 이해했지만 
+-PostForObject 의 사용방법을 이해했지만,
 코드를 작성하기 위한 이해는 아직 부족했습니다.
 그래서 RestTemplate PostForObject example을 참고하여 
 (URL , 요청할 parameter , return 받을 class type) 통해 
 요청하고 응답받는 방식이라는 점을 이해했습니다.
 
 - 코드 작성 시 URL을 통해 요청 할 때 
-넘겨줄 parameter 값을 demoVo에 담았고 
+넘겨줄 parameter 값을 demoVo에 담았고,
 return 받을 class type을 DemoVo로 작성하고 
 URL은 localhost:"WAS2 포트번호"를 입력했습니다.
 
 - WAS2(API) Controller에서는 요청 할 때 단순하게 
-return 시켜줄 API 값이 필요하기 때문에 
-앞서 WAS1(front) 에서 DemoVo를 사용했던 것과 
-같이 WAS2(API)에서도 DemoVO에 API 값을 set 해서 return 했습니다.
+return 시켜줄 API 값이 필요하기 때문에 앞서 WAS1(front) 에서 
+DemoVo를 사용했던 것과 같이 WAS2(API)에서도
+DemoVO에 API 값을 set 해서 return 했습니다.
 
 - 그리고 최종적으로 jquery method .text()를 
 사용하기전에 html화면단에 dataTable을 통해 뿌려주려고 했습니다. 
-하지만 API값이 로그상에서도 정상적으로 호출되는게 확인되었음에도 
-불구하고  dataTable에 data가 적용되지 않는 오류가 발생했었습니다. 
-그래서 결론적으로 제가 쓴 코드에서는 API값이 
-단일건으로 나오기 때문에 굳이 dataTable을 사용 할 필요가 없었기 때문에 
-수정해서 코드를 마무리했습니다.
+하지만 API값이 로그상에서도 정상적으로 호출되는게 확인되었음에도 불구하고  
+dataTable에 data가 적용되지 않는 오류가 발생했었습니다. 
+그래서 결론적으로 제가 쓴 코드에서는 API값이 단일건으로 나오기 때문에 
+굳이 dataTable을 사용 할 필요가 없었기 때문에 수정해서 코드를 마무리했습니다.
 ```
 ```
-2. jar file 배포 디렉토리 위치 : 가장 흔하게 war file 배포는 기본적으로 tomcat설정이 tomcat dir 안에 webapps를 읽도록 Server.xml에 Default되어 있습니다. 그래서 당연히 jar file 배포도 war file 배포와 크게 다를바 없을거란 생각을 하여 webapps에 배포했지만 Server에서는 file을 읽지 못했습니다.
-알고보니 script 설정이 deploy dir를 읽도록 변경되어 있었고 꼭 webapps에 배포하지 않아도 되는 것을 알게 되었습니다. 
+2. jar file 배포 디렉토리 위치 : 가장 흔하게 war file 배포는 
+기본적으로 tomcat설정이 tomcat dir 안에 webapps를 읽도록 Server.xml에 Default되어 있습니다. 
+그래서 당연히 jar file 배포도 war file 배포와 크게 다를바 없을거란 생각을 하여 
+webapps에 배포했지만 Server에서는 file을 읽지 못했습니다. 
+알고보니 script 설정이 deploy dir를 읽도록 변경되어 있었고 
+꼭 webapps에 배포하지 않아도 되는 것을 알게 되었습니다. 
 ```
 ```
 3. jar file
@@ -303,11 +303,16 @@ return 시켜줄 API 값이 필요하기 때문에
 ※ war 
 - Web Application Archive
 - 웹 어플리케이션을 어떻게 설정할 지에 대한 정의가 있는 web.xml 파일이 있다.
-- 자바 서버 페이지, 자바 서블릿, 자바 클래스, XML, 파일, 태그 라이브러리, 정적 웹페이지 및 웹 application 을 구성할 때 필요한 자원을 압축한 jar 파일
+- 자바 서버 페이지, 자바 서블릿, 자바 클래스, XML, 파일, 태그 라이브러리, 
+정적 웹페이지 및 웹 application 을 구성할 때 필요한 자원을 압축한 jar 파일
 
-- jar가 가장 적은 압축범위를 갖고 war는 jar의 모든 파일 + war만의 파일을 더 압축합니다. 결론은 사용되는 목적에 따라 압축되는 파일 범위만 다른 같은 압축 파일입니다.
+- jar가 가장 적은 압축범위를 갖고 war는 jar의 모든 파일 + war만의 파일을 더 압축합니다. 
+결론은 사용되는 목적에 따라 압축되는 파일 범위만 다른 같은 압축 파일입니다.
 
-- 대부분 linux 가상 서버에 jar file 배포시 쉘 스크립트를 통해 명령어들의 조합을 모아서 배치 파일을 만들어서 실행시킵니다. 이 부분을 이해하지 못했던 것과 Service01이 회사 기준으로  만든 서버이므로 그 부분에 맞춰서 배포를 해야 한다는 점을 인지하지 못했었습니다.
+- 대부분 linux 가상 서버에 jar file 배포시 쉘 스크립트를 통해 
+명령어들의 조합을 모아서 배치 파일을 만들어서 실행시킵니다. 
+이 부분을 이해하지 못했던 것과 Service01이 회사 기준으로  만든 서버이기때문에
+그 부분에 맞춰서 배포를 해야 한다는 점을 인지하지 못했었습니다.
 ```
 ```
 (1)	$(document).ready(function() {
@@ -326,13 +331,20 @@ return 시켜줄 API 값이 필요하기 때문에
 
 ```
 ```
-4. URL 호출시 내부, 외부 ip : 위에 2가지 코드가 있습니다. 그리고 Service01 내부, 외부 IP가 있습니다.
-"demo/list"는 WAS1(front)의 호출경로입니다. .ready가 실행되면 WAS1으로 요청을 보내야하는데 WAS1은 외부IP로 호출해야하고 WAS2는 내부IP로 호출 해야하는 상황입니다. 하지만 저는 이 부분을 처음에는 정확히 인지 하지 못해서 Service01 Server안에 모두 들어가 있기 때문에 같은 IP로 호출을 해야 한다고 생각을 하고 있었습니다. 하지만 질문을 한 결과 아래의 그림과 같습니다.
+4. URL 호출시 내부, 외부 ip : 위에 2가지 코드가 있습니다. 
+그리고 Service01 내부, 외부 IP가 있습니다."demo/list"는 WAS1(front)의 호출경로입니다. 
+.ready가 실행되면 WAS1으로 요청을 보내야하는데 WAS1은 외부IP로 호출해야하고 
+WAS2는 내부IP로 호출 해야하는 상황입니다. 
+하지만 저는 이 부분을 처음에는 정확히 인지 하지 못해서 Service01 Server안에 
+모두 들어가 있기 때문에 같은 IP로 호출을 해야 한다고 생각을 하고 있었습니다. 
+하지만 질문을 한 결과 아래의 그림과 같습니다.
 ```
-![요청](../image/hbshin/20211026/요청.png)
+![요청](../image/hbshin/20211026/요청.PNG)
 
 ```
-- 즉, Browser에서 서버로 요청 할 때에는 외부에서 접근하기 때문에 외부IP를 사용해야 하고, API 호출시에는 같은 Server안에서 호출 하기 때문에 내부 IP를 사용해야 호출이 가능합니다. 이 부분에 대한 정확한 인지를 하지 못했었습니다.
+- 즉, Browser에서 서버로 요청 할 때에는 외부에서 접근하기 때문에 
+외부IP를 사용해야 하고, API 호출시에는 같은 Server안에서 호출 하기 때문에 
+내부 IP를 사용해야 호출이 가능합니다. 이 부분에 대한 정확한 인지를 하지 못했었습니다.
 ```
 
 
