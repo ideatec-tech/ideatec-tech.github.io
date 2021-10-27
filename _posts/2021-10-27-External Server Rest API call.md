@@ -52,7 +52,7 @@ WAS1에 Response 하고 WAS1에서는 Browser로 Response 한 뒤
 	 	</div>	
 ```
 ```
-- 먼저 html 코드입니다. 간단하게 이미지 넣고
+- 먼저 html 코드입니다. 이미지 넣고
  <tr>,<td> 사용해서 상품 카테고리 추가했습니다.
 
 - User -> Browser 요청입니다.
@@ -73,8 +73,8 @@ $(document).ready(function() {
 - Browser에서 요청이 들어오면 .ready가 
 실행되면서 ajax가 실행됩니다.
 
-- 전송 type 은 POST, URL 을 통해 함수가 SUCCESS 시 
-JSON 타입으로 Controller에 요청합니다.
+- 전송 type은 POST, dataType은 JSON,URL 을 통해 
+함수가 SUCCESS 되면 Controller에 요청합니다.
 ```
 ```
 package api.gtw.web;
@@ -137,14 +137,14 @@ public class DemoVo implements Serializable{
 }
 ```
 ```
-- 앞서 Browser에서 URL을 통해 한 요청을 testList()가 받고
-Vo를 생성, Controller에서 Vo를 통해 넘겨줄 parameter값을 
+- 앞서 ajax를 통한 URL 요청은 Controller에서 testList()가 받습니다.
+그리고 데이터 전달을 위한 Vo를 생성, Controller에서 Vo를 통해 넘겨줄 parameter값을 
 demoVO에 set 합니다. 
 
-- 이제 API WAS에 있는 API값을 return 받기 위해서 
+- 이제 WAS2(API)에 있는 API값을 return 받기 위해서 
 RestTemplate을 생성합니다.
 
-※ RestTemplate :RestTemplate은 Spring 3.0 부터 지원하는 템플릿으로
+※ RestTemplate : RestTemplate은 Spring 3.0 부터 지원하는 템플릿으로
 Spring에서 HTTP 통신을 RESTful 형식에 맞게 손쉬운 사용을 제공해주는 템플릿입니다.
 Rest API 서비스를 요청후 응답 받을 수 있도록 설계되었으며,
 HTTP 프로토콜의 메소드(ex. GET, POST, DELETE, PUT)들에 적합한 여러 메소드들을 제공합니다.
@@ -153,9 +153,8 @@ Java에서 사용되는 다른 템플릿(ex. JdbcTemplate)들 처럼
 
 - 먼저 예외처리를 위해 try catch로 묶습니다.
 
-- 생성된 RestTemplate 의 
-postForObject(URL, parameter , return 받을 class type)를 통해 
-API WAS에 요청하고 return 받습니다.
+- 생성된 RestTemplate 의 postForObject(URL, parameter , return 받을 class type)를 통해 
+WAS2(API)에 요청하고 return 받습니다.
 
 ※ postForObject : HTTP POST 요청 후 결과는 객체로 반환 
 
@@ -201,7 +200,7 @@ public class DanController {
 }
 ```
 ```
-- RestTemplate PostForObject를 통한 요청을 demoList()에서 받고 
+- RestTemplate PostForObject의 요청은 demoList()에서 받고 
 WAS1(front)처럼 WAS2(API)에서도 VO를 생성하고, 
 demoVO에 API 값을 set 하고 demoVo로 다시 요청받은곳으로 return 합니다. 
 ```
@@ -229,9 +228,8 @@ $(document).ready(function() {
 });  
 ```
 ```
-- return 받은 json data를 setData에 담고 
-jQuery Method 인 .text()를 통해 선택한 요소안의 내용을 가져와서 
-각각 data에 맞게 뿌려줍니다.
+- return 받은 json data를 setData에 담고 jQuery Method 인 .text()를 통해 
+선택한 요소안의 내용을 가져와서 각각 data에 맞게 뿌려줍니다.
 ```
 
 ![danpang2](../image/hbshin/20211026/danpang2.png)
@@ -243,13 +241,10 @@ jQuery Method 인 .text()를 통해 선택한 요소안의 내용을 가져와�
 ## 3. 시행착오
 
 ```
-1. RestAPI 호출 : 항상 1개의 WAS로 
-개발을 공부했던 저는 2개의 WAS 를 통해 
+1. RestAPI 호출 : 항상 1개의 WAS로 개발을 공부했던 저는 2개의 WAS 를 통해 
 서로 요청,응답을 한다는 개념에 대한 이해가 필요했었고, 
 외부 API 호출에 대한 잘못된 이해를 하고 있었습니다.
-
-검색을 해보니 외부 RestAPI를 호출 할 수 있는 
-방법에는 여러가지가 있었습니다. 
+검색을 해보니 외부 RestAPI를 호출 할 수 있는 방법에는 여러가지가 있었습니다. 
 그중에 저는 RestTemplate을 사용하였습니다.
 
 RestTemplate의 메소드 종류는 알아본 결과 12가지가 있었습니다.
@@ -258,7 +253,7 @@ RestTemplate의 메소드 종류는 알아본 결과 12가지가 있었습니다
 
 ```
 - 본인의 상황에 맞게 메소드를 사용하면 된다고 합니다. 
-저는 POST 요청을 통해 객체로 반환 받아야 했기 때문에
+저는 POST 요청을 통해 객체로 반환 받아야 했기 때문에 
 PostForObject를 사용했습니다.
 
 -PostForObject 의 사용방법을 이해했지만,
@@ -345,6 +340,7 @@ WAS2는 내부IP로 호출 해야하는 상황입니다.
 - 즉, Browser에서 서버로 요청 할 때에는 외부에서 접근하기 때문에 
 외부IP를 사용해야 하고, API 호출시에는 같은 Server안에서 호출 하기 때문에 
 내부 IP를 사용해야 호출이 가능합니다. 이 부분에 대한 정확한 인지를 하지 못했었습니다.
+이상입니다.
 ```
 
 
