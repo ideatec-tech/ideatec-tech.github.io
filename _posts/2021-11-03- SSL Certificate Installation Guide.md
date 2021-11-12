@@ -519,7 +519,7 @@ ssl1     CertificateFile = "경로/도메인 CA 인증서파일"
 - 서비스 기동 후 hosts에 등록된 IP 확인하고 브라우저에서 테스트
 ```
 
-![23](../image/hbshin/20211110/23.PNG)
+![23](../image/hbshin/20211110/23.png)
 
 
 ```
