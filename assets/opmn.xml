@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<opmn xmlns="http://www.oracle.com/ias-instance">
+   <log comp="internal;ons;pm" rotation-size="1500000"/>
+   <debug comp="" rotation-size="1500000"/>
+   <notification-server interface="any">
+      <port local="6700" remote="6701"/>
+      <ssl enabled="true" wallet-file="C:\Middleware\Oracle_WT1\instances\instance1\config\OPMN\opmn\wallet"/>
+   </notification-server>
+   <process-manager>
+      <process-modules>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnohs">
+            <module-id id="OHS2"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmncustom">
+            <module-id id="CUSTOM"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnoid">
+            <module-id id="OID"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnbi">
+            <module-id id="BIServer"/>
+            <module-id id="BIScheduler"/>
+            <module-id id="BIPresentationServices"/>
+            <module-id id="BIClusterController"/>
+            <module-id id="BIJavaHost"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnovd">
+            <module-id id="OVD"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnwc">
+            <module-id id="WebCache"/>
+            <module-id id="WebCache-admin"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnreports">
+            <module-id id="ReportsServices"/>
+            <module-id id="ReportsBridgeServices"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmndisco">
+            <module-id id="Disco_ServicesStatus"/>
+            <module-id id="Disco_SessionServer"/>
+            <module-id id="Disco_PreferenceServer"/>
+         </module>
+         <module path="$ORACLE_HOME/opmn/lib/libopmnemagent">
+            <module-id id="EMAGENT"/>
+         </module>
+      </process-modules>
+      <ias-instance id="instance1" name="instance1">
+        <environment>
+           <variable id="TEMP" value="C:\Users\s9707\AppData\Local\Temp"/>
+           <variable id="TMP" value="C:\Users\s9707\AppData\Local\Temp"/>
+        </environment> 
+      <ias-component id="ohs1">
+  <process-type id="OHS" module-id="OHS2">
+    <module-data>
+      <category id="start-parameters">
+        <data id="start-mode" value="ssl-enabled"/>
+      </category>
+    </module-data>
+    <process-set id="OHS" numprocs="1"/>
+  </process-type>
+</ias-component></ias-instance>
+      <rmd-definitions>
+         <!-- Audit Loader Setup TODO
+              Update the interval for Audit Loader to control how frequently
+              the Standalone Audit Loader gets invoked (seconds).
+         -->
+         <rmd name="AuditLoader" interval="315360000">
+             <conditional>
+                 ({time}>=00:00)
+             </conditional>
+             <!-- Audit Loader Setup TODO
+                  Before Updating the action snippet below, please update the
+                  password in the Secret Store
+             -->
+             <!-- Audit Loader Setup TODO
+                  Update the jdbcString (@%host%:%port%:%sid%)
+                  Update the username (%username%)
+                  Update the password (%password%) in Secret Store by adding
+                  2 more system properties:
+                     -Dstore.password=true
+                     -Dauditloader.password=%password%
+             -->
+             <action value="exec $ORACLE_HOME/jdk/bin/java -classpath $COMMON_COMPONENTS_HOME/modules/oracle.osdt_11.1.1/osdt_cert.jar$:$COMMON_COMPONENTS_HOME/modules/oracle.osdt_11.1.1/osdt_core.jar$:$ORACLE_HOME/jdbc/lib/ojdbc5.jar$:$COMMON_COMPONENTS_HOME/modules/oracle.iau_11.1.1/fmw_audit.jar$:$COMMON_COMPONENTS_HOME/modules/oracle.pki_11.1.1/oraclepki.jar -Doracle.home=$ORACLE_HOME -Doracle.instance=$ORACLE_INSTANCE -Dauditloader.jdbcString=jdbc:oracle:thin:@%host%:%port%:%sid% -Dauditloader.username=%username% oracle.security.audit.ajl.loader.StandaloneAuditLoader" timeout="60"/>
+             <exception value="exec /bin/echo PERIODICAL CALL FOR Audit Loader FAILED"/>
+         </rmd>
+      </rmd-definitions>
+      <launch-targets>
+        <launch-target id="logquery">
+          <exec path="$ORACLE_HOME/jdk/bin/java"/>
+          <argument value="-classpath"/>
+          <argument value="$COMMON_COMPONENTS_HOME/modules/oracle.odl_11.1.1/ojdl.jar$:$COMMON_COMPONENTS_HOME/modules/oracle.odl_11.1.1/ojdl2.jar"/>
+          <argument value="-Djava.encoding=utf-8"/>
+          <argument value="oracle.as.management.logging.tools.LogQuery"/>
+          <argument value="-i"/>
+          <argument value="$ORACLE_INSTANCE"/>
+        </launch-target>
+        <launch-target id="createcomponent">
+          <exec path="$ORACLE_INSTANCE/bin/opmnctl$BAT_EXT"/>
+          <argument value="createcomponent"/>
+        </launch-target>
+        <launch-target id="deletecomponent">
+          <exec path="$ORACLE_INSTANCE/bin/opmnctl$BAT_EXT"/>
+          <argument value="deletecomponent"/>
+        </launch-target>
+        <launch-target id="reload" reload-timeout="0">
+          <exec path="$ORACLE_INSTANCE/bin/opmnctl$BAT_EXT"/>
+          <argument value="reload"/>
+        </launch-target>
+      </launch-targets>
+   </process-manager>
+</opmn>
