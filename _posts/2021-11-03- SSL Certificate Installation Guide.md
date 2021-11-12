@@ -598,5 +598,83 @@ ssl1     CertificateFile = "경로/도메인 CA 인증서파일"
 입력 후 hosts 파일에서 IP 확인하고 서비스 재기동 후 브라우저 테스트
 ```
 
+<br>
 
+## Oracle HTTP Server 에서 SSL 인증서 설치하기.
+<br>
 
+![1](../image/hbshin/20211112/1.PNG)
+
+```
+- ohs window 버전 다운받고 Dkis1 > install > win64 이동 후 setup
+```
+
+![2](../image/hbshin/20211112/2.PNG)
+
+```
+- 위와 같은 창이 뜨면 소프트웨어 갱신 설치를 진행합니다.
+```
+
+![3](../image/hbshin/20211112/3.PNG)
+
+```
+- 설치 및 구성 클릭후 다음 클릭
+```
+
+![4](../image/hbshin/20211112/4.PNG)
+
+```
+- 다음 클릭
+```
+
+![5](../image/hbshin/20211112/5.PNG)
+
+```
+- 오라클을 설치할 디렉토리 위치 지정 
+```
+
+![6](../image/hbshin/20211112/6.PNG)
+
+```
+- 다음 클릭
+```
+
+![7](../image/hbshin/20211112/7.PNG)
+
+```
+- 3개중에서 Oracle HTTP Server만 체크하고 나머지 해제 후 다음 클릭
+
+- 설치 진행하고 완료
+```
+
+![8](../image/hbshin/20211112/8.PNG)
+
+```
+- 설치가 끝나면 cmd 창에서 오라클홈/instance1/bin 이동
+
+- 이동 후 opmnctl.bat startall 서비스 실행
+```
+
+![9](../image/hbshin/20211112/9.PNG)
+
+```
+- 전자 지갑 만들고 비밀번호 생성
+```
+```
+- C:\Middleware\oracle_common\bin 이 경로에 .p12 파일과 jks파일은 넣습니다.
+- 이제 cmd 창에서 SSL 인증서 파일을 변환 하기위해서 orapki.bat 파일이 있는
+C:\Middleware\oracle_common\bin 으로 이동하고 아래 키워드를 입력해서 변환
+
+"wallet jks_to_pkcs12 -wallet C:\Middleware\Oracle_WT1 \instances\instance1\config\OHS\ohs1\keystores\default 
+-pwd 패스워드 -keystore jks파일 -jkspwd 패스워드"
+
+```
+![10](../image/hbshin/20211112/10.PNG)
+
+```
+- 입력하면 변환된 파일이 
+C:\Middleware\Oracle_WT1\instances\instance1\config\OHS\ohs1\keystores\default
+이 경로에 생깁니다.
+
+- 그 다음 서비스 재기동후 브라우저에서 확인
+```
