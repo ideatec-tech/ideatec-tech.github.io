@@ -10,7 +10,7 @@ author: Dan
 ## 1. dockerfile 생성
 
 
-![1](../image/hbshin/20211122/1.png)
+![1](../image/hbshin/20211122/dockerfile.png)
 
 
 
