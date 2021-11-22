@@ -78,6 +78,10 @@ author: Dan
 
 - docker exec <옵션> <컨테이너명> /bin/bash
 
+- 접속 후
+ mv webapps webapps2
+ mv webapps.dist/ webapps 로 파일위치변경
+
 - cd webapps
 
 - ls -al
