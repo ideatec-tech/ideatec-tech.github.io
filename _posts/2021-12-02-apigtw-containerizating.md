@@ -34,26 +34,26 @@ services:
 apigtw용 db를 생성합니다. 
 ```
 
-![1](../image/hbshin/20211202/1.PNG)
+![1](../image/hbshin/20211202/1.png)
 
 ```
 - container가 있는 서버IP를 통해
 mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 연동
 ```
-![2](../image/hbshin/20211202/2.PNG)
+![2](../image/hbshin/20211202/2.png)
 
 ```
 - apigtw db table 제작
 ```
 
-![3](../image/hbshin/20211202/3.PNG)
+![3](../image/hbshin/20211202/3.png)
 
 ```
 - apigtw/admin/conf/context.xml 파일을 열어서 
 위에서 연결했던 DB정보에 맞게 URL을 수정
 ```
 
-![4](../image/hbshin/20211202/4.PNG)
+![4](../image/hbshin/20211202/4.png)
 
 ```
 - /apigtw/admin/bin/setenv.sh 파일을 열어서 아래 목록들 수정
@@ -64,13 +64,13 @@ mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 �
 - SERVER_LOG_PATH : log가 생성될 경로에 맞게 수정
 ```
 
-![5](../image/hbshin/20211202/5.PNG)
+![5](../image/hbshin/20211202/5.png)
 
 ```
 - license 설정을 위해서 apigtw/admin/props/system/으로 이동
 - 자신이 설정한 EnvironmentType에 맞게 디렉토리명을 변경
 ```
-![6](../image/hbshin/20211202/6.PNG)
+![6](../image/hbshin/20211202/6.png)
 
 ```
 - license 생성과정입니다.
@@ -81,7 +81,7 @@ mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 �
 /apigtw/admin/props/system/local/ideatec.license파일에 입력
 ```
 
-![7](../image/hbshin/20211202/7.PNG)
+![7](../image/hbshin/20211202/7.png)
 
 ```
 - 같은경로에서 ideatec.properties 파일에 들어와서
