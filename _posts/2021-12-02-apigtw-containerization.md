@@ -1,13 +1,13 @@
 ---
 layout: post
-title: apigtw-containerizating
+title: apigtw-containerization
 featured-img: docker-container.png
 categories: ['apigtw']
 author: Dan
 ---
 
 
-## apigtw-containerizating (~ing)
+## apigtw-containerization (~ing)
 <br>
 
 ```
