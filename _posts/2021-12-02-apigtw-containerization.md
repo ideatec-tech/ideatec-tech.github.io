@@ -10,6 +10,8 @@ author: Dan
 ## apigtw-containerization (~ing)
 <br>
 
+## mysql 
+
 ```
 version: "3"
 services:
@@ -30,14 +32,14 @@ services:
       - /root/data/apigtw\mysql:/var/lib/mysql
 ```
 ```
-- #docker-compose.yml 파일을 docker-compose up 명령어로 실행하여,
-apigtw용 db를 생성합니다. 
+- # docker-compose.yml 파일을 docker-compose up 명령어로 실행하여,
+apigtw용 mysql을 생성합니다. 
 ```
 
 ![1](../image/hbshin/20211202/1.png)
 
 ```
-- container가 있는 서버IP를 통해
+- 위에서 생성한 mysql을 기반으로 mysqlcontainer가 있는 서버IP를 통해
 mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 연동
 ```
 ![2](../image/hbshin/20211202/2.png)
@@ -46,10 +48,49 @@ mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 �
 - apigtw db table 제작
 ```
 
+## apigtw - admin
+
+```
+FROM ubuntu:20.04
+
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+
+RUN mkdir -p /apigtw
+
+ADD admin.tar /apigtw
+
+COPY ./setenv.sh /apigtw/admin/bin/
+COPY ./context.xml /apigtw/admin/conf/
+COPY ./ione-api-gtw-admin-2.2.0-SNAPSHOT.war /apigtw/admin/deploy/
+COPY ./ideatec.license /apigtw/admin/props/system/dev/
+COPY ./ideatec.properties /apigtw/admin/props/system/dev/
+
+
+EXPOSE 8080 8443
+```
+```
+- docker image build를 위해 dockerfile을 작성하고 명령어를
+통해 image build
+- # docker build -t 이미지명 . 
+- 다음은 container를 명령어를 통해 실행시킵니다.
+- # docker run -dit --name 컨테이너명 -p 입력포트:호출포트 이미지명 bash
+```
+![8](../image/hbshin/20211202/8.png)
+
+```
+- 실행 후 # docker ps -a 명령어를 통해 위와 같이 실행중인 
+container 리스트 조회가 가능합니다.
+```
+```
+- container를 실행했다면 다음 명령어를 통해 container로 접속
+- # docker exec -it 컨테이너명 bash 
+- 접속 후에 apigtw 설정작업을 합니다.
+```
 ![3](../image/hbshin/20211202/3.png)
 
 ```
-- apigtw/admin/conf/context.xml 파일을 열어서 
+- 먼저 apigtw/admin/conf/context.xml 파일을 열어서 
 위에서 연결했던 DB정보에 맞게 URL을 수정
 ```
 
@@ -87,5 +128,139 @@ mysql workbench에서 DB연결하고 Hostname에 서버IP와 port입력하여 �
 - 같은경로에서 ideatec.properties 파일에 들어와서
 - license.admin 파일경로 맞춰서 수정
 - 아래 admin.authchnl에 마지막 IP 주소를
-나의 ip 주소를 읽을수 있도록 맞게 설정
+나의 ip 주소를 읽을수 있도록 맞게 설정하고 서버 재기동
 ```
+
+## apigtw - collector 
+<br>
+
+```
+
+FROM ubuntu:20.04
+
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+
+RUN mkdir -p /apigtw
+
+ADD collector.tar /apigtw
+
+COPY ./setenv.sh /apigtw/collector/bin/
+COPY ./ione-api-gtw-collector-2.2.0-SNAPSHOT.jar /apigtw/collector/deploy/
+COPY ./ideatec.license /apigtw/collector/props/system/dev/
+COPY ./ideatec.properties /apigtw/collector/props/system/dev/
+COPY ./collector-spring.properties /apigtw/collector/props/system/dev/
+
+EXPOSE 58080
+
+```
+```
+- collector 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
+후 container 올리고 접속
+```
+
+![9](../image/hbshin/20211202/9.png)
+
+```
+- collector setenv 파일수정 
+- java path
+- apigtw home
+- log file path 
+3가지 수정 및 나머지 포트번호 경로 맞는지 확인
+```
+
+
+![10](../image/hbshin/20211202/10.png)
+
+```
+- properties 파일에서 ip 맞는지 확인
+```
+
+![11](../image/hbshin/20211202/11.png)
+
+```
+- collector-spring.properties 파일에 db 정보 수정
+```
+
+## apigtw - nodeagent
+
+```
+FROM ubuntu:20.04
+
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+
+RUN mkdir -p /apigtw
+
+ADD nodeagent.tar /apigtw
+
+COPY ./setenv.sh /apigtw/nodeagent/bin/
+COPY ./ione-api-gtw-nodeagent-2.2.0-SNAPSHOT.jar /apigtw/nodeagent/deploy/
+COPY ./ideatec.license /apigtw/nodeagent/props/system/dev/
+COPY ./ideatec.properties /apigtw/nodeagent/props/system/dev/
+COPY ./nodeagent-spring.properties /apigtw/nodeagent/props/system/dev/
+
+EXPOSE 8081
+
+```
+```
+- nodeagent 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
+후 container 올리고 접속
+```
+
+![12](../image/hbshin/20211202/12.png)
+
+```
+- properties 파일 수정
+```
+
+![13](../image/hbshin/20211202/13.png)
+
+```
+- nodeagent-spring.properties 파일에서 db정보 수정
+```
+
+![14](../image/hbshin/20211202/14.png)
+
+```
+- setenv 파일에서 java , apigtw home ,log file path 맞추기
+```
+
+## apigtw - server
+
+```
+FROM ubuntu:20.04
+
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+
+RUN mkdir -p /apigtw
+
+ADD server.tar /apigtw
+
+COPY ./setenv.sh /apigtw/server/bin/
+COPY ./ione-api-gtw-server-2.2.0-SNAPSHOT.jar /apigtw/server/deploy/
+COPY ./ideatec.license /apigtw/server/props/system/dev/
+COPY ./ideatec.properties /apigtw/server/props/system/dev/
+
+EXPOSE 8080
+
+```
+
+```
+- server 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
+후 container 올리고 접속
+```
+
+![15](../image/hbshin/20211202/15.png)
+
+```
+- properties 파일에서 ip 수정
+```
+
+![16](../image/hbshin/20211202/16.png)
+
+```
+- setenv 파일에서 java path ,apigtw home , log path를 맞추기
+```
+
