@@ -76,9 +76,7 @@ EXPOSE 8080 8443
 - 다음은 container를 명령어를 통해 실행시킵니다.
 - # docker run -dit --name 컨테이너명 -p 입력포트:호출포트 이미지명 bash
 ```
-```
-admin                  "bash"                   2 days ago     Exited (255) 3 hours ago   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:8443->8443/tcp, :::8443->8443/tcp   apigtw-admin
-```
+![8](../image/hbshin/20211202/8.png)
 
 ```
 - 실행 후 # docker ps -a 명령어를 통해 위와 같이 실행중인 
