@@ -91,7 +91,7 @@ container 리스트 조회가 가능합니다.
 
 ```
 - 먼저 apigtw/admin/conf/context.xml 파일을 열어서 
-위에서 연결했던 DB정보에 맞게 URL을 수정
+위에서 연결했던 DB정보에 맞게 URL , username , password 수정
 ```
 
 ![4](../image/hbshin/20211202/4.png)
@@ -109,7 +109,7 @@ container 리스트 조회가 가능합니다.
 
 ```
 - license 설정을 위해서 apigtw/admin/props/system/으로 이동
-- 자신이 설정한 EnvironmentType에 맞게 디렉토리명을 변경
+- 자신이 설정한 EnvironmentType에 맞게 디렉토리명을 변경(거의 DEV통일)
 ```
 ![6](../image/hbshin/20211202/6.png)
 
@@ -155,18 +155,20 @@ EXPOSE 58080
 
 ```
 ```
-- collector 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
-후 container 올리고 접속
+- collector 관련 위 Dockerfile 작성 후 마찬가지로 명령어를 통해 
+image build 후 container 올리고 접속
+- admin과 같이 서버 올라가면 명령어로 접속 후 파일 수정
 ```
 
 ![9](../image/hbshin/20211202/9.png)
 
 ```
-- collector setenv 파일수정 
-- java path
-- apigtw home
-- log file path 
-3가지 수정 및 나머지 포트번호 경로 맞는지 확인
+- /apigtw/collector/bin/setenv.sh 파일을 열어서 아래 목록들 수정
+- JAVA_HOME : 나의 서버 자바 경로 입력 (jdk-1.8)
+- APIGTW_HOME : 내 서버 기준에 맞춰서 수정
+- WAR_NAME : 위에 입력되어 있는 이름과 맞춘다.
+- SERVER_PROFILE : license 생성시 Environment Type과 맞춰서 입력
+- SERVER_LOG_PATH : log가 생성될 경로에 맞게 수정
 ```
 
 
@@ -179,7 +181,7 @@ EXPOSE 58080
 ![11](../image/hbshin/20211202/11.png)
 
 ```
-- collector-spring.properties 파일에 db 정보 수정
+- collector-spring.properties 파일에서 url,username,password 수정
 ```
 
 ## apigtw - nodeagent
@@ -204,26 +206,30 @@ EXPOSE 8081
 
 ```
 ```
-- nodeagent 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
-후 container 올리고 접속
+- nodeagent 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 
+image build 후 container 올리고 접속
 ```
-
 ![12](../image/hbshin/20211202/12.png)
 
 ```
-- properties 파일 수정
+- properties 파일에서 authChnl 마지막 IP주소 확인
 ```
 
 ![13](../image/hbshin/20211202/13.png)
 
 ```
-- nodeagent-spring.properties 파일에서 db정보 수정
+- nodeagent-spring.properties 파일에서 url,username,password 수정
 ```
 
 ![14](../image/hbshin/20211202/14.png)
 
 ```
-- setenv 파일에서 java , apigtw home ,log file path 맞추기
+- /apigtw/nodeagent/bin/setenv.sh 파일을 열어서 아래 목록들 수정
+- JAVA_HOME : 나의 서버 자바 경로 입력 (jdk-1.8)
+- APIGTW_HOME : 내 서버 기준에 맞춰서 수정
+- WAR_NAME : 위에 입력되어 있는 이름과 맞춘다.
+- SERVER_PROFILE : license 생성시 Environment Type과 맞춰서 입력
+- SERVER_LOG_PATH : log가 생성될 경로에 맞게 수정
 ```
 
 ## apigtw - server
@@ -248,19 +254,28 @@ EXPOSE 8080
 ```
 
 ```
-- server 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 image build
-후 container 올리고 접속
+- server 관련 Dockerfile 작성 후 마찬가지로 명령어를 통해 
+image build후 container 올리고 접속
 ```
 
 ![15](../image/hbshin/20211202/15.png)
 
 ```
-- properties 파일에서 ip 수정
+- properties 파일에서 ip 확인
 ```
 
 ![16](../image/hbshin/20211202/16.png)
 
 ```
-- setenv 파일에서 java path ,apigtw home , log path를 맞추기
+- - /apigtw/server/bin/setenv.sh 파일을 열어서 아래 목록들 수정
+- JAVA_HOME : 나의 서버 자바 경로 입력 (jdk-1.8)
+- APIGTW_HOME : 내 서버 기준에 맞춰서 수정
+- WAR_NAME : 위에 입력되어 있는 이름과 맞춘다.
+- SERVER_PROFILE : license 생성시 Environment Type과 맞춰서 입력
+- SERVER_LOG_PATH : log가 생성될 경로에 맞게 수정
+
+
+- admin , collector , nodeagent , server 모두 재기동 후 
+http:// 서버 IP : admin 포트번호를 통해 접속 후 확인.
 ```
 
