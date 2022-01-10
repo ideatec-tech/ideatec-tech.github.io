@@ -124,10 +124,10 @@ $ kubectl delete namespace
 ![5](../image/hbshin/20220110/5.png)
 
 ```
-	- container 2개 실행
-	- kubectl create -f yaml명
-	- kubectl exec multipod -it -c 접속할 컨테이너명 --/bin/bash
-	- curl http://localhost:80
+- container 2개 실행
+- kubectl create -f yaml명
+- kubectl exec multipod -it -c 접속할 컨테이너명 --/bin/bash
+- curl http://localhost:80
 ```
 
 ## pod 동작 flow 
@@ -191,18 +191,129 @@ spec:
     $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).
     svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
 
-- busybox라는 매인 app이 실행되면서 
-main container 1개와 2개의 초기화 컨테이너를 실행
-command 에서 until ( false) myservice / my db 동작중이지 않으면 
-쉘스크립트 반복하고 실행되면 종료
+- busybox라는 매인 app이 실행되면서 main container 1개와 2개의 
+초기화 컨테이너를 실행 command 에서 until ( false) myservice / my db 
+동작중이지 않으면 쉘스크립트 반복하고 실행되면 종료
 
 <init container활용>
-- initcontainer 다 묶고 있는 pod에서는 init container가 성공해야 main container를 구동시킨다.
+- initcontainer 다 묶고 있는 pod에서는 init container가 
+성공해야 main container를 구동시킨다.
 ```
 
+## infra container
+
+```
+- pod 생성시 pause container가 같이 생성되고 같이 삭제된다.
+- pod 에 대한 ip나 host name 등 관리하고 생성하는게 pause container
+즉 일반적인 pod 1개 생성시 자동으로 pause container도 실행되며
+생성한 pod를 삭제시 pause container도 자동 삭제된다.
+
+- static pod - kubelet 데몬에 의해 실행되는것
+- api 에게 요청을 보내지 않고 node 에는 kubelet이라는 데몬이 존재
+ex) nginx 하나를 실행하고 싶으면 kubelet 관리하는 pod dir /yaml 파일
+저장 시 자동 실행 / yaml 파일을 지우면 삭제
+- /etc/kubernetes/manifests/ 디렉토리에 k8s yaml 파일을 저장 시 적용
+- static pod 디렉토리 구성 : # vi /var/lib/kubelet/conmfig.yaml
+```
+
+## resource request
+
+```
+- 파드를 실행하기 위한 최소 리소스 양을 요청하면서 사용해야 합니다.
+- 이유는 첫번째 노드에서 사용량을 다 써버리면 상대적으로 다른 pod가
+용량 부족으로 동작할 수 없기 때문입니다.
+```
+## resource limits
+
+```
+- 파드가 사용할 수 있는 최대 리소스 양을 제한해서 다른 node가
+동작할 수 있게 조정하는 역할
+```
+## pod 환경변수
+
+```
+1. sidecar - pod안에 container 2개 , 1개는 webserver container는 
+로그를 만들고 1개는 분석 및 작업한다. 
+즉 로그를 만들어줘야지만 실행할 수 있는 형태의 pod
+	
+2. adapter - webserver container에 외부에 있는 시스템상태에 대한 
+모니터정보가 들어있는 공간에 있는 정보를 어뎁터가 받아와서 
+webserver에 전달해주면 고객 , 관리자의 전달해줌
+	
+3. ambassador - webserver에 고객들이 접속하면 데이터들이 
+만들어지는데 필요하다면 분산시켜서 보내줄수있는 컨테이너
+```
+### controller
+
+- 특정 application 을 운영해주는 pod를 몇개를 운영해줄 것인지를 
+결정하고 운영 및 보장하는것
+
+## Replication controller
+
+- 요구하는 pod 의 개수를 보장 / 파드 집합의 실행을 항상 안정적으로 유지
+
+![6](../image/hbshin/20220110/6.png)
+
+![7](../image/hbshin/20220110/7.png)
 
 
+```
+- 기본구성 : selector / replicas / template 
+- controller : selector를 보고 개수만큼 보장하려고 하고 부족하면 template를 통해 생성
+- pod template 은 반드시 selector에 있는 key ,value를 label로 포함하고 있어야한다.
+```
 
+## ReplicaSet
+
+```
+- replicationController와 성격은 비슷
+- 다른점은 풍부한 selector를 지원
+	
+ex) selector
+	matchLabels:
+	matchExpressions
+		
+- matchLabels : key value 사용 replication과 동일
+- matchExpressions :  수식 사용가능 
+ex) {key: tier, operator: in, values: [cache]}
+ {key: environment, operator: Notln, values: [dev]
+```
+![8](../image/hbshin/20220110/8.png)
+
+## ReplicationController / ReplicaSet 차이점
+
+![9](../image/hbshin/20220110/9.png)
+
+```
+- version 에서 apps 가 추가로 입력
+- kind
+- selector : matchLabels 추가
+```
+
+## Deployment
+
+```
+- replicaSet 을 컨트롤해서 pod 수를 조절
+- Rolling Update / Rolling Back
+- ex) 고객에게 버전업데이트 등을 서비스 중단없이 시행
+```
+
+## ReplicaSet / Deployment 차이점
+
+![10](../image/hbshin/20220110/10.png)
+
+```
+- 큰 차이점없이 비슷하게 사용가능
+- 즉 부모관계 느낌으로 deploy가 replicaSet을 관리하고 replicaSet이
+pod를 관리하므로 replicaSet이 지워지면 deploy가 다시 생성하고
+pod가 지워지면 replicaSet이 개수 보장을 해야 하기 때문에 다시
+pod를 생성하고 둘다 지워져도 deploy를 다시 생성합니다.
+```
+## deployment Rolling update command
+
+```
+- kubectl set image deployment <deploy_name> <container_name>=<new_version_image>
+```
 
 
 
