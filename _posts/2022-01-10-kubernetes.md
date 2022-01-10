@@ -307,13 +307,160 @@ ex) {key: tier, operator: in, values: [cache]}
 - 즉 부모관계 느낌으로 deploy가 replicaSet을 관리하고 replicaSet이
 pod를 관리하므로 replicaSet이 지워지면 deploy가 다시 생성하고
 pod가 지워지면 replicaSet이 개수 보장을 해야 하기 때문에 다시
-pod를 생성하고 둘다 지워져도 deploy를 다시 생성합니다.
+pod를 생성하고 둘다 지워져도 deploy가 다시 생성합니다.
 ```
 ## deployment Rolling update command
 
 ```
 - kubectl set image deployment <deploy_name> <container_name>=<new_version_image>
 ```
+## deployment RollBack command
+
+```
+- kubectl rollout history deployment <deploy_name>
+- kubectl rollout undo deploy <deploy_name>
+```
+
+## deployment Rolling update / rolling back
+
+```
+- kubectl 생성 커맨드에서 create 와 aplly 2가지 접근방식이 존재
+
+- 필수관리 : kubectl create :
+명령적 관리 - 접근 방식에서는 생성 및 교체 또는 삭제하려는 kubernetes API를 알려줌.
+
+- 선언적 관리 : kubectl apply : 
+선언적 관리 - 접근 방식의 일부로 , 라이브 개체 (예 : scale) 에 적용했을 수 있는
+변경 사항이 개체에 대한 다른 변경 사항이 있더라도 "유지 관리" 된다.
+
+- 즉, 리소스가 있는 경우 kubectl create는 오류 발생 
+/ kubectl apply 는 발생하지 않는다.
+```
+
+## DaemonSet + RollingUpdate 
+
+```
+- 전체 노드에서 pod가 한 개씩 실행되도록 보장
+- 로그 수입기, 모니터링 에이전트와 같은 프로그램 실행 시 적용
+```
+
+![11](../image/hbshin/20220110/11.png)
+
+```
+- DaemonSet은 node당 pod 가 필수적으로 1개씩 보장되기 때문에 
+ReplicaSet처럼 replicas를 설정 할 필요가 없다.
+만약 node가 2개에서 3개로 추가된다고해도 daemonSet이 자동으로 pod를 추가해준다.
+```
+
+## statefulset
+
+```
+- pod의 상태를 유지해주는 컨트롤러
+    - pod 이름
+    - pod의 볼륨(스토리지)
+    - daemonset처럼 node당 1개를 보장하지는 않는다.
+```
+
+## replicaSet 과 statefulSet 차이점
+
+![12](../image/hbshin/20220110/12.png)
+
+- service name이 추가되는 점.
+
+## JOB 
+
+```
+- kubernetes는 pod를 running 중인 상태로 유지
+- batch 처리하는 pod 는 작업이 완료되면 종료됨.
+- batch 처리에 적합한 컨트롤러로 pod의 성공적인 완료를 보장
+- 비정상 종료 시 다시 실행
+- 정상 종료 시 완료
+```
+![13](../image/hbshin/20220110/13.png)
+
+```
+- job controller는 restart 정책이 절대적으로 보장됨.
+- 즉, 비정상 종료가 확인될 경우 자동으로 재기동시켜주는 controller
+```
+
+![14](../image/hbshin/20220110/14.png)
+
+```
+- 위 그림처럼 작업이 정상적으로 완료되면 끝, 하지만 만약 작업이 정상적으로 완료되지
+못한다면 jobcontroller는 다시 작업을 시작합니다.
+```
+
+### example
+
+![15](../image/hbshin/20220110/15.png)
+
+```
+- controller centos에 sleep 25초 동작되도록 하며, 3번 실행(completions)을 명령
+
+# kubectl create -f job-exam.yaml
+# kubectl get job,pods
+# kubectl delete job.apps centos-job
+```
+
+## CronJob
+
+```
+- 사용자가 원하는 시간에 JOB 실행 예약지원
+- job 컨트롤러로 실행할 Application pod 를 주기적으로 반복실행
+- Linux 의 cronjob의 스케줄링 기능을 job Controller에 추가한 API
+
+<Cronjob Schedule>
+- Minutes (from 0 to 59)
+- Hours (from 0 to 23)
+- Day of the month (from 1 to 31)
+- Month (from 1 to 12)
+- Day of the week (from 0 to 6)
+```
+
+![16](../image/hbshin/20220110/16.png)
+
+```
+- job 과 cronjob의 차이점은 schedule와 job Template가 추가로 적용되는점
+```
+### example 
+
+![17](../image/hbshin/20220110/17.png)
+
+```
+- spec : schedule : " * * * * " = 아래의 jobTemplate을 1분마다 한번씩 실행
+- startingDeadlineSeconds : 500 =  해당작업을 500초안에 실행시키지 못하면 취소 
+concurrencyPolicy : Forbid = 앞서 먼저 실행된 작업이 있으면 그 작업이 
+완료되기전까지 재 실행 하지 않는다는 명령
+
+command
+# kubectl create -f cronjob-exam.yaml
+# kubectl get cronjob
+# kubectl get pods
+# kubectl delete cronjob cronjob-exam
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
